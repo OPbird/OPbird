@@ -34,3 +34,9 @@ node_modules
 
 /public/libs
 
+.idea/
+
+node_modules/
+
+*.iml
+
