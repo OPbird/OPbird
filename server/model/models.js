@@ -29,7 +29,7 @@ var userSchema = new Schema({
             tweets: [ //A publicar
                 {
                     fecha: {type: Date},
-                    text:{type:String},
+                    text:{type:String}
                 }
             ]
         }
