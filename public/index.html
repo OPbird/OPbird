@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script>
+        function realizaProceso(valorCaja1, valorCaja2){
+            var parametros = {
+                "email" : valorCaja1,
+                "pass" : valorCaja2
+            };
+            $.ajax({
+                data:  parametros,
+                url:   'http://localhost:8080/api/login',
+                type:  'post',
+                beforeSend: function () {
+                    $("#resultado").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                    $("#resultado").html(response.token);
+                }
+            });
+        }
+
+        function procesoConTokens(){
+            /*var parametros = {
+                "email" : valorCaja1,
+                "pass" : valorCaja2
+            };*/
+            $.ajax({
+                url:   'http://localhost:8080/api/getUsers',
+                type:  'get',
+                headers: {
+                    "authorization": $("#resultado").html(),
+                    "user_id": "rgcmb@hotmail.com"
+                },
+                beforeSend: function () {
+                    $("#resultado2").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                    $("#resultado2").html(response);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<!--
+Introduce valor 1
+
+<input type="text" name="caja_texto" id="valor1" value="0"/>
+
+
+Introduce valor 2
+
+<input type="text" name="caja_texto" id="valor2" value="0"/>
+
+Realiza suma
+
+<input type="button" href="javascript:;" onclick="realizaProceso($('#valor1').val(), $('#valor2').val());return false;" value="Calcula"/>
+
+<br/>
+
+Resultado: <span id="resultado">aa.aa.aa</span>
+
+<input type="button" href="javascript:;" onclick="procesoConTokens();return false;" value="Tokens prob"/>
+
+Resultado: <span id="resultado2"></span>
+-->
+<h1>Web en construcción</h1>
+<img src="http://lh4.ggpht.com/-jt4oVm0tuT0/TuFZixOPXPI/AAAAAAAAG80/An9i_7vsqlw/gato%252520pianista%252520%2525281%252529_thumb.gif?imgmax=800">
+
+</body>
+</html>

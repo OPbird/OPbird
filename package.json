@@ -1,0 +1,40 @@
+{
+  "name": "OPHoras",
+  "version": "0.0.1",
+  "description": "A sample Node.js app using Express 4",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "node_modules/.bin/mocha"
+  },
+  "dependencies": {
+    "body-parser": "latest",
+    "compression": "latest",
+    "express": "latest",
+    "jwt-simple": "latest",
+    "method-override": "latest",
+    "moment": "latest",
+    "mongoose": "latest",
+    "request": "latest",
+    "supertest": "latest"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "should": "latest",
+    "chai": "latest",
+    "expect.js": "latest"
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PhyrionX/OPhoras.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
