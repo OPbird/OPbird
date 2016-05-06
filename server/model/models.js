@@ -11,11 +11,29 @@ var Schema = mongoose.Schema;
 // define the userSchema
 var userSchema = new Schema({
     email: {type: String, require: true, unique: true},
-    pass: {type: String, require: true},
-    nombreCompleto: {type: String, require: true},
-    username: {type: String, require: true},
-    bvalid: {type: Number, default: 1},
-    created_at: {type: Date, default: Date.now}
+    password: {type: String, require: true},
+    nombre: {type: String, require: true},
+    apellidos: {type: String, require: true},
+    b_borrado: {type: Boolean, default: false},
+    stats: {
+        alta:{type: Date, default: Date.now},
+        baja:{type: Date},
+        ultimo_acceso:{type: Date, default: Date.now},
+        ntweets:{type: Number, default: 0}
+    },
+    cuentas: [
+        {
+            id_twitter:{type: String},
+            cuenta:{type: String},
+            token:{type: String},
+            tweets: [ //A publicar
+                {
+                    fecha: {type: Date},
+                    text:{type:String},
+                }
+            ]
+        }
+    ]
 });
 
 // Export the User model
