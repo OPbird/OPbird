@@ -26,7 +26,7 @@ var userSchema = new Schema({
             id_twitter:{type: String},
             cuenta:{type: String},
             token:{type: String},
-            tweets: [ //A publicar
+            tweetP: [ //A publicar
                 {
                     fecha: {type: Date},
                     text:{type:String}
