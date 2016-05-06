@@ -30,7 +30,7 @@ var userSchema = new Schema({
             tweetP: [ //A publicar
                 {
                     fecha: {type: Date},
-                    text:{type:String},
+                    text:{type:String}
                 }
             ],
             hashtags: [String]

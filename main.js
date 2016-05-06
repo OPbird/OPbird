@@ -38,12 +38,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // **************************************************************
 
 //Zona pública
-app.post("/api/registrar", users.registrar);
+app.post("/api/register", users.registrar);
 app.post("/api/login", users.login);
-app.get("/api/getUsers", users.getUsers);
 
+//Zona administrador
+app.post("/api/admin/login");
+
+//Zona usuarios
+app.get("/api/twitterAccount/:user");
+app.post("/api/twitterAccount");
+app.delete("/api/twitterAccount");
+app.get("/api/twitterAccount/:user/:twitter");
 
 //Zona privada
+app.get("/api/private/getUsers", middleware.ensureAuthenticated, users.getUsers);
 app.get("/api/private/getUsers", middleware.ensureAuthenticated, users.getUsers);
 
 app.get('*', function(req, res){
