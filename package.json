@@ -1,7 +1,7 @@
 {
-  "name": "OPHoras",
+  "name": "OPbird",
   "version": "0.0.1",
-  "description": "A sample Node.js app using Express 4",
+  "description": "Aplicación de twitter",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/PhyrionX/OPhoras.git"
+    "url": "https://github.com/OPbird/OPbird.git"
   },
   "keywords": [
     "node",
