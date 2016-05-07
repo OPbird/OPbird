@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "test": "node_modules/.bin/mocha"
+    "test": "node_modules/.bin/mocha",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
     "body-parser": "latest",
@@ -16,7 +17,8 @@
     "moment": "latest",
     "mongoose": "latest",
     "request": "latest",
-    "supertest": "latest"
+    "supertest": "latest",
+    "bower": "latest"
   },
   "devDependencies": {
     "mocha": "latest",
