@@ -41,12 +41,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   API REST DE LA APP
 // **************************************************************
 
-//Zona pública
+// Users
 app.post("/api/login", usersController.login);
-
 app.post("/api/register", usersController.register);
+app.get("/api/user/:id",usersController.getUser);
+app.put("/api/user/:id",usersController.updateUser);
+app.delete("/api/user/:id",usersController.deleteUser);
 
-//Zona administrador
+//Twitter
+    
 app.post("/api/admin/login");
 app.get("/auth/twitter", twitterAccount.getOauth);
 app.get("/auth/twitter/callback", twitterAccount.callbackOauth);
@@ -54,6 +57,8 @@ app.get("/api/twitterAccount/:user");
 app.post("/api/twitterAccount");
 app.delete("/api/twitterAccount");
 app.get("/api/twitterAccount/:user/:twitter");
+
+//Stats
 
 //Zona privada
 //app.get("/api/private/getUsers", middleware.ensureAuthenticated, usersController.getUsers);
