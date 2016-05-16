@@ -7,8 +7,14 @@ var express = require('express'),
     config = require('./server/config/config'),
     mongoose = require('mongoose'),
     middleware = require("./server/controllers/middleware"),
-    usersController = require('./server/controllers/userController');
+    usersController = require('./server/controllers/userController'),
+    twitterAccount = require('./server/controllers/twitterAccountController'),
+    session = require('express-session');
+
 var app = express();
+
+app.use(session({ secret: "very secret" }));
+
 
 app.set('port', (process.env.PORT || config.port));
 
@@ -17,15 +23,13 @@ app.use(compression());
     uploadDir: __dirname + '/uploads',
     keepExtensions: true
 }));*/
+
 app.use(methodOverride());
 
 app.use(express.static(path.join(__dirname, './public')));
-
 app.set('dbUrl', process.env.BBDD || config.db.test);
- // connect mongoose to the mongo dbUrl
+// connect mongoose to the mongo dbUrl
 mongoose.connect(app.get('dbUrl'));
- //...
-
 app.use(function(err, req, res, next) {
     console.log(err.stack);
     res.send(500, err.message);
@@ -44,8 +48,8 @@ app.post("/api/register", usersController.register);
 
 //Zona administrador
 app.post("/api/admin/login");
-
-//Zona usuarios
+app.get("/auth/twitter", twitterAccount.getOauth);
+app.get("/auth/twitter/callback", twitterAccount.callbackOauth);
 app.get("/api/twitterAccount/:user");
 app.post("/api/twitterAccount");
 app.delete("/api/twitterAccount");

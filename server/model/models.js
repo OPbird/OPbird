@@ -25,7 +25,8 @@ var userSchema = new Schema({
         {
             id_twitter:{type: String},
             cuenta:{type: String},
-            token:{type: String},
+            access_token:{type: String},
+            access_token_secret:{type: String},
             info:{type: String},
             tweetP: [ //A publicar
                 {

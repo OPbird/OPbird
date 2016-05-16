@@ -10,15 +10,18 @@
   },
   "dependencies": {
     "body-parser": "latest",
+    "bower": "latest",
     "compression": "latest",
     "express": "latest",
+    "express-session": "^1.13.0",
     "jwt-simple": "latest",
     "method-override": "latest",
     "moment": "latest",
     "mongoose": "latest",
+    "oauth": "latest",
+    "passport": "latest",
     "request": "latest",
-    "supertest": "latest",
-    "bower": "latest"
+    "supertest": "latest"
   },
   "devDependencies": {
     "mocha": "latest",
