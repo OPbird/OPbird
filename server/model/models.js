@@ -16,9 +16,9 @@ var userSchema = new Schema({
     apellidos: {type: String, require: true},
     b_borrado: {type: Boolean, default: false},
     stats: {
-        alta:{type: Date, default: Date.now},
+        alta:{type: Date, default: Date.now()},
         baja:{type: Date},
-        ultimo_acceso:{type: Date, default: Date.now},
+        ultimo_acceso:{type: Date, default: Date.now()},
         ntweets:{type: Number, default: 0}
     },
     cuentas: [
