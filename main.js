@@ -7,7 +7,7 @@ var express = require('express'),
     config = require('./server/config/config'),
     mongoose = require('mongoose'),
     middleware = require("./server/controllers/middleware"),
-    users = require('./server/controllers/userController');
+    usersController = require('./server/controllers/userController');
 var app = express();
 
 app.set('port', (process.env.PORT || config.port));
@@ -38,8 +38,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // **************************************************************
 
 //Zona pública
-app.post("/api/register", users.registrar);
-app.post("/api/login", users.login);
+app.post("/api/login", usersController.login);
+
+app.post("/api/register", usersController.register);
 
 //Zona administrador
 app.post("/api/admin/login");
@@ -51,8 +52,8 @@ app.delete("/api/twitterAccount");
 app.get("/api/twitterAccount/:user/:twitter");
 
 //Zona privada
-app.get("/api/private/getUsers", middleware.ensureAuthenticated, users.getUsers);
-app.get("/api/private/getUsers", middleware.ensureAuthenticated, users.getUsers);
+app.get("/api/private/getUsers", middleware.ensureAuthenticated, usersController.getUsers);
+app.get("/api/private/getUsers", middleware.ensureAuthenticated, usersController.getUsers);
 
 app.get('*', function(req, res){
   res.status(404).send('<h1>Tíííííííííííííííííííío no me toques la URL o te meto!!!!!!</h1>');
