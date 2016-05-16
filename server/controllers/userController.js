@@ -38,8 +38,8 @@ function register(req, res, next) {
         if (data != null) return res.status(400).send({error:1, mensaje:"Usuario ya existente"});
         else{            
             user.add(_user,function(err){
-                if(err) return res.status(500).send("Server Error");
-                else return res.status(200).send();
+                if(err) return res.status(500).send({error:3,mensaje:"Server Error"});
+                else return res.status(200).send({error:0, token: service.createToken(data)});
             });
         }
     });

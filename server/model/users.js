@@ -7,11 +7,6 @@ module.exports = {
             callback(err);
         });
     },
-    removeUser: function(_email, callback){
-        User.remove({email: _email}, function(err){
-            callback(err);
-        });
-    },
     getUsers: function(callback) {
         User.find({}, function(err, user) {
             callback(err, user);
@@ -21,5 +16,12 @@ module.exports = {
         User.findOne({email: _email}, function(err, user) {
             callback(err, user);
         })
-    }
+    },
+    removeUser: function(_email, callback){
+        getUser(_email,function(err,user){
+            user.b_borrado = true;
+            add(user);
+            callback(err);
+        });
+    },
 }
