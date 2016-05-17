@@ -7,7 +7,9 @@ angular.module("FinalApp")
         $scope.user = {};
         $scope.registrar = true;
         $scope.error = {};
+        $scope.datosConexion = {};
         //$location.path("/register");
+        
 
         $scope.go = function ( path ) {
             $location.path( path );
@@ -21,9 +23,13 @@ angular.module("FinalApp")
                     'Content-Type': 'application/json'
                 })
                 .success(function (data) {
+                    $scope.datosConexion.email = data.user.email;
+                    $scope.datosConexion.password = data.user.password;
+                    $scope.registrar = false;
                     console.log(data);
                 })
                 .error(function (data) {
+                    $scope.error.registrar = true;
                     console.log(data);
                 });
         }
