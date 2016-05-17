@@ -5,8 +5,7 @@ angular.module("FinalApp")
          }*/
         console.log("aaa");
         $scope.user = {};
-        $scope.login = {};
-        $scope.dentro = false;
+        $scope.registrar = true;
         $scope.error = {};
         //$location.path("/register");
 
@@ -16,5 +15,16 @@ angular.module("FinalApp")
 
         $scope.register = function () {
             console.log($scope.user);
+            $http.post('/api/register',
+                JSON.stringify($scope.user),
+                {
+                    'Content-Type': 'application/json'
+                })
+                .success(function (data) {
+                    console.log(data);
+                })
+                .error(function (data) {
+                    console.log(data);
+                });
         }
     })

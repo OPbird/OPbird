@@ -1,48 +1,50 @@
-<form class="form-horizontal">
-    <fieldset>
+<div ng-show="registrar">
+    <form class="form-horizontal" ng-submit="register()">
+        <fieldset>
 
-        <!— Form Name —>
-        <legend>Registrar</legend>
+            <!— Form Name —>
+            <legend>Registrar</legend>
 
-        <!— Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="email">Email</label>
-            <div class="col-md-4">
-                <input id="email" ng-model="user.email" name="email" type="text" placeholder="email@example.com" class="form-control input-md" required>
+            <!— Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-4">
+                    <input id="email" ng-model="user.email" name="email" type="email" placeholder="email@example.com" class="form-control input-md" required>
 
+                </div>
             </div>
-        </div>
 
-        <!— Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="nombre">Nombre</label>
-            <div class="col-md-4">
-                <input id="nombre" ng-model="user.nombre" name="nombre" type="text" placeholder="John" class="form-control input-md" required>
+            <!— Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nombre">Nombre</label>
+                <div class="col-md-4">
+                    <input id="nombre" ng-model="user.nombre" name="nombre" type="text" placeholder="John" class="form-control input-md" required>
 
+                </div>
             </div>
-        </div>
 
-        <!— Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="apellidos">Apellidos</label>
-            <div class="col-md-4">
-                <input id="apellidos" ng-model="user.apellidos" name="apellidos" type="text" placeholder="Snow" class="form-control input-md" required>
+            <!— Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="apellidos">Apellidos</label>
+                <div class="col-md-4">
+                    <input id="apellidos" ng-model="user.apellidos" name="apellidos" type="text" placeholder="Snow" class="form-control input-md" required>
 
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="register"></label>
-            <div class="col-md-8">
-                <button id="register" name="register" class="btn btn-primary" ng-click="register()">Registrar</button>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="register"></label>
+                <div class="col-md-8">
+                    <button id="register" name="register" class="btn btn-primary" type="submit">Registrar</button>
+                </div>
             </div>
-        </div>
 
-    </fieldset>
-</form>
-<!— Button (Double) —>
-<div class="form-group">
-    <label class="col-md-4 control-label" for="register"></label>
-    <div class="col-md-8">
-        <a ng-href="#/" >Ya tienes una cuenta? Logueate!</a>
+        </fieldset>
+    </form>
+    <!— Button (Double) —>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="register"></label>
+        <div class="col-md-8">
+            <a ng-href="#/" >Ya tienes una cuenta? Logueate!</a>
+        </div>
     </div>
 </div>

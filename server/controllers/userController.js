@@ -37,7 +37,8 @@ module.exports = {
 
     //TODO: hay que genrar el pass automaticamente, no se coge del form
     register: function (req, res, next) {
-        var pass = passwoid(8);
+        //var pass = passwoid(8);
+        var pass = "1234";
         var _user = {
             "email": req.body.email, "password": crypto.createHash('sha1').update(pass).digest('base64'),
             "nombre": req.body.nombre, "apellidos": req.body.apellidos
@@ -49,7 +50,7 @@ module.exports = {
                 user.add(_user, function (err) {
                     _user.password = pass;
                     if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
-                    else return res.status(200).send({error: 0, user: _user,token: service.createToken(data)});
+                    else return res.status(200).send({error: 0, user: _user});
                 });
             }
         });
