@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<form class="form-horizontal">
+    <fieldset>
 
-</body>
-</html>
+        <!— Form Name —>
+        <legend>Form Name</legend>
+
+        <!— Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">Email</label>
+            <div class="col-md-4">
+                <input id="email" name="email" type="text" placeholder="email@example.com" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!— Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="nombre">Name</label>
+            <div class="col-md-4">
+                <input id="nombre" name="nombre" type="text" placeholder="John" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!— Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="apellidos">Surname</label>
+            <div class="col-md-4">
+                <input id="apellidos" name="apellidos" type="text" placeholder="Snow" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!— Button (Double) —>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="register"></label>
+            <div class="col-md-8">
+                <button id="register" name="register" class="btn btn-success">Register</button>
+                <button id="login" name="login" class="btn btn-info">Login</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
