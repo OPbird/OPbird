@@ -34,12 +34,12 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li ng-show="notLogged"><a href="#">Page 1</a></li>
-                <li ng-show="notLogged"><a href="#">Page 2</a></li>
+                <li ng-show="notLogged()"><a href="#">Page 1</a></li>
+                <li ng-show="notLogged()"><a href="#">Page 2</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li ng-hide="#/register"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li ng-hide="notLogged()"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
+                <li ng-hide="notLogged()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
             </ul>
         </div>
     </div>
