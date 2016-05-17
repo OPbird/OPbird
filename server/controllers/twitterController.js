@@ -5,19 +5,19 @@
  *
  * @type {exports|module.exports}
  */
-var crypto = require('crypto');
-    //User = require('../model/users.js');
-var oauth = require('oauth');
+var crypto = require('crypto'),
+    oauth = require('oauth'),
+    twitter = require('../config/twitterConnection');
 
 var OAuth = require('oauth').OAuth
     , oauth = new OAuth(
-    "https://api.twitter.com/oauth/request_token",
-    "https://api.twitter.com/oauth/access_token",
-    "pYGaMnp0f5HroAUdxNyZhhZLT",
-    "LSjwvq2AJnec2OKLylIM0v5VS4ql4B4yDONnz3K0Er0VETqrax",
-    "1.0",
-    "http://localhost:8080/auth/twitter/callback",
-    "HMAC-SHA1"
+    twitter.uri_request_token,
+    twitter.uri_access_token,
+    twitter.consumer_key,
+    twitter.consumer_secret_key,
+    twitter.oauth_v,
+    twitter.uri_callback,
+    twitter.signature
 );
 module.exports = {
    getOauth: function(req, res){
@@ -47,13 +47,11 @@ module.exports = {
                 req.session.access_token = oauth_access_token;
                 req.session.access_token_secret = oauth_access_token_secret;
                 console.log(results, req.session.oauth);
-                res.send("Authentication Successful");
-                oauth.get( 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+                oauth.get( twitter.acciones.user_timeline
                     , oauth_access_token
                     , oauth_access_token_secret
                     , function (e, data, result){
-                       if (e) console.error(e);
-                       console.log(JSON.parse(data));
+                       res.status(200).send(data);
                     });
                 // res.redirect('/'); // You might actually want to redirect!
              }
