@@ -1,8 +1,8 @@
 angular.module("FinalApp")
-    .controller('mainCtlr', function($scope, $http, $location){
-        /*if (SessionService.isSession()) {
+    .controller('mainCtlr', function($scope, $http, $location, TokenService){
+        if (TokenService.isSession()) {
             $location.path("/dashboard");
-        }*/
+        }
         console.log("aaa");
         $scope.usuario = {};
         $scope.login = {};

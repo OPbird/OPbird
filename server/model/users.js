@@ -25,4 +25,21 @@ module.exports = {
             callback(err);
         });
     },
+    getHashtag: function(_email, callback) {
+        getUser(_email, function(err, user) {
+            callback(err, user.hashtags);
+        })
+    },
+    addHashtag: function(_email, hashtag, callback) {
+        getUser(_email, function(err, user) {
+            user.update({hashtags: hashtag}, function (err, hashtags) {
+                callback(err, hashtags);
+            })
+        })
+    },
+    removeHashtag: function(_email, hashtag, callback) {
+        getUser(_email, function(err, user) {
+            // espera tú que me no sé cómo
+        })
+    }
 }
