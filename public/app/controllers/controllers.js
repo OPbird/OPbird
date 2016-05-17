@@ -8,7 +8,4 @@ angular.module("FinalApp")
         $scope.login = {};
         $scope.dentro = false;
         $scope.error = {};
-
-
-
     })

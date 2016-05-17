@@ -59,5 +59,32 @@ module.exports = {
              }
           }
       );
-   }
+   },
+    addAccount:function(req,res,next){
+
+    },
+    getAccount:function(req,res,next){
+
+    },
+    getAccounts:function(req,res,next){
+
+    },
+    removeAccount:function(req,res,next){
+
+    },
+    tweet:function(req,res,next){
+
+    },
+    getHashtag:function(req,res,next){
+
+    },
+    addHashtag:function(req,res,next){
+
+    },
+    removeHashtag:function(req,res,next){
+
+    },
+    getPopularTweets:function(req,res,next){
+
+    },
 }

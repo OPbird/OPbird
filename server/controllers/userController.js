@@ -7,6 +7,7 @@
  */
 
 var crypto      = require('crypto');
+var passwoid    = require('passwoid');
 var service     = require('./service');
 var user        = require('../model/users');
 
@@ -20,8 +21,7 @@ module.exports = {
                 if (_user.b_borrado) return res.status(400).send({error: 2, mensaje: "Cuenta Borrada"});
                 else {
                     if (_user.password == pass) return res.status(200).send({
-                        error: 0,
-                        token: service.createToken(data)
+                        error: 0,token: service.createToken(data)
                     });
                     else {
                         _user.stats.ultimo_acceso = Date.now();
@@ -37,8 +37,9 @@ module.exports = {
 
     //TODO: hay que genrar el pass automaticamente, no se coge del form
     register: function (req, res, next) {
+        var pass = passwoid(8);
         var _user = {
-            "email": req.body.email, "password": crypto.createHash('sha1').update(req.body.password).digest('base64'),
+            "email": req.body.email, "password": crypto.createHash('sha1').update(pass).digest('base64'),
             "nombre": req.body.nombre, "apellidos": req.body.apellidos
         };
         user.getUser(_user.email, function (err, data) {
@@ -46,8 +47,9 @@ module.exports = {
             if (data != null) return res.status(400).send({error: 1, mensaje: "Usuario ya existente"});
             else {
                 user.add(_user, function (err) {
+                    _user.password = pass;
                     if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
-                    else return res.status(200).send({error: 0, token: service.createToken(data)});
+                    else return res.status(200).send({error: 0, user: _user,token: service.createToken(data)});
                 });
             }
         });

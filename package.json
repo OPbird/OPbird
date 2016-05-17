@@ -20,6 +20,7 @@
     "mongoose": "latest",
     "oauth": "latest",
     "passport": "latest",
+    "passwoid": "^4.0.3",
     "request": "latest",
     "supertest": "latest"
   },
