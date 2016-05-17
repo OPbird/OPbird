@@ -44,28 +44,28 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /** Users **/
 app.post("/api/login", usersController.login);
 app.post("/api/register", usersController.register);
-app.get("/api/user",usersController.getUsers);
-app.get("/api/user/:id",usersController.getUser);
-app.put("/api/user/:id",usersController.updateUser);
-app.delete("/api/user/:id",usersController.deleteUser);
+app.get("/api/user",middleware.ensureAuthenticated,usersController.getUsers);
+app.get("/api/user/:id",middleware.ensureAuthenticated,usersController.getUser);
+app.put("/api/user/:id",middleware.ensureAuthenticated,usersController.updateUser);
+app.delete("/api/user/:id",middleware.ensureAuthenticated,usersController.deleteUser);
 
 /** Twitter **/
-app.get("/api/twitterAccount/:user", twitterController.getAccounts);//get lista de cuentas
-app.post("/api/twitterAccount",twitterController.addAccount);//anadir cuenta (/:user? o en el body)
-app.delete("/api/twitterAccount",twitterController.removeAccount);//eliminar cuenta
-app.get("/api/twitterAccount/:user/:twitter", twitterController.getAccount);//devolver cosas de una cuenta
+app.get("/api/twitterAccount/:user",middleware.ensureAuthenticated, twitterController.getAccounts);//get lista de cuentas
+app.post("/api/twitterAccount",middleware.ensureAuthenticated, twitterController.addAccount);//anadir cuenta (/:user? o en el body)
+app.delete("/api/twitterAccount",middleware.ensureAuthenticated, twitterController.removeAccount);//eliminar cuenta
+app.get("/api/twitterAccount/:user/:twitter",middleware.ensureAuthenticated, twitterController.getAccount);//devolver cosas de una cuenta
 //publica tweet, no se si usar el mismo para los programados tambien
-app.post("/api/twitterAccount/tweet", twitterController.tweet);
+app.post("/api/twitterAccount/tweet",middleware.ensureAuthenticated, twitterController.tweet);
 
-app.get("/api/hashtag/:user",twitterController.getHashtag);
-app.post("/api/hashtag/",twitterController.addHashtag);
-app.delete("/api/hashtag/",twitterController.removeHashtag);
+app.get("/api/hashtag/:user",middleware.ensureAuthenticated, twitterController.getHashtag);
+app.post("/api/hashtag/",middleware.ensureAuthenticated, twitterController.addHashtag);
+app.delete("/api/hashtag/",middleware.ensureAuthenticated, twitterController.removeHashtag);
 
 app.get("/api/twitterAccount/popularity/:user/:twitter", twitterController.getPopularTweets);//RT y FAVs
 
 //Para que es esto?
-app.get("/auth/twitter", twitterController.getOauth);
-app.get("/auth/twitter/callback", twitterController.callbackOauth);
+app.get("/auth/twitter",middleware.ensureAuthenticated, twitterController.getOauth);
+app.get("/auth/twitter/callback",middleware.ensureAuthenticated, twitterController.callbackOauth);
 
 /** Stats **/
 app.get("/api/stats/:user");

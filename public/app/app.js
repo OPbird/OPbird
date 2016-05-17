@@ -3,7 +3,7 @@ angular.module("FinalApp",["ngRoute"])
         console.log("op");
         $routeProvider
             .when("/", {
-                controller: "MainController",
+                controller: "mainController",
                 templateUrl: "views/home.html"
             })
     })
