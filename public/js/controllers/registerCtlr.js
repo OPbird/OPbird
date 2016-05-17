@@ -1,5 +1,5 @@
 angular.module("FinalApp")
-    .controller('registerController', function($scope, $http, $location){
+    .controller('registerCtlr', function($scope, $http, $location){
         $scope.user = {};
         $scope.registrar = true;
         $scope.error = {};

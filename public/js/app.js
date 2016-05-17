@@ -2,20 +2,24 @@ angular.module("FinalApp",["ngRoute"])
     .config(function($routeProvider) {
         $routeProvider
             .when("/", {
-                controller: "mainController",
+                controller: "mainCtlr",
                 templateUrl: "views/home.html"
             })
             .when("/home", {
-                controller: "mainController",
+                controller: "mainCtlr",
                 templateUrl: "views/home.html"
             })
             .when("/login",{
-                controller: "loginController",
+                controller: "loginCtlr",
                 templateUrl: "views/login.html"
             })
             .when("/register", {
-                controller: "registerController",
+                controller: "registerCtlr",
                 templateUrl: "views/register.html"
+            })
+            .when("/dashboard",{
+                controller: "dashboardCtlr",
+                templateUrl: "views/dashboard"
             })
             .otherwise({redirectTo: "/"});
 

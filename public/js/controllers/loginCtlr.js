@@ -1,5 +1,5 @@
 angular.module("FinalApp")
-    .controller('loginController', function($scope, $http, $location){
+    .controller('loginCtlr', function($scope, $http, $location){
 
         $scope.login = {};
         $scope.error = {};
