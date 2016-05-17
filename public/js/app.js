@@ -18,8 +18,8 @@ angular.module("FinalApp",["ngRoute", "LocalStorageModule"])
                 templateUrl: "views/register.html"
             })
             .when("/dashboard",{
-                controller: "mainCtlr",
-                templateUrl: "views/home.html"
+                controller: "dashboardCtlr",
+                templateUrl: "views/dashboard.html"
             })
             .otherwise({redirectTo: "/"});
 
