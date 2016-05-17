@@ -3,7 +3,7 @@ angular.module("FinalApp")
         if (TokenService.isSession()) {
             $location.path("/dashboard");
         }
-        console.log("aaa");
+
         $scope.usuario = {};
         $scope.login = {};
         $scope.dentro = false;

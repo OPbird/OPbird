@@ -1,5 +1,8 @@
-angular.module("FinalApp",["ngRoute", "LocalStorageModule"])
-    .config(function($routeProvider) {
+angular.module("FinalApp",[ "ngRoute", "LocalStorageModule"])
+    .config(function($routeProvider, $httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
         $routeProvider
             .when("/", {
                 controller: "mainCtlr",
@@ -18,7 +21,7 @@ angular.module("FinalApp",["ngRoute", "LocalStorageModule"])
                 templateUrl: "views/register.html"
             })
             .when("/dashboard",{
-                controller: "mainCtlr",
+                controller: "dashboardCtlr",
                 templateUrl: "views/dashboard.html"
             })
             .otherwise({redirectTo: "/"});

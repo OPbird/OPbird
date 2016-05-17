@@ -20,7 +20,7 @@ angular.module("FinalApp")
                     })
                     .success(function (data) {
                         TokenService.registrar(data);
-                        console.log("Login ok");
+                        $location.path('/dashboard');
                     })
                     .error(function (data) {
                         $scope.error.login = true;
@@ -28,4 +28,3 @@ angular.module("FinalApp")
                     });
             }
         })
-    
