@@ -1,4 +1,4 @@
-angular.module("FinalApp")
+    angular.module("FinalApp")
     .controller('mainController', function($scope, $http, $location){
         /*if (SessionService.isSession()) {
             $location.path("/dashboard");
