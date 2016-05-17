@@ -14,6 +14,7 @@
     <!-- JS -->
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/angular-route/angular-route.min.js"></script>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
 
     <!-- ANGULAR CUSTOM -->
     <script src="app/app.js"></script>
@@ -28,15 +29,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/home"><img class="img-responsive" alt="OPbird" src="images/logo.png"></a>
+            <a class="navbar-brand" href="#/home">OPbird</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
+                <li ng-show="notLogged"><a href="#">Page 1</a></li>
+                <li ng-show="notLogged"><a href="#">Page 2</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li ng-hide="#/register"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
@@ -44,9 +45,6 @@
 </nav>
 
 <div class="container-fluid">
-
-<h1>OPbird</h1>
-
 
     <!-- ANGULAR DYNAMIC CONTENT -->
     <div ng-view></div>
