@@ -57,7 +57,7 @@ app.get("/api/twitterAccount/:user/:twitter",middleware.ensureAuthenticated, twi
 //publica tweet, no se si usar el mismo para los programados tambien
 app.post("/api/twitterAccount/tweet",middleware.ensureAuthenticated, twitterController.tweet);
 
-app.get("/api/hashtag/:user",middleware.ensureAuthenticated, twitterController.getHashtag);
+app.get("/api/hashtag/:id",middleware.ensureAuthenticated, twitterController.getHashtag);
 app.post("/api/hashtag/",middleware.ensureAuthenticated, twitterController.addHashtag);
 app.delete("/api/hashtag/",middleware.ensureAuthenticated, twitterController.removeHashtag);
 

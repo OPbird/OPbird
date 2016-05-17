@@ -8,6 +8,7 @@
 var crypto = require('crypto'),
     oauth = require('oauth'),
     twitter = require('../config/twitterConnection');
+    user = require('../model/users');
 
 var OAuth = require('oauth').OAuth,
     oauth = new OAuth(
@@ -64,7 +65,7 @@ module.exports = {
 
     },
     getAccount:function(req,res,next){
-
+        
     },
     getAccounts:function(req,res,next){
 
@@ -76,13 +77,23 @@ module.exports = {
 
     },
     getHashtag:function(req,res,next){
-
+        user.getHashtag(req.body.email, function (err, hashtag) {
+            if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
+            // llamada api
+            res.status(200).send({error: 0, hashtag: hashtag});
+        });
     },
     addHashtag:function(req,res,next){
-
+        user.addHashtag(req.body.email, req.body.hashtag, function (err, hashtag) {
+            if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
+            res.status(200).send({error: 0, hashtag: hashtag});
+        })
     },
     removeHashtag:function(req,res,next){
-
+        user.removeHashtag(req.body.email, req.body.hashtag, function (err, hashtags) {
+            if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
+            res.status(200).send({error: 0, hashtag: hashtag});
+        })
     },
     getPopularTweets:function(req,res,next){
 

@@ -34,7 +34,7 @@ var userSchema = new Schema({
                     fecha: {type: Date},
                     text:{type:String}
                 }
-            ],
+            ]
         }
     ],
     hashtags: [String]
