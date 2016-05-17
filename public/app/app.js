@@ -1,9 +1,12 @@
 angular.module("FinalApp",["ngRoute"])
     .config(function($routeProvider) {
-        console.log("op");
         $routeProvider
             .when("/", {
-                controller: "mainController",
-                templateUrl: "views/home.html"
+                controller: "loginController",
+                templateUrl: "views/login.html"
+            })
+            .when("/register", {
+                controller: "registerController",
+                templateUrl: "views/register.html"
             })
     })

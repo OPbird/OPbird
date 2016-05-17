@@ -8,4 +8,9 @@ angular.module("FinalApp")
         $scope.login = {};
         $scope.dentro = false;
         $scope.error = {};
+        
+        $scope.go = function ( path ) {
+            $location.path( path );
+        };
+
     })

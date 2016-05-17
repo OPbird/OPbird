@@ -2,13 +2,13 @@
     <fieldset>
 
         <!— Form Name —>
-        <legend>Form Name</legend>
+        <legend>Register</legend>
 
         <!— Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="email">Email</label>
             <div class="col-md-4">
-                <input id="email" name="email" type="text" placeholder="email@example.com" class="form-control input-md" required="">
+                <input id="email" ng-model="user.email" name="email" type="text" placeholder="email@example.com" class="form-control input-md" required>
 
             </div>
         </div>
@@ -17,7 +17,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="nombre">Name</label>
             <div class="col-md-4">
-                <input id="nombre" name="nombre" type="text" placeholder="John" class="form-control input-md" required="">
+                <input id="nombre" ng-model="user.nombre" name="nombre" type="text" placeholder="John" class="form-control input-md" required>
 
             </div>
         </div>
@@ -26,19 +26,19 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="apellidos">Surname</label>
             <div class="col-md-4">
-                <input id="apellidos" name="apellidos" type="text" placeholder="Snow" class="form-control input-md" required="">
+                <input id="apellidos" ng-model="user.apellidos" name="apellidos" type="text" placeholder="Snow" class="form-control input-md" required>
 
             </div>
         </div>
 
-        <!— Button (Double) —>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="register"></label>
-            <div class="col-md-8">
-                <button id="register" name="register" class="btn btn-success">Register</button>
-                <button id="login" name="login" class="btn btn-info">Login</button>
-            </div>
-        </div>
 
     </fieldset>
 </form>
+<!— Button (Double) —>
+<div class="form-group">
+    <label class="col-md-4 control-label" for="register"></label>
+    <div class="col-md-8">
+        <button id="register" name="register" class="btn btn-success" ng-click="register()">Register</button>
+        <button id="login" name="login" class="btn btn-info" ng-click="go('/')">Login</button>
+    </div>
+</div>

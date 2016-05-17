@@ -9,16 +9,18 @@ var crypto = require('crypto'),
     oauth = require('oauth'),
     twitter = require('../config/twitterConnection');
 
-var OAuth = require('oauth').OAuth
-    , oauth = new OAuth(
-    twitter.uri_request_token,
-    twitter.uri_access_token,
-    twitter.consumer_key,
-    twitter.consumer_secret_key,
-    twitter.oauth_v,
-    twitter.uri_callback,
-    twitter.signature
-);
+var OAuth = require('oauth').OAuth,
+    oauth = new OAuth(
+        twitter.uri_request_token,
+        twitter.uri_access_token,
+        twitter.consumer_key,
+        twitter.consumer_secret_key,
+        twitter.oauth_v,
+        twitter.uri_callback,
+        twitter.signature
+    );
+
+
 module.exports = {
    getOauth: function(req, res){
       oauth.getOAuthRequestToken(function (error, oauth_token, oauth_token_secret, results) {

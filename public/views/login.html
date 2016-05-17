@@ -1,13 +1,13 @@
 <form class="form-horizontal">
     <fieldset>
         <!— Form Name —>
-        <legend>Form Name</legend>
+        <legend>Login</legend>
 
         <!— Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="email">Email</label>
             <div class="col-md-4">
-                <input id="email" name="email" type="text" placeholder="email@example.com" class="form-control input-md" required="">
+                <input id="email" name="email" type="text" placeholder="email@example.com" class="form-control input-md" required>
 
             </div>
         </div>
@@ -16,19 +16,17 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="password">Password</label>
             <div class="col-md-4">
-                <input id="password" name="password" type="password" placeholder="**********" class="form-control input-md" required="">
+                <input id="password" name="password" type="password" placeholder="**********" class="form-control input-md" required>
 
             </div>
         </div>
-
-        <!— Button (Double) —>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="login"></label>
-            <div class="col-md-8">
-                <button id="login" name="login" class="btn btn-success">Login</button>
-                <button id="register" name="register" class="btn btn-info">Register</button>
-            </div>
-        </div>
-
     </fieldset>
 </form>
+<!— Button (Double) —>
+<div class="form-group">
+    <label class="col-md-4 control-label" for="login"></label>
+    <div class="col-md-8">
+        <button id="login" name="login" class="btn btn-success">Login</button>
+        <button id="register" name="register" class="btn btn-info" ng-click="go('/register')">Register</button>
+    </div>
+</div>
