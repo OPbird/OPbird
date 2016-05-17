@@ -1,10 +1,13 @@
-<div ng-show="registrar">
+<div ng-show="registrar" class="row">
     <form class="form-horizontal" ng-submit="register()">
         <fieldset>
 
             <!— Form Name —>
             <legend>Registrar</legend>
 
+            <div class="form-group">
+                <div class="alert alert-danger col-md-4 col-md-offset-4" ng-show="error.registrar" role="alert">El usuario introducido ya existe.</div>
+            </div>
             <!— Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="email">Email</label>
@@ -45,6 +48,25 @@
         <label class="col-md-4 control-label" for="register"></label>
         <div class="col-md-8">
             <a ng-href="#/login" >Ya tienes una cuenta? Logueate!</a>
+        </div>
+    </div>
+</div>
+<div class="row" ng-show="!registrar">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">Dato de Login</div>
+            <div class="panel-body">
+                <p>
+                    El registro se ha completado correctamente, estos son los datos para proceder al login en la aplicación.
+                    Por favor para logearte en la aplciación pinche <a ng-href="#/login">aquí</a>
+                </p>
+                <dl class="dl-horizontal">
+                    <dt>Email</dt>
+                    <dd>{{datosConexion.email}}</dd>
+                    <dt>Contraseña</dt>
+                    <dd>{{datosConexion.password}}</dd>
+                </dl>
+            </div>
         </div>
     </div>
 </div>
