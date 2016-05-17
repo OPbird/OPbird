@@ -21,7 +21,6 @@ var OAuth = require('oauth').OAuth
 );
 module.exports = {
    getOauth: function(req, res){
-
       oauth.getOAuthRequestToken(function (error, oauth_token, oauth_token_secret, results) {
          if (error) {
             console.log(error);
@@ -37,7 +36,6 @@ module.exports = {
 
    },
    callbackOauth:function(req, res, next) {
-      console.log("aaa");
       oauth.getOAuthAccessToken(req.session.oauthRequestToken, req.session.oauthRequestTokenSecret, req.query.oauth_verifier,
           function(error, oauth_access_token, oauth_access_token_secret, results) {
              if (error) {
@@ -50,6 +48,13 @@ module.exports = {
                 req.session.access_token_secret = oauth_access_token_secret;
                 console.log(results, req.session.oauth);
                 res.send("Authentication Successful");
+                oauth.get( 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+                    , oauth_access_token
+                    , oauth_access_token_secret
+                    , function (e, data, result){
+                       if (e) console.error(e);
+                       console.log(JSON.parse(data));
+                    });
                 // res.redirect('/'); // You might actually want to redirect!
              }
           }

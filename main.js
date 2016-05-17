@@ -50,7 +50,7 @@ app.put("/api/user/:id",usersController.updateUser);
 app.delete("/api/user/:id",usersController.deleteUser);
 
 /** Twitter **/
-app.get("/api/twitterAccount/:user", twitterController.getAccounts);//get lista de cuentas
+/*app.get("/api/twitterAccount/:user", twitterController.getAccounts);//get lista de cuentas
 app.post("/api/twitterAccount",twitterController.addAcount);//anadir cuenta (/:user? o en el body)
 app.delete("/api/twitterAccount",twitterController.removeAccount);//eliminar cuenta
 app.get("/api/twitterAccount/:user/:twitter", twitterController.getAccount);//devolver cosas de una cuenta
@@ -62,7 +62,7 @@ app.post("/api/hashtag/",twitterController.addHashtag);
 app.delete("/api/hashtag/",twitterController.removeHashtag);
 
 app.get("/api/twitterAccount/popularity/:user/:twitter", twitter.Controller.getPopularTweets);//RT y FAVs
-
+*/
 //Para que es esto?
 app.get("/auth/twitter", twitterController.getOauth);
 app.get("/auth/twitter/callback", twitterController.callbackOauth);
