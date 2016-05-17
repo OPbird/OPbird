@@ -1,5 +1,8 @@
 angular.module("FinalApp")
-    .controller('registerCtlr', function($scope, $http, $location){
+    .controller('registerCtlr', function($scope, $http, $location, TokenService){
+        if (TokenService.isSession()) {
+            $location.path("/dashboard");
+        }
         $scope.user = {};
         $scope.registrar = true;
         $scope.error = {};
