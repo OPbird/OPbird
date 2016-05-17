@@ -10,7 +10,7 @@ angular.module("FinalApp",["ngRoute"])
                 templateUrl: "views/home.html"
             })
             .when("/login",{
-                controller: "loginContrfoller",
+                controller: "loginController",
                 templateUrl: "views/login.html"
             })
             .when("/register", {
