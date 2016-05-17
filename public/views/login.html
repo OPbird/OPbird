@@ -2,7 +2,9 @@
     <fieldset>
         <!— Form Name —>
         <legend>Login</legend>
-
+        <div class="form-group">
+            <div class="alert alert-danger col-md-4 col-md-offset-4" ng-show="error.login" role="alert">El usuario y la contraseña no coinciden.</div>
+        </div>
         <!— Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="email">Email</label>
