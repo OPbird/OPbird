@@ -42,6 +42,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ng-hide="notLogged()"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
                 <li ng-hide="notLogged()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
+                <li ng-show="notLogged()"><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a></li>
+
             </ul>
         </div>
     </div>
