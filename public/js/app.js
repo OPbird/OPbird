@@ -19,7 +19,7 @@ angular.module("FinalApp",["ngRoute", "LocalStorageModule"])
             })
             .when("/dashboard",{
                 controller: "mainCtlr",
-                templateUrl: "views/home.html"
+                templateUrl: "views/dashboard.html"
             })
             .otherwise({redirectTo: "/"});
 
