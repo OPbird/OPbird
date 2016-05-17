@@ -35,9 +35,9 @@ var userSchema = new Schema({
                     text:{type:String}
                 }
             ],
-            hashtags: [String]
         }
-    ]
+    ],
+    hashtags: [String]
 });
 
 // Export the User model

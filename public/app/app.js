@@ -11,11 +11,12 @@ angular.module("FinalApp",["ngRoute"])
             })
             .when("/login",{
                 controller: "loginContrfoller",
-                templateUrl: "view/login.html"
+                templateUrl: "views/login.html"
             })
             .when("/register", {
                 controller: "registerController",
                 templateUrl: "views/register.html"
             })
+            .otherwise({redirectTo: "/"});
 
     })

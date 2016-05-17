@@ -20,6 +20,7 @@ module.exports = {
     removeUser: function(_email, callback){
         getUser(_email,function(err,user){
             user.b_borrado = true;
+            user.stats.baja = Date.now();
             add(user);
             callback(err);
         });
