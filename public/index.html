@@ -16,6 +16,9 @@
     <script src="libs/angular-route/angular-route.min.js"></script>
     <script src="libs/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
     <!-- ANGULAR CUSTOM -->
     <script src="js/app.js"></script>
     <script src="js/controllers/loginCtlr.js"></script>
@@ -37,8 +40,15 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li ng-show="notLogged()"><a href="#">Page 1</a></li>
-                <li ng-show="notLogged()"><a href="#">Page 2</a></li>
+                <li ng-show="notLogged" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Cuentas
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="c in Cuentas"><a href={{c.url}}>{{c.account}}</a></li>
+                        <li><a href="#">@AlexSolanas</a></li>
+                    </ul>
+                </li>
+                <li ng-show="notLogged()"><a href="#/hashtags">Hashtags</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-hide="notLogged()"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
