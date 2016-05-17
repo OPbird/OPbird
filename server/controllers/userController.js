@@ -35,6 +35,7 @@ module.exports = {
         });
     },
 
+    //TODO: hay que genrar el pass automaticamente, no se coge del form
     register: function (req, res, next) {
         var _user = {
             "email": req.body.email, "password": crypto.createHash('sha1').update(req.body.password).digest('base64'),
@@ -59,6 +60,15 @@ module.exports = {
                 data.password = null;
                 return res.status(200).send({error: 0, user: data});
             }else return res.status(400).send({error: 1, mensaje: "Usuario no existente"});
+        });
+    },
+
+    getUsers: function(req,res,next){
+        user.getUsers(function (err,data) {
+            if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
+            if (data != null){
+                return res.status(200).send({error: 0, users: data});
+            }else return res.status(400).send({error: 1, mensaje: "No Hay usuarios en la bbdd"});
         });
     },
 

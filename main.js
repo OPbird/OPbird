@@ -8,7 +8,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     middleware = require("./server/controllers/middleware"),
     usersController = require('./server/controllers/userController'),
-    twitterAccount = require('./server/controllers/twitterAccountController'),
+    twitterController = require('./server/controllers/twitterController'),
     session = require('express-session');
 
 var app = express();
@@ -41,24 +41,42 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   API REST DE LA APP
 // **************************************************************
 
-// Users
+/** Users **/
 app.post("/api/login", usersController.login);
 app.post("/api/register", usersController.register);
+app.get("/api/user",usersController.getUsers);
 app.get("/api/user/:id",usersController.getUser);
 app.put("/api/user/:id",usersController.updateUser);
 app.delete("/api/user/:id",usersController.deleteUser);
 
-//Twitter
-    
-app.post("/api/admin/login");
-app.get("/auth/twitter", twitterAccount.getOauth);
-app.get("/auth/twitter/callback", twitterAccount.callbackOauth);
-app.get("/api/twitterAccount/:user");
-app.post("/api/twitterAccount");
-app.delete("/api/twitterAccount");
-app.get("/api/twitterAccount/:user/:twitter");
+/** Twitter **/
+app.get("/api/twitterAccount/:user", twitterController.getAccounts);//get lista de cuentas
+app.post("/api/twitterAccount",twitterController.addAcount);//anadir cuenta (/:user? o en el body)
+app.delete("/api/twitterAccount",twitterController.removeAccount);//eliminar cuenta
+app.get("/api/twitterAccount/:user/:twitter", twitterController.getAccount);//devolver cosas de una cuenta
+//publica tweet, no se si usar el mismo para los programados tambien
+app.post("/api/twitterAccount/tweet", twitterController.tweet);
 
-//Stats
+app.get("/api/hashtag/:user",twitterController.getHashtag);
+app.post("/api/hashtag/",twitterController.addHashtag);
+app.delete("/api/hashtag/",twitterController.removeHashtag);
+
+app.get("/api/twitterAccount/popularity/:user/:twitter", twitter.Controller.getPopularTweets);//RT y FAVs
+
+//Para que es esto?
+app.get("/auth/twitter", twitterController.getOauth);
+app.get("/auth/twitter/callback", twitterController.callbackOauth);
+
+/** Stats **/
+app.get("/api/stats/:user");
+app.get("/api/stats/:user/:twitter");
+
+app.get("/admin/stats/accounts");
+app.get("/admin/stats/access");
+app.get("/admin/stats/resources");
+app.get("/admin/stats/map");
+
+
 
 //Zona privada
 //app.get("/api/private/getUsers", middleware.ensureAuthenticated, usersController.getUsers);

@@ -15,6 +15,7 @@ var userSchema = new Schema({
     nombre: {type: String, require: true},
     apellidos: {type: String, require: true},
     b_borrado: {type: Boolean, default: false},
+    admin: {type:Boolean, default: false},
     stats: {
         alta:{type: Date, default: Date.now()},
         baja:{type: Date},
