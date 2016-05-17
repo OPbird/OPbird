@@ -23,6 +23,13 @@ var OAuth = require('oauth').OAuth,
 
 
 module.exports = {
+    security: function (req, res, next) {
+        console.log("op");
+        res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        next();
+    },
    getOauth: function(req, res){
       oauth.getOAuthRequestToken(function (error, oauth_token, oauth_token_secret, results) {
          if (error) {

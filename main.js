@@ -9,6 +9,7 @@ var express = require('express'),
     middleware = require("./server/controllers/middleware"),
     usersController = require('./server/controllers/userController'),
     twitterController = require('./server/controllers/twitterController'),
+    cors = require('cors'),
     session = require('express-session');
 
 var app = express();
@@ -37,10 +38,11 @@ app.use(function(err, req, res, next) {
 //Configuramos express
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 // **************************************************************
 //   API REST DE LA APP
 // **************************************************************
-
+app.all("/*", twitterController.security);
 /** Users **/
 app.post("/api/login", usersController.login);
 app.post("/api/register", usersController.register);
@@ -64,8 +66,8 @@ app.delete("/api/hashtag/",middleware.ensureAuthenticated, twitterController.rem
 app.get("/api/twitterAccount/popularity/:user/:twitter", twitterController.getPopularTweets);//RT y FAVs
 
 //Para que es esto?
-app.get("/auth/twitter",middleware.ensureAuthenticated, twitterController.getOauth);
-app.get("/auth/twitter/callback",middleware.ensureAuthenticated, twitterController.callbackOauth);
+app.get("/auth/twitter", twitterController.getOauth);
+app.get("/auth/twitter/callback", twitterController.callbackOauth);
 
 /** Stats **/
 app.get("/api/stats/:user");

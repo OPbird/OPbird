@@ -4,7 +4,7 @@ var moment = require('moment');
 var config = require('../config/config');
 
 exports.ensureAuthenticated = function(req, res, next) {
-    next();
+    //  next();
     //console.log(req.headers);
     if(!req.headers.authorization) {
         return res
