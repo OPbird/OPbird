@@ -1,3 +1,6 @@
+var addr = "http://localhost:8080";
+
+
 angular.module("FinalApp")
     .controller('loginCtlr', function($scope, $http, $location, TokenService) {
 

@@ -88,10 +88,26 @@ module.exports = {
 
     },
     getAccount:function(req,res,next){
-        
+        user.getUser(req.params.user, function (err,data) {
+            if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
+            if (data != null) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].id_twitter==req.paramas.twitter){
+                        if (data != null) return res.status(200).send({error:0, cuenta: data.cuenta[i]});
+                    }
+                }
+                return res.status(400).send({error: 1, mensaje: "Cuenta de twitter no existente"});
+            }
+            else return res.status(400).send({error: 1, mensaje: "Usuario no existente"});
+
+        });
     },
     getAccounts:function(req,res,next){
-
+        user.getUser(req.params.user, function (err,data) {
+            if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
+            if (data != null) return res.status(200).send({error:0, cuentas: data.cuentas});
+            else return res.status(400).send({error: 1, mensaje: "Usuario no existente"});
+        });
     },
     removeAccount:function(req,res,next){
 

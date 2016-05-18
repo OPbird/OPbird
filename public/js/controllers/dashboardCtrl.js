@@ -1,9 +1,14 @@
+var addr = "http://localhost:8080";
+
 angular.module("FinalApp")
     .controller('dashboardCtlr', function($scope, $http, $location, TokenService){
+               
         //TokenService.cerrarSesion();
         if (!TokenService.isSession()) {
             $location.path("/home");
-        }
+        }     
+        
+        $http.get(addr+'/api/twitterAccount/:user')
         
         $scope.usuario = {};
         $scope.login = {};
