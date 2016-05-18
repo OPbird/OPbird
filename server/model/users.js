@@ -17,6 +17,11 @@ module.exports = {
             callback(err, user);
         })
     },
+    getDownsUsers: function (callback) {
+        User.find({b_borrado: true}, function (err, user) {
+            callback(err, user);
+        });
+    },
     removeUser: function(_email, callback){
         this.getUser(_email,function(err,user){
             user.b_borrado = true;

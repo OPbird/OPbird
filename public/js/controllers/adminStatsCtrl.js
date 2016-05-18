@@ -16,6 +16,4 @@ angular.module("FinalApp")
                 $scope.cuentas = response.data.cuentas;
             }
         });
-
-
     });

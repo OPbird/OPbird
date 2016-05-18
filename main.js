@@ -11,6 +11,7 @@ var express = require('express'),
     twitterController = require('./server/controllers/twitterController'),
     session = require('express-session');
     init = require('./server/utils/init');
+    stats = require('./server/controllers/stats');
 
 var app = express();
 
@@ -77,7 +78,7 @@ app.get("/api/twitter/timelines/:accessToken/:accessTokenSecret/:twitter", middl
 app.get("/api/stats/:user");
 app.get("/api/stats/:user/:twitter");
 
-app.get("/admin/stats/accounts");
+app.get("/admin/stats/accounts", stats.accountsStatistics);
 app.get("/admin/stats/access");
 app.get("/admin/stats/resources");
 app.get("/admin/stats/map");
