@@ -103,6 +103,7 @@ module.exports = {
         });
     },
     getAccounts:function(req,res,next){
+        console.log(req.params);
         user.getUser(req.params.user, function (err,data) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (data != null) return res.status(200).send({error:0, cuentas: data.cuentas});

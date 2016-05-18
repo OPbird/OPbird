@@ -47,10 +47,10 @@ app.post("/api/register", usersController.register);
 app.get("/api/user",middleware.ensureAuthenticated,usersController.getUsers);
 app.get("/api/user/:id",middleware.ensureAuthenticated,usersController.getUser);
 app.put("/api/user",middleware.ensureAuthenticated,usersController.updateUser);
-app.delete("/api/user",middleware.ensureAuthenticated,usersController.deleteUser);
+app.delete("/api/userapi",middleware.ensureAuthenticated,usersController.deleteUser);
 
 /** Twitter **/
-app.get("/api/twitterAccount/:user",middleware.ensureAuthenticated, twitterController.getAccounts);//get lista de cuentas
+app.get("/api/twitterAccount/:user", twitterController.getAccounts);//get lista de cuentas
 app.post("/api/twitterAccount",middleware.ensureAuthenticated, twitterController.addAccount);//anadir cuenta (/:user? o en el body)
 app.delete("/api/twitterAccount",middleware.ensureAuthenticated, twitterController.removeAccount);//eliminar cuenta
 app.get("/api/twitterAccount/:user/:twitter",middleware.ensureAuthenticated, twitterController.getAccount);//devolver cosas de una cuenta

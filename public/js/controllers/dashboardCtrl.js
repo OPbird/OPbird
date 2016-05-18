@@ -6,16 +6,28 @@ angular.module("FinalApp")
         //TokenService.cerrarSesion();
         if (!TokenService.isSession()) {
             $location.path("/home");
-        }     
-        
-        $http.get(addr+'/api/twitterAccount/:user')
-        
+        }        
+
         $scope.usuario = {};
         $scope.login = {};
         $scope.dentro = false;
         $scope.error = {};
+        $scope.cuentas={};
+        
         var datos = TokenService.getSession();
         $scope.user = datos.user;
+
+        $http({
+            url: addr + '/api/twitterAccount/',
+            method: "GET",
+            params: {user : datos.user}
+        }).then(function (response) {
+            if (response.error > 0) {
+            } else {
+                $scope.cuentas = response.cuentas
+            }
+        });
+
         $scope.go = function ( path ) {
             $location.path( path );
         };
