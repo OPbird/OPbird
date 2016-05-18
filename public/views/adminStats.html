@@ -3,30 +3,4 @@
         <h1>Altas y bajas</h1>
         <canvas id="upsDowns"></canvas>
     </div>
-    <script>
-        var config = {
-            type: 'pie',
-            data: {
-                datasets: [{
-                    data: [
-                        28, // datos que hay que sustituir
-                        25
-                    ],
-                    backgroundColor: [
-                        "#69f0ae",
-                        "#ff5252"
-                    ]
-                }],
-                labels: [
-                    "Altas",
-                    "Bajas"
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        };
-        var ctx = document.getElementById("upsDowns").getContext("2d");
-        new Chart(ctx, config);
-    </script>
 </div>

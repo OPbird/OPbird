@@ -10,5 +10,8 @@ module.exports = {
                 res.status(200).send({error:0, ups: ups, downs: user.length});
             });
         })
+    },
+    lastAccessStatistics: function (req, res) {
+        
     }
 };
