@@ -4,7 +4,7 @@ angular.module("FinalApp")
         if (!TokenService.isSession()) {
             $location.path("/home");
         }
-        console.log("aaa");
+        
         $scope.usuario = {};
         $scope.login = {};
         $scope.dentro = false;

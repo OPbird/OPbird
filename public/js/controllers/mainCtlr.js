@@ -21,4 +21,9 @@ angular.module("FinalApp")
             }
         }
 
+        $scope.cerrarSesion = function () {
+            TokenService.cerrarSesion();
+            $location.path("/");
+        }
+
     })
