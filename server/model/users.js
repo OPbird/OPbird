@@ -21,8 +21,20 @@ module.exports = {
         this.getUser(_email,function(err,user){
             user.b_borrado = true;
             user.stats.baja = Date.now();
-            add(user);
-            callback(err);
+            this.add(user, function (err) {
+                callback(err);
+            });
+        });
+    },
+    removeAdmin: function (callback) {
+        this.getUser("admin", function (err, user) {
+            if (user) {
+                user.remove(function (err) {
+                    callback(err);
+                });
+            } else {
+                callback(err);
+            }
         });
     },
     addAccount: function(_email,_account,callback){

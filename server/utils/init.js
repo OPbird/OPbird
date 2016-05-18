@@ -3,20 +3,18 @@ var crypto = require('crypto');
 
 module.exports = {
     createAdminIfNotExists: function() {
+        var email = "admin";
         var pass = "admin";
         var _user = {
-            "email": "admin", "password": crypto.createHash('sha1').update(pass).digest('base64')
+            "email": email, "password": crypto.createHash('sha1').update(pass).digest('base64'),
+            "admin": true
         };
-        user.add(_user, function (err) {
-            if(err) {
-                if (err.code == 11000) {
-                    console.log("Admin already in db");
-                } else {
-                    console.log("Error crating admin");
+        user.removeAdmin(function (err) {
+            user.add(_user, function (err) {
+                if (!err) {
+                    console.log("System init");
                 }
-            } else {
-                console.log("Admin created");
-            }
+            })
         })
     }
 };
