@@ -21,6 +21,10 @@ angular.module("FinalApp",[ "ngRoute", "LocalStorageModule"])
                 controller: "dashboardCtlr",
                 templateUrl: "views/dashboard.html"
             })
+            .when("/hashtags",{
+                controller: "hashtagsCtlr",
+                templateUrl: "views/hashtags.html"
+            })
             .otherwise({redirectTo: "/"});
 
     })
