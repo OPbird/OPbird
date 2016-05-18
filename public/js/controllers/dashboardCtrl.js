@@ -18,9 +18,8 @@ angular.module("FinalApp")
         $scope.user = datos.user;
 
         $http({
-            url: addr + '/api/twitterAccount/',
-            method: "GET",
-            params: {user : datos.user}
+            url: addr + '/api/twitterAccount/' + datos.user,
+            method: "GET"
         }).then(function (response) {
             if (response.error > 0) {
             } else {
