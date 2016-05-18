@@ -5,7 +5,8 @@ angular.module("FinalApp")
     .controller('loginCtlr', function($scope, $http, $location, TokenService) {
 
             if (TokenService.isSession()) {
-                $location.path("/dashboard");
+                if(TokenService.getSession().admin){$location.path("/admin");}
+                else {$location.path("/dashboard")}
             }
             $scope.login = {};
             $scope.error = {};
@@ -23,7 +24,8 @@ angular.module("FinalApp")
                     })
                     .success(function (data) {
                         TokenService.registrar(data);
-                        $location.path('/dashboard');
+                        if(TokenService.getSession().admin){$location.path("/admin");}
+                        else {$location.path("/dashboard")}
                     })
                     .error(function (data) {
                         $scope.error.login = true;

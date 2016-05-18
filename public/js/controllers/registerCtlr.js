@@ -4,7 +4,8 @@ var addr = "http://localhost:8080";
 angular.module("FinalApp")
     .controller('registerCtlr', function($scope, $http, $location, TokenService){
         if (TokenService.isSession()) {
-            $location.path("/dashboard");
+            if(TokenService.getSession().admin){$location.path("/admin");}
+            else {$location.path("/dashboard")}
         }
         $scope.user = {};
         $scope.registrar = true;
