@@ -76,7 +76,6 @@ module.exports = {
                 cuentaTwitter.access_token_secret = oauth_access_token_secret;
                 cuentaTwitter.info = "Es muy chuchu chuli";
                 
-                user.
                 console.log(cuentaTwitter);
 
                 res.redirect('/'); // You might actually want to redirect!
