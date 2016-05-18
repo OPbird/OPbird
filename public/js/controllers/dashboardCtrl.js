@@ -101,6 +101,10 @@ angular.module("FinalApp")
                 });
         }
 
+        $scope.borrarCuenta = function (data) {
+            console.log(data);
+        }
+
 
 
 

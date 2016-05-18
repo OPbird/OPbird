@@ -38,10 +38,16 @@
                         <th>
                             Información
                         </th>
+                        <th>
+                            Borrar
+                        </th>
                     </tr>
-                    <tr ng-repeat="c in cuentas" ng-click="tweets(c)" style="cursor: pointer">
-                        <td>{{c.cuenta}}</td>
-                        <td>{{c.info}}</td>
+                    <tr ng-repeat="c in cuentas">
+                        <td ng-click="tweets(c)" style="cursor: pointer">{{c.cuenta}}</td>
+                        <td ng-click="tweets(c)" style="cursor: pointer">{{c.info}}</td>
+                        <td ng-click="borrarCuenta(c)" style="cursor: help"  ng-confirm-click="Está seguro de borrar la cuenta de twitter de {{c.cuenta}}?">
+                            <span class="glyphicon glyphicon-trash text-center"   aria-hidden="true"></span>
+                        </td>
                     </tr>
                 </table>
             </div>

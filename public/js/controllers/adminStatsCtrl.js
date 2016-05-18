@@ -1,5 +1,5 @@
 angular.module("FinalApp")
-    .controller('adminCtlr', function($scope, $http, $location, TokenService) {
+    .controller('adminStatsCtlr', function($scope, $http, $location, TokenService) {
         if (!TokenService.isSession()) {
             $location.path("/home");
         }
@@ -18,4 +18,4 @@ angular.module("FinalApp")
         });
 
 
-    }
+    });
