@@ -28,7 +28,7 @@ angular.module("FinalApp")
         };
 
         $scope.isUser = function(){
-            if(TokenService.isSession() && !($scope.admin)){
+            if((TokenService.isSession() && !($scope.admin))){
                 return true;
             }else{
                 return false;
