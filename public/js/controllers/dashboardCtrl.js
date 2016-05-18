@@ -1,5 +1,5 @@
 angular.module("FinalApp")
-    .controller('dashboardCtlr', function($scope, $http, $location, TokenService){
+    .controller('dashboardCtlr', function($scope, $http, $location, TokenService, $sce){
                
         //TokenService.cerrarSesion();
         if (!TokenService.isSession()) {
@@ -105,6 +105,19 @@ angular.module("FinalApp")
             console.log(data);
         }
 
+        $scope.getText = function (text) {
+            var urlPattern = /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/gi;
+            var res = text.split(" ");
+            var texto = "";
+            for (var i = 0; i < res.length; i++) {
+                if(res[i].match(urlPattern)) {
+                    res[i] = "<a target='_blank' href='" + res[i] + "'>" + res[i] + "</a>"
+                    console.log(res[i]);
+                }
+                texto += res[i] + " ";
+            }
+            return $sce.trustAsHtml(texto);
+        }
 
 
 

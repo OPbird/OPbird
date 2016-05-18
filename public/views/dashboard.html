@@ -138,11 +138,27 @@
                                         <div class="panel panel-default arrow left">
                                             <div class="panel-body">
                                                 <header class="text-left">
-                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <strong>{{tw.user.name}}</strong> @{{tw.user.screen_name}}</div>
                                                 </header>
+                                                </br>
                                                 <div class="comment-post">
+                                                    <p ng-bind-html="tw.text | convertState"></p>
+                                                    <!--<p>-->
+                                                        <!--{{getText(tw.text)}}-->
+                                                    <!--</p>-->
                                                     <p>
-                                                        {{tw.text}}
+                                                        <!--{{tw.extended_entities.media[0].type}}-->
+                                                        <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--{{tw.extended_entities.media[0].url}}-->
+                                                        <img ng-src="{{tw.extended_entities.media[0].media_url}}" class="col-sm-10 col-md-offset-2">
+                                                        <!--<video ng-if="tw.extended_entities.media[0].type == 'video'" width="320" height="240" controls>-->
+                                                            <!--<source src="movie.mp4" type="video/mp4">-->
+                                                            <!--<source src="movie.ogg" type="video/ogg">-->
+                                                            <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--</video>-->
+                                                        <!--<iframe ng-if="tw.extended_entities.media[0].type == 'video'" width="420" height="315"-->
+                                                                <!--ng-src="/">-->
+                                                        <!--</iframe>-->
                                                     </p>
                                                 </div>
                                                 <p class="text-right">
@@ -168,19 +184,35 @@
                                 <article class="row" ng-repeat="tw in tuitasUser">
                                     <div class="col-md-3 col-sm-3 hidden-xs">
                                         <figure class="thumbnail">
-                                            <img src="{{tw.user.profile_image_url}}" class="img-responsive">
+                                            <img ng-src="{{tw.user.profile_image_url}}" class="img-responsive">
                                             <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
                                         </figure>
                                     </div>
-                                    <div class="col-md-9 col-sm-9">
+                                    <div class="col-md-9 col-sm-9d">
                                         <div class="panel panel-default arrow left">
                                             <div class="panel-body">
                                                 <header class="text-left">
-                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <strong>{{tw.user.name}}</strong> @{{tw.user.screen_name}}</div>
                                                 </header>
+                                                </br>
                                                 <div class="comment-post">
+                                                    <p ng-bind-html="tw.text | convertState"></p>
+                                                    <!--<p>-->
+                                                    <!--{{getText(tw.text)}}-->
+                                                    <!--</p>-->
                                                     <p>
-                                                        {{tw.text}}
+                                                        <!--{{tw.extended_entities.media[0].type}}-->
+                                                        <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--{{tw.extended_entities.media[0].url}}-->
+                                                        <img ng-src="{{tw.extended_entities.media[0].media_url}}" class="col-sm-10 col-md-offset-2">
+                                                        <!--<video ng-if="tw.extended_entities.media[0].type == 'video'" width="320" height="240" controls>-->
+                                                        <!--<source src="movie.mp4" type="video/mp4">-->
+                                                        <!--<source src="movie.ogg" type="video/ogg">-->
+                                                        <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--</video>-->
+                                                        <!--<iframe ng-if="tw.extended_entities.media[0].type == 'video'" width="420" height="315"-->
+                                                        <!--ng-src="/">-->
+                                                        <!--</iframe>-->
                                                     </p>
                                                 </div>
                                                 <p class="text-right">
@@ -202,19 +234,35 @@
                                 <article class="row" ng-repeat="tw in tuitasMention">
                                     <div class="col-md-3 col-sm-3 hidden-xs">
                                         <figure class="thumbnail">
-                                            <img src="{{tw.user.profile_image_url}}" class="img-responsive">
+                                            <img ng-src="{{tw.user.profile_image_url}}" class="img-responsive">
                                             <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
                                         </figure>
                                     </div>
-                                    <div class="col-md-9 col-sm-9">
+                                    <div class="col-md-9 col-sm-9d">
                                         <div class="panel panel-default arrow left">
                                             <div class="panel-body">
                                                 <header class="text-left">
-                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <strong>{{tw.user.name}}</strong> @{{tw.user.screen_name}}</div>
                                                 </header>
+                                                </br>
                                                 <div class="comment-post">
+                                                    <p ng-bind-html="tw.text | convertState"></p>
+                                                    <!--<p>-->
+                                                    <!--{{getText(tw.text)}}-->
+                                                    <!--</p>-->
                                                     <p>
-                                                        {{tw.text}}
+                                                        <!--{{tw.extended_entities.media[0].type}}-->
+                                                        <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--{{tw.extended_entities.media[0].url}}-->
+                                                        <img ng-src="{{tw.extended_entities.media[0].media_url}}" class="col-sm-10 col-md-offset-2">
+                                                        <!--<video ng-if="tw.extended_entities.media[0].type == 'video'" width="320" height="240" controls>-->
+                                                        <!--<source src="movie.mp4" type="video/mp4">-->
+                                                        <!--<source src="movie.ogg" type="video/ogg">-->
+                                                        <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--</video>-->
+                                                        <!--<iframe ng-if="tw.extended_entities.media[0].type == 'video'" width="420" height="315"-->
+                                                        <!--ng-src="/">-->
+                                                        <!--</iframe>-->
                                                     </p>
                                                 </div>
                                                 <p class="text-right">
@@ -236,19 +284,35 @@
                                 <article class="row" ng-repeat="tw in tuitasFavorites">
                                     <div class="col-md-3 col-sm-3 hidden-xs">
                                         <figure class="thumbnail">
-                                            <img src="{{tw.user.profile_image_url}}" class="img-responsive">
+                                            <img ng-src="{{tw.user.profile_image_url}}" class="img-responsive">
                                             <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
                                         </figure>
                                     </div>
-                                    <div class="col-md-9 col-sm-9">
+                                    <div class="col-md-9 col-sm-9d">
                                         <div class="panel panel-default arrow left">
                                             <div class="panel-body">
                                                 <header class="text-left">
-                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <strong>{{tw.user.name}}</strong> @{{tw.user.screen_name}}</div>
                                                 </header>
+                                                </br>
                                                 <div class="comment-post">
+                                                    <p ng-bind-html="tw.text | convertState"></p>
+                                                    <!--<p>-->
+                                                    <!--{{getText(tw.text)}}-->
+                                                    <!--</p>-->
                                                     <p>
-                                                        {{tw.text}}
+                                                        <!--{{tw.extended_entities.media[0].type}}-->
+                                                        <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--{{tw.extended_entities.media[0].url}}-->
+                                                        <img ng-src="{{tw.extended_entities.media[0].media_url}}" class="col-sm-10 col-md-offset-2">
+                                                        <!--<video ng-if="tw.extended_entities.media[0].type == 'video'" width="320" height="240" controls>-->
+                                                        <!--<source src="movie.mp4" type="video/mp4">-->
+                                                        <!--<source src="movie.ogg" type="video/ogg">-->
+                                                        <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--</video>-->
+                                                        <!--<iframe ng-if="tw.extended_entities.media[0].type == 'video'" width="420" height="315"-->
+                                                        <!--ng-src="/">-->
+                                                        <!--</iframe>-->
                                                     </p>
                                                 </div>
                                                 <p class="text-right">
@@ -270,19 +334,35 @@
                                 <article class="row" ng-repeat="tw in tuitasRetweets">
                                     <div class="col-md-3 col-sm-3 hidden-xs">
                                         <figure class="thumbnail">
-                                            <img src="{{tw.user.profile_image_url}}" class="img-responsive">
+                                            <img ng-src="{{tw.user.profile_image_url}}" class="img-responsive">
                                             <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
                                         </figure>
                                     </div>
-                                    <div class="col-md-9 col-sm-9">
+                                    <div class="col-md-9 col-sm-9d">
                                         <div class="panel panel-default arrow left">
                                             <div class="panel-body">
                                                 <header class="text-left">
-                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <strong>{{tw.user.name}}</strong> @{{tw.user.screen_name}}</div>
                                                 </header>
+                                                </br>
                                                 <div class="comment-post">
+                                                    <p ng-bind-html="tw.text | convertState"></p>
+                                                    <!--<p>-->
+                                                    <!--{{getText(tw.text)}}-->
+                                                    <!--</p>-->
                                                     <p>
-                                                        {{tw.text}}
+                                                        <!--{{tw.extended_entities.media[0].type}}-->
+                                                        <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--{{tw.extended_entities.media[0].url}}-->
+                                                        <img ng-src="{{tw.extended_entities.media[0].media_url}}" class="col-sm-10 col-md-offset-2">
+                                                        <!--<video ng-if="tw.extended_entities.media[0].type == 'video'" width="320" height="240" controls>-->
+                                                        <!--<source src="movie.mp4" type="video/mp4">-->
+                                                        <!--<source src="movie.ogg" type="video/ogg">-->
+                                                        <!--{{tw.extended_entities.media[0].video_info.variants[0].url}}-->
+                                                        <!--</video>-->
+                                                        <!--<iframe ng-if="tw.extended_entities.media[0].type == 'video'" width="420" height="315"-->
+                                                        <!--ng-src="/">-->
+                                                        <!--</iframe>-->
                                                     </p>
                                                 </div>
                                                 <p class="text-right">

@@ -15,3 +15,18 @@ angular.module("FinalApp")
             }
         };
     }])
+    .filter('convertState', function ($sce) {
+        return function (state) {
+            var urlPattern = /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/gi;
+            var res = state.split(" ");
+            var texto = "";
+            for (var i = 0; i < res.length; i++) {
+                if(res[i].match(urlPattern)) {
+                    res[i] = "<a target='_blank' href='" + res[i] + "'>" + res[i] + "</a>"
+                    console.log(res[i]);
+                }
+                texto += res[i] + " ";
+            }
+            return $sce.trustAsHtml(texto);
+        }
+    });
