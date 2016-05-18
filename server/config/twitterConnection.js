@@ -7,6 +7,7 @@ module.exports = {
     uri_callback: "http://localhost:8080/auth/twitter/callback",
     signature: "HMAC-SHA1",
     acciones: {
-        user_timeline: "https://api.twitter.com/1.1/statuses/user_timeline.json"
+        user_timeline: "https://api.twitter.com/1.1/statuses/user_timeline.json",
+        home_timeline: "https://api.twitter.com/1.1/statuses/home_timeline.json"
     }
 }

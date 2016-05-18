@@ -53,7 +53,7 @@ app.get("/api/user/:id",middleware.ensureAuthenticated,usersController.getUser);
 app.put("/api/user",middleware.ensureAuthenticated,usersController.updateUser);
 app.delete("/api/userapi",middleware.ensureAuthenticated,usersController.deleteUser);
 
-/** Twitter **/
+/** Administrar Cuenta Twitter **/
 app.get("/api/twitterAccount/:user", twitterController.getAccounts);//get lista de cuentas
 app.post("/api/twitterAccount",middleware.ensureAuthenticated, twitterController.addAccount);//anadir cuenta (/:user? o en el body)
 app.delete("/api/twitterAccount",middleware.ensureAuthenticated, twitterController.removeAccount);//eliminar cuenta
@@ -67,9 +67,11 @@ app.delete("/api/hashtag/",middleware.ensureAuthenticated, twitterController.rem
 
 app.get("/api/twitterAccount/popularity/:user/:twitter", twitterController.getPopularTweets);//RT y FAVs
 app.get("/auth/prueba", twitterController.prueba);
-//Para que es esto?
+
+/** TwitterApi **/
 app.post("/auth/twitter", twitterController.getOauth);
 app.get("/auth/twitter/callback", twitterController.callbackOauth);
+app.get("/api/twitter/timelines/:accessToken/:accessTokenSecret/:twitter", middleware.ensureAuthenticated, twitterController.getTimelines);
 
 /** Stats **/
 app.get("/api/stats/:user");

@@ -7,11 +7,12 @@ angular.module("FinalApp")
         }        
 
         $scope.usuario = {};
-        $scope.login = {};
+        $scope.mostarTimelines = false;
         $scope.dentro = false;
         $scope.error = {};
         $scope.cuentas={};
-        
+        $scope.tuitasHome = {};
+        $scope.tuitasUser = {};
         var datos = TokenService.getSession();
         $scope.user = datos.user;
 
@@ -21,30 +22,52 @@ angular.module("FinalApp")
         }).then(function (response) {
             if (response.error > 0) {
             } else {
-                console.log(response);
-                $scope.cuentas = response.cuentas
+                console.log(response.data.cuentas);
+                $scope.cuentas = response.data.cuentas;
             }
         });
 
         $scope.go = function ( path ) {
             $location.path( path );
         };
-        
-        /*$scope.signInTwitter = function () {
+
+        $scope.tweets = function (c) {
+            console.log(c);
             var datos = TokenService.getSession();
             console.log(datos);
             $http({
                 method:"get",
-                url: '/auth/prueba',
-                headers: { 'authorization': datos.token, user_id: datos.user,"Access-Control-Allow-Origin" : "*",
-                    "Access-Control-Allow-Headers": "X-Requested-With, Content-Type",
-                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'}})
+                url: '/api/twitter/timelines/' + c.access_token + '/' + c.access_token_secret + '/' + c.id_twitter,
+                headers: { 'authorization': datos.token, user_id: datos.user}})
                 .success(function (data) {
-                    console.log(data);
+                    console.log(data.tweets);
+                    $scope.tabs = [{
+                        title: 'Home Timeline',
+                        url: 'home'
+                    }, {
+                        title: 'User Timeline',
+                        url: 'user'
+                    }];
+
+                    $scope.currentTab = 'home';
+
+                    $scope.onClickTab = function (tab) {
+                        $scope.currentTab = tab.url;
+                    }
+
+                    $scope.isActiveTab = function(tabUrl) {
+                        return tabUrl == $scope.currentTab;
+                    }
+                    $scope.tuitasHome = data.home_timeline;
+                    $scope.tuitasUser = data.user_timeline
+
+                    $scope.mostarTimelines = true;
+
                 })
                 .error(function (data) {
                     console.log(data);
                 });
-        }*/
+        }
+
 
     })

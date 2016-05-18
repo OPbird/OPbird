@@ -58,17 +58,6 @@ module.exports = {
                 req.session.access_token = oauth_access_token;
                 req.session.access_token_secret = oauth_access_token_secret;
                 console.log(results, req.session.oauth);
-                /*id_twitter:{type: String},
-                cuenta:{type: String},
-                access_token:{type: String},
-                access_token_secret:{type: String},
-                info:{type: String},
-                tweetP: [ //A publicar
-                    {
-                        fecha: {type: Date},
-                        text:{type:String}
-                    }
-                ]*/
                 var cuentaTwitter = {}
                 cuentaTwitter.id_twitter = results.user_id;
                 cuentaTwitter.cuenta = results.screen_name;
@@ -83,6 +72,25 @@ module.exports = {
                 res.redirect('/'); // You might actually want to redirect!
             }
         });
+    },
+    getTimelines: function (req, res, next) {
+        console.log(req.params.access_token)
+        oauth.get( twitter.acciones.user_timeline
+            , req.params.accessToken
+            , req.params.accessTokenSecret
+            , function (e, data, result){
+                //res.status(200).json({tweets: [data]});
+                console.log(JSON.parse(data));
+                //res.status(200).json({error:0, home_timeline: JSON.parse(data)});
+                oauth.get( twitter.acciones.home_timeline
+                    , req.params.accessToken
+                    , req.params.accessTokenSecret
+                    , function (e2, data2, result2){
+                        //res.status(200).json({tweets: [data]});
+                        console.log(JSON.parse(data2));
+                        res.status(200).json({error:0, user_timeline: JSON.parse(data), home_timeline: JSON.parse(data2)});
+                    });
+            });
     },
     addAccount:function(req,res,next){
 
