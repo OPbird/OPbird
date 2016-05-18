@@ -12,6 +12,8 @@ angular.module("FinalApp")
             } else {
                 console.log("UPS: " + response.data.ups);
                 console.log("DOWNS: "  + response.data.downs);
+                $scope.ups = response.data.ups;
+                $scope.downs = response.data.downs;
             }
         })
     });
