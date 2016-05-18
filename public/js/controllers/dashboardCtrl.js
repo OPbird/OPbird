@@ -13,12 +13,18 @@ angular.module("FinalApp")
         $scope.cuentas={};
         $scope.tuitasHome = {};
         $scope.tuitasUser = {};
+        $scope.tuitasMention = {};
+        $scope.tuitasFavorites = {};
+        $scope.tuitasRetweets = {};
+        $scope.textoTweet = "";
+
         var datos = TokenService.getSession();
         $scope.user = datos.user;
 
         $http({
             url: '/api/twitterAccount/' + datos.user,
-            method: "GET"
+            method: "GET",
+            headers: {'authorization': datos.token, user_id: datos.user}
         }).then(function (response) {
             if (response.error > 0) {
             } else {
@@ -33,7 +39,6 @@ angular.module("FinalApp")
 
         $scope.tweets = function (c) {
             console.log(c);
-            var datos = TokenService.getSession();
             console.log(datos);
             $http({
                 method:"get",
@@ -47,6 +52,15 @@ angular.module("FinalApp")
                     }, {
                         title: 'User Timeline',
                         url: 'user'
+                    }, {
+                        title: 'Mentions Timeline',
+                        url: 'mentions'
+                    }, {
+                        title: 'Favorites Timeline',
+                        url: 'favorites'
+                    }, {
+                        title: 'Retweets Timeline',
+                        url: 'retweets'
                     }];
 
                     $scope.currentTab = 'home';
@@ -60,14 +74,33 @@ angular.module("FinalApp")
                     }
                     $scope.tuitasHome = data.home_timeline;
                     $scope.tuitasUser = data.user_timeline
+                    $scope.tuitasMention = data.mentions_timeline;
+                    $scope.tuitasFavorites = data.favorites_timeline;
+                    $scope.tuitasRetweets = data.retweets_timeline;
 
                     $scope.mostarTimelines = true;
-
+                    $scope.tweeetear = function (data) {
+                        if (data.length > 0) {
+                            console.log(data);
+                            $http({
+                                url: '/api/twitterAccount/tweet',
+                                method: "POST",
+                                data: {access_token: c.access_token,
+                                        access_token_secret: c.access_token_secret,
+                                        text: data},
+                                headers: {'authorization': datos.token, user_id: datos.user}
+                            }).success(function (response) {
+                               $scope.textoTweet = "";
+                            });
+                        }
+                    }
                 })
                 .error(function (data) {
                     console.log(data);
                 });
         }
+
+
 
 
     })

@@ -8,6 +8,10 @@ module.exports = {
     signature: "HMAC-SHA1",
     acciones: {
         user_timeline: "https://api.twitter.com/1.1/statuses/user_timeline.json",
-        home_timeline: "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        mentions_timeline: "https://api.twitter.com/1.1/statuses/mentions_timeline.json",
+        home_timeline: "https://api.twitter.com/1.1/statuses/home_timeline.json",
+        favorites_timeline: "https://api.twitter.com/1.1/favorites/list.json",
+        retweets_timeline: "https://api.twitter.com/1.1/statuses/retweets_of_me.json",
+        tweet: "https://api.twitter.com/1.1/statuses/update.json"
     }
 }
