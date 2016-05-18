@@ -25,6 +25,9 @@ module.exports = {
             callback(err);
         });
     },
+    addAccount: function(){
+
+    },
     getHashtag: function(_email, callback) {
         getUser(_email, function(err, user) {
             callback(err, user.hashtags);

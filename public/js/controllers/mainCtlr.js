@@ -13,4 +13,12 @@ angular.module("FinalApp")
             $location.path( path );
         };
 
+        $scope.notLogged = function(){
+            if(TokenService.isSession()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
     })
