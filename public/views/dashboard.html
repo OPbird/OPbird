@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="row">
-            <div ng-show="mostarTimelines" class="panel panel-default">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>
                         Acorta URLs
@@ -41,13 +41,13 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <textarea maxlength="140" ng-model="textoTweet" class="col-sm-10 col-md-offset-1" placeholder="Escribe aquí..."></textarea>
+                        <input type="text" maxlength="140" ng-model="url" class="col-sm-10 col-md-offset-1" placeholder="http://..."></input>
                     </div>
                     <div class="row">
                         </br>
                     </div>
                     <div class="row">
-                        <button type="button"class="btn btn-primary col-md-offset-8" ng-click="tweeetear(textoTweet);">Tweet</button>
+                        <button type="button"class="btn btn-primary col-md-offset-8" ng-click="">Tweet</button>
                     </div>
                 </div>
             </div>
