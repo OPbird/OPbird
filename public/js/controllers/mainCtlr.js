@@ -2,11 +2,6 @@ var addr = "http://localhost:8080";
 
 angular.module("FinalApp")
     .controller('mainCtlr', function($scope, $http, $location, TokenService){
-        if (TokenService.isSession()) {
-            if(TokenService.getSession().admin){$location.path("/admin");}
-            else {$location.path("/dashboard")}
-        }
-
         $scope.error = {};
 
         if (TokenService.isSession) {
@@ -15,6 +10,11 @@ angular.module("FinalApp")
             $scope.admin = datos.admin;
         }
 
+        if (TokenService.isSession()) {
+            if(TokenService.getSession().admin){$location.path("/admin");}
+            else {$location.path("/dashboard")}
+        }
+        
         $scope.go = function ( path ) {
             $location.path( path );
         };
