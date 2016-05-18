@@ -1,8 +1,9 @@
 angular.module("FinalApp")
-    .controller('tweetCtlr', function($scope, $http, $location, TokenService){
+    .controller('adminCtlr', function($scope, $http, $location, TokenService){
         if (!TokenService.isSession()) {
             $location.path("/home");
         }
+        $scope.users={};
         $http({
             url: '/api/user/',
             method: "GET"

@@ -34,7 +34,7 @@ angular.module("FinalApp",[ "ngRoute", "LocalStorageModule"])
                 templateUrl: "views/admin.html"
             })
             .when("/admin/stats",{
-                controller: "adminStats",
+                controller: "adminStatsCtlr",
                 templateUrl: "views/adminStats.html"
             })
             .otherwise({redirectTo: "/"});
