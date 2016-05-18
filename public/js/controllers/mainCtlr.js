@@ -5,8 +5,7 @@ angular.module("FinalApp")
         if (TokenService.isSession()) {
             $location.path("/dashboard");
         }
-
-
+        
         $scope.error = {};
 
         if (TokenService.isSession) {

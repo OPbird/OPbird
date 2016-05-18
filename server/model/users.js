@@ -8,7 +8,7 @@ module.exports = {
         });
     },
     getUsers: function(callback) {
-        User.find({}, function(err, user) {
+        User.find({admin: false}, function(err, user) {
             callback(err, user);
         });
     },
