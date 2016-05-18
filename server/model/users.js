@@ -29,7 +29,7 @@ module.exports = {
         var intro = false;
         this.getUser(_email,function(err,user){
             //console.log(user.cuentas[0]);
-            for (i = 0; i < user.cuentas.length; i++) {
+            for (var i = 0; i < user.cuentas.length; i++) {
                 if (user.cuentas[i].id_twitter == _account.id_twitter) {
                     intro = true;
                 }
