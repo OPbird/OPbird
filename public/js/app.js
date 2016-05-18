@@ -17,10 +17,6 @@ angular.module("FinalApp",[ "ngRoute", "LocalStorageModule"])
                 controller: "registerCtlr",
                 templateUrl: "views/register.html"
             })
-            .when("/dashboard/tweets",{
-                controller: "tweetCtlr",
-                templateUrl: "views/tweets.html"
-            })
             .when("/dashboard",{
                 controller: "dashboardCtlr",
                 templateUrl: "views/dashboard.html"
