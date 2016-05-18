@@ -13,3 +13,8 @@
 body {
     background-color: rgb(230, 237, 240);
 }
+
+.quitarPadding {
+    padding-left: 15px;
+    padding-right: 15px;
+}

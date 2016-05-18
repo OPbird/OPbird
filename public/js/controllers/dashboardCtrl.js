@@ -17,7 +17,7 @@ angular.module("FinalApp")
         $scope.tuitasFavorites = {};
         $scope.tuitasRetweets = {};
         $scope.textoTweet = "";
-
+        $scope.infoCuenta = {};
         var datos = TokenService.getSession();
         $scope.user = datos.user;
 
@@ -77,7 +77,8 @@ angular.module("FinalApp")
                     $scope.tuitasMention = data.mentions_timeline;
                     $scope.tuitasFavorites = data.favorites_timeline;
                     $scope.tuitasRetweets = data.retweets_timeline;
-
+                    $scope.infoCuenta = data.user_timeline[0].user;
+                
                     $scope.mostarTimelines = true;
                     $scope.tweeetear = function (data) {
                         if (data.length > 0) {

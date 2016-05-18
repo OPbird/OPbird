@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="col-md-4 container-fluid">
+    <div class="col-md-4 col-sm-4 container-fluid">
         <div class="row">
             <div ng-show="mostarTimelines" class="panel panel-default">
                 <div class="panel-heading">
@@ -47,192 +47,232 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8" ng-show="mostarTimelines">
-        <div class="panel with-nav-tabs panel-default">
-            <div class="panel-heading">
-                <ul class="nav nav-tabs">
-                    <li ng-repeat="tab in tabs"
-                        ng-class="{active:isActiveTab(tab.url)}"
-                        ng-click="onClickTab(tab)"><a data-toggle="tab">{{tab.title}}</a></li>
-                </ul>
-            </div>
-            <div class="panel-body">
-                <div class="tab-content">
-                    <div ng-include="currentTab"></div>
-                    <script type="text/ng-template" id="home">
-                        <section class="comment-list">
-                            <!-- First Comment -->
-                            <article class="row" ng-repeat="tw in tuitasHome">
-                                <div class="col-md-3 col-sm-3 hidden-xs">
-                                    <figure class="thumbnail">
-                                        <img ng-src="{{tw.user.profile_image_url}}" class="img-responsive">
-                                        <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
-                                    </figure>
-                                </div>
-                                <div class="col-md-9 col-sm-9d">
-                                    <div class="panel panel-default arrow left">
-                                        <div class="panel-body">
-                                            <header class="text-left">
-                                                <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
-                                            </header>
-                                            <div class="comment-post">
-                                                <p>
-                                                    {{tw.text}}
+    <div class="col-md-8 col-sm-8 container-fluid" ng-show="mostarTimelines">
+        <div class="row quitarPadding">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>
+                        Información cuenta seleccionada
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <h2>{{infoCuenta.screen_name}}</h2>
+                            <p><strong>Descripción: </strong> {{infoCuenta.description}}</p>
+                        </div><!--/col-->
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-12 text-center">
+                                    <img ng-src="{{infoCuenta.profile_image_url}}"  alt="" class="center-block img-circle img-responsive">
+                                </div><!--/col-->
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4">
+                                    <h2><strong> {{infoCuenta.followers_count}}</strong></h2>
+                                    <p><small>Followers</small></p>
+                                </div><!--/col-->
+                                <div class="col-xs-12 col-sm-4">
+                                    <h2><strong>{{infoCuenta.friends_count}}</strong></h2>
+                                    <p><small>Following</small></p>
+                                </div><!--/col-->
+                                <div class="col-xs-12 col-sm-4">
+                                    <h2><strong>{{infoCuenta.statuses_count}}</strong></h2>
+                                    <p><small>Tweets</small></p>
+                                </div><!--/col-->
+                            </div>
+                        </div>
+                    </div><!--/row-->
+                </div><!--/panel-body-->
+            </div><!--/panel-->
+        </div>
+        <div class="row quitarPadding">
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li ng-repeat="tab in tabs"
+                            ng-class="{active:isActiveTab(tab.url)}"
+                            ng-click="onClickTab(tab)"><a data-toggle="tab">{{tab.title}}</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div ng-include="currentTab"></div>
+                        <script type="text/ng-template" id="home">
+                            <section class="comment-list">
+                                <!-- First Comment -->
+                                <article class="row" ng-repeat="tw in tuitasHome">
+                                    <div class="col-md-3 col-sm-3 hidden-xs">
+                                        <figure class="thumbnail">
+                                            <img ng-src="{{tw.user.profile_image_url}}" class="img-responsive">
+                                            <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9d">
+                                        <div class="panel panel-default arrow left">
+                                            <div class="panel-body">
+                                                <header class="text-left">
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                </header>
+                                                <div class="comment-post">
+                                                    <p>
+                                                        {{tw.text}}
+                                                    </p>
+                                                </div>
+                                                <p class="text-right">
+                                                    <!--<a class="btn btn-default btn-sm" href="#">-->
+                                                        <!--<i class="fa fa-reply">-->
+                                                        <!--</i> reply-->
+                                                    <!--</a>-->
+                                                    <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
                                                 </p>
                                             </div>
-                                            <p class="text-right">
-                                                <!--<a class="btn btn-default btn-sm" href="#">-->
+                                        </div>
+                                    </div>
+                                </article>
+                            </section>
+                            <!--<p ng-repeat="tw in tuitasHome">-->
+                                <!--{{tw.text}}-->
+                            <!--</p>-->
+                        </script>
+
+                        <script type="text/ng-template" id="user">
+                            <section class="comment-list">
+                                <!-- First Comment -->
+                                <article class="row" ng-repeat="tw in tuitasUser">
+                                    <div class="col-md-3 col-sm-3 hidden-xs">
+                                        <figure class="thumbnail">
+                                            <img src="{{tw.user.profile_image_url}}" class="img-responsive">
+                                            <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9">
+                                        <div class="panel panel-default arrow left">
+                                            <div class="panel-body">
+                                                <header class="text-left">
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                </header>
+                                                <div class="comment-post">
+                                                    <p>
+                                                        {{tw.text}}
+                                                    </p>
+                                                </div>
+                                                <p class="text-right">
+                                                    <!--<a class="btn btn-default btn-sm" href="#">-->
                                                     <!--<i class="fa fa-reply">-->
                                                     <!--</i> reply-->
-                                                <!--</a>-->
-                                                <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </section>
-                        <!--<p ng-repeat="tw in tuitasHome">-->
-                            <!--{{tw.text}}-->
-                        <!--</p>-->
-                    </script>
-
-                    <script type="text/ng-template" id="user">
-                        <section class="comment-list">
-                            <!-- First Comment -->
-                            <article class="row" ng-repeat="tw in tuitasUser">
-                                <div class="col-md-3 col-sm-3 hidden-xs">
-                                    <figure class="thumbnail">
-                                        <img src="{{tw.user.profile_image_url}}" class="img-responsive">
-                                        <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
-                                    </figure>
-                                </div>
-                                <div class="col-md-9 col-sm-9">
-                                    <div class="panel panel-default arrow left">
-                                        <div class="panel-body">
-                                            <header class="text-left">
-                                                <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
-                                            </header>
-                                            <div class="comment-post">
-                                                <p>
-                                                    {{tw.text}}
+                                                    <!--</a>-->
+                                                    <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
                                                 </p>
                                             </div>
-                                            <p class="text-right">
-                                                <!--<a class="btn btn-default btn-sm" href="#">-->
-                                                <!--<i class="fa fa-reply">-->
-                                                <!--</i> reply-->
-                                                <!--</a>-->
-                                                <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
-                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                            </article>
-                        </section>
-                    </script>
-                    <script type="text/ng-template" id="mentions">
-                        <section class="comment-list">
-                            <!-- First Comment -->
-                            <article class="row" ng-repeat="tw in tuitasMention">
-                                <div class="col-md-3 col-sm-3 hidden-xs">
-                                    <figure class="thumbnail">
-                                        <img src="{{tw.user.profile_image_url}}" class="img-responsive">
-                                        <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
-                                    </figure>
-                                </div>
-                                <div class="col-md-9 col-sm-9">
-                                    <div class="panel panel-default arrow left">
-                                        <div class="panel-body">
-                                            <header class="text-left">
-                                                <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
-                                            </header>
-                                            <div class="comment-post">
-                                                <p>
-                                                    {{tw.text}}
+                                </article>
+                            </section>
+                        </script>
+                        <script type="text/ng-template" id="mentions">
+                            <section class="comment-list">
+                                <!-- First Comment -->
+                                <article class="row" ng-repeat="tw in tuitasMention">
+                                    <div class="col-md-3 col-sm-3 hidden-xs">
+                                        <figure class="thumbnail">
+                                            <img src="{{tw.user.profile_image_url}}" class="img-responsive">
+                                            <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9">
+                                        <div class="panel panel-default arrow left">
+                                            <div class="panel-body">
+                                                <header class="text-left">
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                </header>
+                                                <div class="comment-post">
+                                                    <p>
+                                                        {{tw.text}}
+                                                    </p>
+                                                </div>
+                                                <p class="text-right">
+                                                    <!--<a class="btn btn-default btn-sm" href="#">-->
+                                                    <!--<i class="fa fa-reply">-->
+                                                    <!--</i> reply-->
+                                                    <!--</a>-->
+                                                    <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
                                                 </p>
                                             </div>
-                                            <p class="text-right">
-                                                <!--<a class="btn btn-default btn-sm" href="#">-->
-                                                <!--<i class="fa fa-reply">-->
-                                                <!--</i> reply-->
-                                                <!--</a>-->
-                                                <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
-                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                            </article>
-                        </section>
-                    </script>
-                    <script type="text/ng-template" id="favorites">
-                        <section class="comment-list">
-                            <!-- First Comment -->
-                            <article class="row" ng-repeat="tw in tuitasFavorites">
-                                <div class="col-md-3 col-sm-3 hidden-xs">
-                                    <figure class="thumbnail">
-                                        <img src="{{tw.user.profile_image_url}}" class="img-responsive">
-                                        <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
-                                    </figure>
-                                </div>
-                                <div class="col-md-9 col-sm-9">
-                                    <div class="panel panel-default arrow left">
-                                        <div class="panel-body">
-                                            <header class="text-left">
-                                                <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
-                                            </header>
-                                            <div class="comment-post">
-                                                <p>
-                                                    {{tw.text}}
+                                </article>
+                            </section>
+                        </script>
+                        <script type="text/ng-template" id="favorites">
+                            <section class="comment-list">
+                                <!-- First Comment -->
+                                <article class="row" ng-repeat="tw in tuitasFavorites">
+                                    <div class="col-md-3 col-sm-3 hidden-xs">
+                                        <figure class="thumbnail">
+                                            <img src="{{tw.user.profile_image_url}}" class="img-responsive">
+                                            <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9">
+                                        <div class="panel panel-default arrow left">
+                                            <div class="panel-body">
+                                                <header class="text-left">
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                </header>
+                                                <div class="comment-post">
+                                                    <p>
+                                                        {{tw.text}}
+                                                    </p>
+                                                </div>
+                                                <p class="text-right">
+                                                    <!--<a class="btn btn-default btn-sm" href="#">-->
+                                                    <!--<i class="fa fa-reply">-->
+                                                    <!--</i> reply-->
+                                                    <!--</a>-->
+                                                    <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
                                                 </p>
                                             </div>
-                                            <p class="text-right">
-                                                <!--<a class="btn btn-default btn-sm" href="#">-->
-                                                <!--<i class="fa fa-reply">-->
-                                                <!--</i> reply-->
-                                                <!--</a>-->
-                                                <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
-                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                            </article>
-                        </section>
-                    </script>
-                    <script type="text/ng-template" id="retweets">
-                        <section class="comment-list">
-                            <!-- First Comment -->
-                            <article class="row" ng-repeat="tw in tuitasRetweets">
-                                <div class="col-md-3 col-sm-3 hidden-xs">
-                                    <figure class="thumbnail">
-                                        <img src="{{tw.user.profile_image_url}}" class="img-responsive">
-                                        <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
-                                    </figure>
-                                </div>
-                                <div class="col-md-9 col-sm-9">
-                                    <div class="panel panel-default arrow left">
-                                        <div class="panel-body">
-                                            <header class="text-left">
-                                                <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
-                                            </header>
-                                            <div class="comment-post">
-                                                <p>
-                                                    {{tw.text}}
+                                </article>
+                            </section>
+                        </script>
+                        <script type="text/ng-template" id="retweets">
+                            <section class="comment-list">
+                                <!-- First Comment -->
+                                <article class="row" ng-repeat="tw in tuitasRetweets">
+                                    <div class="col-md-3 col-sm-3 hidden-xs">
+                                        <figure class="thumbnail">
+                                            <img src="{{tw.user.profile_image_url}}" class="img-responsive">
+                                            <!--<figcaption class="text-center">{{tw.user.screen_name}}</figcaption>-->
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9">
+                                        <div class="panel panel-default arrow left">
+                                            <div class="panel-body">
+                                                <header class="text-left">
+                                                    <div class="comment-user"><i class="fa fa-user"></i> <h4>{{tw.user.screen_name}}</h4></div>
+                                                </header>
+                                                <div class="comment-post">
+                                                    <p>
+                                                        {{tw.text}}
+                                                    </p>
+                                                </div>
+                                                <p class="text-right">
+                                                    <!--<a class="btn btn-default btn-sm" href="#">-->
+                                                    <!--<i class="fa fa-reply">-->
+                                                    <!--</i> reply-->
+                                                    <!--</a>-->
+                                                    <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
                                                 </p>
                                             </div>
-                                            <p class="text-right">
-                                                <!--<a class="btn btn-default btn-sm" href="#">-->
-                                                <!--<i class="fa fa-reply">-->
-                                                <!--</i> reply-->
-                                                <!--</a>-->
-                                                <time datetime="16-12-2014 01:05" class="comment-date"><i class="fa fa-clock-o"></i> {{tw.created_at}}</time>
-                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                            </article>
-                        </section>
-                    </script>
+                                </article>
+                            </section>
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
