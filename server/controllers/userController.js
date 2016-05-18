@@ -20,8 +20,9 @@ module.exports = {
             if (_user != null) {
                 if (_user.b_borrado) return res.status(400).send({error: 2, mensaje: "Cuenta Borrada"});
                 else {
+                    console.log(_user.admin);
                     if (_user.password == pass) return res.status(200).send({
-                        error: 0,token: service.createToken(_user), user: req.body.email
+                        error: 0,token: service.createToken(_user), user: req.body.email, admin: _user.admin
                     });
                     else {
                         _user.stats.ultimo_acceso = Date.now();
