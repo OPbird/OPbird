@@ -25,10 +25,17 @@ angular.module("FinalApp",[ "ngRoute", "LocalStorageModule"])
                 controller: "dashboardCtlr",
                 templateUrl: "views/dashboard.html"
             })
-
             .when("/hashtags",{
                 controller: "hashtagsCtlr",
                 templateUrl: "views/hashtags.html"
+            })
+            .when("/admin",{
+                controller: "adminCtlr",
+                templateUrl: "views/admin.html"
+            })
+            .when("/admin/stats",{
+                controller: "adminStats",
+                templateUrl: "views/adminStats.html"
             })
             .otherwise({redirectTo: "/"});
 
