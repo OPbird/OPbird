@@ -58,12 +58,26 @@ module.exports = {
                 req.session.access_token = oauth_access_token;
                 req.session.access_token_secret = oauth_access_token_secret;
                 console.log(results, req.session.oauth);
-                /*oauth.get( twitter.acciones.user_timeline
-                , oauth_access_token
-                , oauth_access_token_secret
-                , function (e, data, result){
-                //res.status(200).send(data);
-                });*/
+                /*id_twitter:{type: String},
+                cuenta:{type: String},
+                access_token:{type: String},
+                access_token_secret:{type: String},
+                info:{type: String},
+                tweetP: [ //A publicar
+                    {
+                        fecha: {type: Date},
+                        text:{type:String}
+                    }
+                ]*/
+                var cuentaTwitter = {}
+                cuentaTwitter.id_twitter = results.user_id;
+                cuentaTwitter.cuenta = results.cuenta;
+                cuentaTwitter.access_token = oauth_access_token;
+                cuentaTwitter.access_token_secret = oauth_access_token_secret;
+                cuentaTwitter.info = "Es muy chuchu chuli";
+                
+                console.log(cuentaTwitter);
+
                 res.redirect('/'); // You might actually want to redirect!
             }
         });
