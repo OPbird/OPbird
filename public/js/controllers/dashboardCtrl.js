@@ -9,17 +9,18 @@ angular.module("FinalApp")
         $scope.login = {};
         $scope.dentro = false;
         $scope.error = {};
-
+        var datos = TokenService.getSession();
+        $scope.user = datos.user;
         $scope.go = function ( path ) {
             $location.path( path );
         };
         
-        $scope.signInTwitter = function () {
+        /*$scope.signInTwitter = function () {
             var datos = TokenService.getSession();
             console.log(datos);
             $http({
                 method:"get",
-                url: '/auth/twitter',
+                url: '/auth/prueba',
                 headers: { 'authorization': datos.token, user_id: datos.user,"Access-Control-Allow-Origin" : "*",
                     "Access-Control-Allow-Headers": "X-Requested-With, Content-Type",
                     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'}})
@@ -29,6 +30,6 @@ angular.module("FinalApp")
                 .error(function (data) {
                     console.log(data);
                 });
-        }
+        }*/
 
     })

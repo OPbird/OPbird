@@ -1,8 +1,5 @@
 angular.module("FinalApp",[ "ngRoute", "LocalStorageModule"])
-    .config(function($routeProvider, $httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
+    .config(function($routeProvider) {
         $routeProvider
             .when("/", {
                 controller: "mainCtlr",

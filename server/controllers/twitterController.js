@@ -23,51 +23,51 @@ var OAuth = require('oauth').OAuth,
 
 
 module.exports = {
-    security: function (req, res, next) {
-        console.log("op");
-        res.header("Access-Control-Allow-Origin", "http://localhost:8080");
-            res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-        next();
+    prueba: function (req, res) {
+        oauth.get( twitter.acciones.user_timeline
+            , "284462392-qT1hXHOomD6K1SnjqWYkMwDdFX2zotTKVSZjHgnx"
+            , "scAPiEIsZsLzJO7xHmeVBexq6pCX0qEMEDdqkGnuCSx5M"
+            , function (e, data, result){
+                res.status(200).send(data);
+            });
     },
-   getOauth: function(req, res){
-      oauth.getOAuthRequestToken(function (error, oauth_token, oauth_token_secret, results) {
-         if (error) {
-            console.log(error);
-            res.send("Authentication Failed!");
-         }
-         else {
-            req.session.oauthRequestToken = oauth_token;
-            req.session.oauthRequestTokenSecret = oauth_token_secret;
-            console.log(req.session.oauthRequestToken + "  - ---  - " + req.session.oauthRequestTokenSecret)
-            res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' + oauth_token)
-         }
-      });
 
-   },
-   callbackOauth:function(req, res, next) {
-      oauth.getOAuthAccessToken(req.session.oauthRequestToken, req.session.oauthRequestTokenSecret, req.query.oauth_verifier,
-          function(error, oauth_access_token, oauth_access_token_secret, results) {
-             if (error) {
+    getOauth: function(req, res){
+        oauth.getOAuthRequestToken(function (error, oauth_token, oauth_token_secret, results) {
+            if (error) {
+                console.log(error);
+                res.send("Authentication Failed!");
+            } else {
+                req.session.user_id = req.body.user;
+                req.session.oauthRequestToken = oauth_token;
+                req.session.oauthRequestTokenSecret = oauth_token_secret;
+                console.log(req.session.oauthRequestToken + "  - ---  - " + req.session.oauthRequestTokenSecret)
+                res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' + oauth_token)
+            }
+        });
+    },
+    callbackOauth:function(req, res, next) {
+        oauth.getOAuthAccessToken(req.session.oauthRequestToken, req.session.oauthRequestTokenSecret, req.query.oauth_verifier,
+        function(error, oauth_access_token, oauth_access_token_secret, results) {
+            if (error) {
                 console.log(error);
                 res.send("Authentication Failure!");
-             }
-             else {
+            } else {
+                console.log("Email user " + req.session.user_id)
                 console.log("Access Token: " + oauth_access_token + " Access Token Secret: " + oauth_access_token_secret)
                 req.session.access_token = oauth_access_token;
                 req.session.access_token_secret = oauth_access_token_secret;
                 console.log(results, req.session.oauth);
-                oauth.get( twitter.acciones.user_timeline
-                    , oauth_access_token
-                    , oauth_access_token_secret
-                    , function (e, data, result){
-                       res.status(200).send(data);
-                    });
-                // res.redirect('/'); // You might actually want to redirect!
-             }
-          }
-      );
-   },
+                /*oauth.get( twitter.acciones.user_timeline
+                , oauth_access_token
+                , oauth_access_token_secret
+                , function (e, data, result){
+                //res.status(200).send(data);
+                });*/
+                res.redirect('/'); // You might actually want to redirect!
+            }
+        });
+    },
     addAccount:function(req,res,next){
 
     },
