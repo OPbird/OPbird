@@ -9,7 +9,8 @@ var express = require('express'),
     middleware = require("./server/controllers/middleware"),
     usersController = require('./server/controllers/userController'),
     twitterController = require('./server/controllers/twitterController'),
-    session = require('express-session');
+    session = require('express-session'),
+    util = require('./server/utils/utils'),
     init = require('./server/utils/init');
     stats = require('./server/controllers/stats');
 
@@ -82,6 +83,10 @@ app.get("/admin/stats/accounts", stats.accountsStatistics);
 app.get("/admin/stats/access");
 app.get("/admin/stats/resources");
 app.get("/admin/stats/map");
+
+/** UTILS **/
+
+app.get("/api/short/:url",util.shortURL);
 
 
 

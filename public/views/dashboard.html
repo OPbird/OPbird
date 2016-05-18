@@ -1,26 +1,6 @@
 <div class="container-fluid">
     <div class="col-md-4 col-sm-4 container-fluid">
         <div class="row">
-            <div ng-show="mostarTimelines" class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>
-                        Escribe tus tweets
-                    </h4>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <textarea maxlength="140" ng-model="textoTweet" class="col-sm-10 col-md-offset-1" placeholder="Escribe aquí..."></textarea>
-                    </div>
-                    <div class="row">
-                        </br>
-                    </div>
-                    <div class="row">
-                        <button type="button"class="btn btn-primary col-md-offset-8" ng-click="tweeetear(textoTweet);">Tweet</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>Cuentas
@@ -50,6 +30,46 @@
                         </td>
                     </tr>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-show="mostarTimelines" class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>
+                        Acorta URLs
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <textarea maxlength="140" ng-model="textoTweet" class="col-sm-10 col-md-offset-1" placeholder="Escribe aquí..."></textarea>
+                    </div>
+                    <div class="row">
+                        </br>
+                    </div>
+                    <div class="row">
+                        <button type="button"class="btn btn-primary col-md-offset-8" ng-click="tweeetear(textoTweet);">Tweet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-show="mostarTimelines" class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>
+                        Escribe tus tweets
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <textarea maxlength="140" ng-model="textoTweet" class="col-sm-10 col-md-offset-1" placeholder="Escribe aquí..."></textarea>
+                    </div>
+                    <div class="row">
+                        </br>
+                    </div>
+                    <div class="row">
+                        <button type="button"class="btn btn-primary col-md-offset-8" ng-click="tweeetear(textoTweet);">Tweet</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

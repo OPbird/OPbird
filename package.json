@@ -24,6 +24,7 @@
     "passport": "latest",
     "passwoid": "^4.0.3",
     "request": "latest",
+    "short": "^2.6.0",
     "supertest": "latest"
   },
   "devDependencies": {
