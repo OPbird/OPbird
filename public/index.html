@@ -42,7 +42,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li ng-show="isLogged" class="dropdown">
+                    <li ng-show="isUser()" ng-click="getAccounts()" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Cuentas
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -50,7 +50,7 @@
                             <li><a href="#/dashboard/tweets">@AlexSolanas</a></li>
                         </ul>
                     </li>
-                    <li ng-show="isLogged()"><a href="#/hashtags">Hashtags</a></li>
+                    <li ng-show="isUser()"><a href="#/hashtags">Hashtags</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-hide="isLogged()"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>

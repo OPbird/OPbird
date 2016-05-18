@@ -6,11 +6,8 @@ angular.module("FinalApp")
             $location.path("/dashboard");
         }
 
-        // $scope.usuario = {};
-        // $scope.login = {};
-        // $scope.dentro = false;
+
         $scope.error = {};
-        // $scope.accounts = {};
 
         if (TokenService.isSession) {
             var datos = TokenService.getSession();
@@ -45,6 +42,19 @@ angular.module("FinalApp")
                 return false;
             }
         };
+
+        $scope.getAccounts = function() {
+            $http({
+                url: '/api/twitterAccount/' + datos.user,
+                method: "GET"
+            }).then(function (response) {
+                if (response.error > 0) {
+                } else {
+                    console.log(response);
+                    $scope.cuentas = response.cuentas
+                }
+            });
+        }
         
 
         $scope.cerrarSesion = function () {
