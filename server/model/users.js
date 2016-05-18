@@ -60,9 +60,8 @@ module.exports = {
     },
     addHashtag: function(_email, hashtag, callback) {
         this.getUser(_email, function(err, user) {
-            user.update({hashtags: hashtag}, function (err, hashtags) {
-                callback(err, hashtags);
-            })
+            user.hashtags.push(hashtag);
+            callback(err);
         })
     },
     removeHashtag: function(_email, hashtag, callback) {
