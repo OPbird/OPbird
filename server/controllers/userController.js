@@ -70,6 +70,7 @@ module.exports = {
         user.getUsers(function (err,data) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (data != null){
+                console.log(data);
                 return res.status(200).send({error: 0, users: data});
             }else return res.status(400).send({error: 1, mensaje: "No Hay usuarios en la bbdd"});
         });

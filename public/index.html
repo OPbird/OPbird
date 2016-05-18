@@ -56,7 +56,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-hide="isLogged()"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
                     <li ng-hide="isLogged()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
-                    <li ng-show="isLogged()" ><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                    <li ng-show="isUser()" ><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
                     <li ng-show="isLogged()" ng-click="cerrarSesion()"><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a></li>
                 </ul>
             </div>

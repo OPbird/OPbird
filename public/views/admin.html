@@ -1,11 +1,14 @@
 <div class="container-fluid">
     <div class="col-md-8  container-fluid">
         <header><h3>Usuarios</h3></header>
-        <div ng-repeat>
+        <div ng-repeat="u in users">
             <div class="col-md-2">
                 <img class="img-responsive" src="images/profile.svg">
             </div>
-            <div class=""></div>
+            <div class="col-md-6"></div>
+                <h4>{{u.email}}</h4>
+                <p>{{u.nombre}}</p>
+                <p>{{u.apellidos}}</p>
 
         </div>
     </div>
