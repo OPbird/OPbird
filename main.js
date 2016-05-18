@@ -10,6 +10,7 @@ var express = require('express'),
     usersController = require('./server/controllers/userController'),
     twitterController = require('./server/controllers/twitterController'),
     session = require('express-session');
+    init = require('./server/utils/init');
 
 var app = express();
 
@@ -34,6 +35,9 @@ app.use(function(err, req, res, next) {
     console.log(err.stack);
     res.send(500, err.message);
 });
+
+//si no existe el admin lo creamos
+init.createAdminIfNotExists();
 
 //Configuramos express
 app.use(bodyParser.json());
