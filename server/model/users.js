@@ -26,10 +26,19 @@ module.exports = {
         });
     },
     addAccount: function(_email,_account,callback){
-        getUser(_email,function(err,user){
-            user.cuentas.$push(_account);
-            user.save();
-            callback(err);
+        var intro = false;
+        this.getUser(_email,function(err,user){
+            //console.log(user.cuentas[0]);
+            for (i = 0; i < user.cuentas.length; i++) {
+                if (user.cuentas[i].id_twitter == _account.id_twitter) {
+                    intro = true;
+                }
+            }
+            if (!intro) {
+                user.cuentas.push(_account);
+                user.save();
+            }
+            callback(err, user);
         });
     },
     getHashtag: function(_email, callback) {
