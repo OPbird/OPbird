@@ -86,7 +86,7 @@ app.get("/admin/stats/map");
 
 /** UTILS **/
 
-app.get("/api/short/:url",util.shortURL);
+app.post("/api/short/",util.shortURL);
 
 
 
