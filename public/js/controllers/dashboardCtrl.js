@@ -1,5 +1,3 @@
-var addr = "http://localhost:8080";
-
 angular.module("FinalApp")
     .controller('dashboardCtlr', function($scope, $http, $location, TokenService){
                
@@ -18,7 +16,7 @@ angular.module("FinalApp")
         $scope.user = datos.user;
 
         $http({
-            url: addr + '/api/twitterAccount/' + datos.user,
+            url: '/api/twitterAccount/' + datos.user,
             method: "GET"
         }).then(function (response) {
             if (response.error > 0) {

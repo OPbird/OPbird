@@ -29,20 +29,18 @@ angular.module("FinalApp")
             }
         };
 
-        $scope.getAccounts = function(){
-            if(TokenService.isSession()) {
-                $http({
-                    url: addr + '/api/twitterAccount/',
-                    method: "GET",
-                    params: {user : datos.user}
-                }).then(function (response) {
-                    if (response.error > 0) {
-                    } else {
-                        $scope.accounts = response.cuentas
-                    }
-                });
-            }
-        };
+        if(TokenService.isSession()) {
+            $http({
+                url: '/api/twitterAccount/' + datos.user,
+                method: "GET"
+            }).then(function (response) {
+                if (response.error > 0) {
+                } else {
+                    console.log(response);
+                    $scope.accounts = response.cuentas
+                }
+            });
+        }
 
         $scope.cerrarSesion = function () {
             TokenService.cerrarSesion();
