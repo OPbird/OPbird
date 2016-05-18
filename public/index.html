@@ -36,25 +36,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a ng-show="notLogged()" class="navbar-brand" href="#/dashboard">OPbird</a>
-                <a ng-hide="notLogged()" class="navbar-brand" href="#/home">OPbird</a>
+                <a ng-show="isUser()" class="navbar-brand" href="#/dashboard">OPbird</a>
+                <a ng-show="isAdmin()" class="navbar-brand" href="#/admin">OPbird Admin</a>
+                <a ng-hide="isLogged()" class="navbar-brand" href="#/home">OPbird</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li ng-show="notLogged" class="dropdown">
+                    <li ng-show="isUser()" ng-click="getAccounts()" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Cuentas
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li ng-repeat="c in accounts"><a href={{c.id_twitter}}>{{c.account}}</a></li>
+                            <li ng-repeat="c in cuentas"><a href={{c.id_twitter}}>{{c.id_twitter}}</a></li>
                             <li><a href="#/dashboard/tweets">@AlexSolanas</a></li>
                         </ul>
                     </li>
-                    <li ng-show="notLogged()"><a href="#/hashtags">Hashtags</a></li>
+                    <li ng-show="isUser()"><a href="#/hashtags">Hashtags</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-hide="notLogged()"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
-                    <li ng-hide="notLogged()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
-                    <li ng-show="notLogged()" ng-click="cerrarSesion()"><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a></li>
+                    <li ng-hide="isLogged()"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
+                    <li ng-hide="isLogged()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
+                    <li ng-show="isLogged()" ng-click="cerrarSesion()"><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a></li>
                 </ul>
             </div>
         </div>
