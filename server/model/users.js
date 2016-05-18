@@ -25,8 +25,12 @@ module.exports = {
             callback(err);
         });
     },
-    addAccount: function(){
-
+    addAccount: function(_email,_account,callback){
+        getUser(_email,function(err,user){
+            user.cuentas.$push(_account);
+            user.save();
+            callback(err);
+        });
     },
     getHashtag: function(_email, callback) {
         getUser(_email, function(err, user) {
