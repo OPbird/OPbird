@@ -21,8 +21,8 @@ angular.module("FinalApp")
         }).then(function (response) {
             if (response.error > 0) {
             } else {
-                //$scope.doughnutLabels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-                //$scope.doughnutData = [300, 500, 100];
+                $scope.doughnutLabels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+                $scope.doughnutData = [300, 500, 100];
             }
         })
     });
