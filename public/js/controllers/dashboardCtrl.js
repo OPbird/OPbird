@@ -106,7 +106,7 @@ angular.module("FinalApp")
                         console.log(new Date(fecha).getTime());
                         if(texto.length> 0 && fecha != null){
                             $http({
-                                url: '/api/twitterAccount/tweet',
+                                url: '/api/twitterAccount/prog',
                                 method: "POST",
                                 data: {user: datos.user,
                                         idtwitter: c.id_twitter,
