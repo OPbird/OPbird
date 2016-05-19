@@ -10,8 +10,10 @@ angular.module("FinalApp")
         }).then(function (response) {
             if (response.error > 0) {
             } else {
-                console.log("UPS: " + response.data.ups);
-                console.log("DOWNS: "  + response.data.downs);
+                $scope.labels = ["Altas", "Bajas"];
+                $scope.data = [
+                    response.data.ups, response.data.downs
+                ];
             }
         });
         //Metodo GET

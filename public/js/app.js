@@ -1,4 +1,4 @@
-angular.module("FinalApp",[ "ngRoute", "LocalStorageModule", "ngSanitize"])
+angular.module("FinalApp",[ "ngRoute", "LocalStorageModule", "ngSanitize", "chart.js"])
     .config(function($routeProvider) {
         $routeProvider
             .when("/", {
