@@ -117,6 +117,7 @@ module.exports = {
     },
 
     deleteUser: function(req,res,next){
+        console.log(req.body.email);
         user.getUser(req.body.email,function (err,data) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (data != null){

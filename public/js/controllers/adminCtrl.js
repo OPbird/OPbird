@@ -13,8 +13,21 @@ angular.module("FinalApp")
             $location.path("/perfil/stats");
         };
 
-        $scope.delete = function(email) {
-            console.log(email);
+        $scope.delete = function(i, u) {
+            $http({
+                url: '/api/user/',
+                method: "DELETE",
+                headers: {
+                    'authorization': datos.token, user_id: datos.user,
+                    "Content-Type": "application/json;charset=utf-8"
+                },
+                data: {email: u.email}
+            }).then(function (response) {
+                if (response.error > 0) {
+                } else {
+                    $scope.users.splice(i, 1);
+                }
+            });
         };
 
         var datos = TokenService.getSession();

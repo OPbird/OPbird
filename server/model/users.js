@@ -10,7 +10,7 @@ module.exports = {
     },
     //devuelve todos menos el admin
     getUsers: function(callback) {
-        User.find({admin: false}, function(err, user) {
+        User.find({admin: false, b_borrado: false}, function(err, user) {
             callback(err, user);
         });
     },
@@ -33,9 +33,8 @@ module.exports = {
         this.getUser(_email,function(err,user){
             user.b_borrado = true;
             user.stats.baja = Date.now();
-            this.add(user, function (err) {
-                callback(err);
-            });
+            user.save();
+            callback();
         });
     },
     removeAdmin: function (callback) {

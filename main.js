@@ -56,7 +56,7 @@ app.post("/api/register", usersController.register);
 app.get("/api/user",middleware.ensureAuthenticated,usersController.getUsers);
 app.get("/api/user/:id",middleware.ensureAuthenticated,usersController.getUser);
 app.put("/api/user",middleware.ensureAuthenticated,usersController.updateUser);
-app.delete("/api/userapi",middleware.ensureAuthenticated,usersController.deleteUser);
+app.delete("/api/user",middleware.ensureAuthenticated,usersController.deleteUser);
 app.post("/api/user/comparePasswords",middleware.ensureAuthenticated,usersController.comparePassword);
 
 
