@@ -2,6 +2,7 @@
   "name": "angular",
   "version": "1.0.0",
   "dependencies": {
+    "jquery": "~2.2.3",
     "bootstrap": "latest",
     "angular": "latest",
     "angular-route": "latest",
@@ -11,5 +12,8 @@
     "eonasdan-bootstrap-datetimepicker": "^4.17.37",
     "jQuery-Collapse": "^1.1.2",
     "angular-chart.js": "^0.10.2"
+  },
+  "resolutions": {
+    "jquery": "~2.2.3"
   }
 }

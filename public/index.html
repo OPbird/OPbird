@@ -36,6 +36,8 @@
     <script src="js/controllers/dashboardCtrl.js"></script>
     <script src="js/controllers/adminCtrl.js"></script>
     <script src="js/controllers/adminStatsCtrl.js"></script>
+    <script src="js/controllers/perfilCtlr.js"></script>
+
 
     <script src="js/services/tokens.js"></script>
     <script src="js/directives/directive.js "></script>
@@ -61,7 +63,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-hide="isLogged()"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
                     <li ng-hide="isLogged()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
-                    <li ng-show="isUser()" ><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                    <li ng-show="isUser()" ><a href="#/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
                     <li ng-show="isLogged()" ng-click="cerrarSesion()"><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a></li>
                 </ul>
             </div>

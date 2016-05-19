@@ -12,7 +12,8 @@ angular.module("FinalApp")
 
         if (TokenService.isSession()) {
             if(TokenService.getSession().admin){$location.path("/admin");}
-            else {$location.path("/dashboard")}
+            else {//$location.path("/dashboard")
+                 }
         }
         
         $scope.go = function ( path ) {
