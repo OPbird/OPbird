@@ -150,6 +150,7 @@ module.exports = {
 
     },
     tweet:function(req,res,next){
+        console.log(req.body.text);
         oauth.post(twitter.acciones.tweet,
             req.body.access_token, req.body.access_token_secret, {status: req.body.text},
             function (error, data, response2) {
