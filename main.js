@@ -40,7 +40,8 @@ app.use(function(err, req, res, next) {
 });
 
 //si no existe el admin lo creamos
-init.createAdminIfNotExists();
+init.createAdmin();
+init.insertSomeUsers();
 jobs.programmedTweets();
 
 //Configuramos express
