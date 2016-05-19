@@ -58,7 +58,7 @@ angular.module("FinalApp")
         });
 
         $scope.hayRecursos = function() {
-            if ($scope.rLabels != null){
+            if ($scope.rLabels == null){
                 return false;
             }else return true;
         };
