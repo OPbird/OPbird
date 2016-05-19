@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="col-md-12  container-fluid">
         <div class="col-md-4  container-fluid">
             <div></div>
             <h3>Altas y bajas</h3>
@@ -12,7 +12,7 @@
             <canvas class="chart-base" chart-type="type" chart-data="abaData" chart-labels="abaLabels"
                     chart-legend="true" chart-series="abaSeries">
             </canvas>
-            <button type="button" class="btn btn-primary" ng-click="change()">Cambiar</button>
+            <button type="button" class="btn btn-primary" ng-click="change()">{{texto}}</button>
         </div>
         <div class="col-md-4  container-fluid">
             <h3>Últimos accesos</h3>
@@ -20,7 +20,7 @@
             </canvas>
         </div>
     </div>
-    <div class="row">
+    <div class="col-md-12  container-fluid">
         <div class="col-md-4  container-fluid">
             <h3>Recursos</h3>
             <canvas class="chart chart-doughnut" chart-data="rData" chart-labels="rLabels" chart-legend="true"></canvas>

@@ -4,8 +4,13 @@ angular.module("FinalApp")
             $location.path("/home");
         }
         $scope.change = function() {
-            $scope.type = $scope.type === 'Line' ?
-                'Bar' : 'Line';
+            if ($scope.type === 'Line') {
+                $scope.type = 'Bar';
+                $scope.texto = 'Tendencias';
+            } else {
+                $scope.type = 'Line';
+                $scope.texto = 'Comparación';
+            }
         };
 
         //Metodo GET
@@ -16,6 +21,7 @@ angular.module("FinalApp")
             if (response.error > 0) {
             } else {
                 $scope.type = 'Line';
+                $scope.texto = 'Comparación';
                 $scope.abLabels = ["Altas", "Bajas"];
                 $scope.abData = [response.data.totales.altas, response.data.totales.bajas];
                 //afluencia

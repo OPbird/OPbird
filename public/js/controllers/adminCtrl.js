@@ -1,12 +1,11 @@
 angular.module("FinalApp")
-    .controller('adminCtlr', function($scope, $http, $location, TokenService){
+    .controller('adminCtlr', function($scope, $http, $location, TokenService) {
         if (!TokenService.isSession()) {
             $location.path("/home");
         }
 
         var datos = TokenService.getSession();
         $scope.user = datos.user;
-
 
         $scope.users={};
         $http({
@@ -16,8 +15,7 @@ angular.module("FinalApp")
         }).then(function (response) {
             if (response.error > 0) {
             } else {
-                $scope.users = response.users
+                $scope.users = response.data.users;
             }
         });
-
-    })
+    });
