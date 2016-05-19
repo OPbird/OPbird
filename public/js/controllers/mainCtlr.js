@@ -56,7 +56,6 @@ angular.module("FinalApp")
             }).then(function (response) {
                 if (response.error > 0) {
                 } else {
-                    console.log(response);
                     $scope.cuentas = response.cuentas
                 }
             });

@@ -75,12 +75,12 @@
                     <div class="row container-fluid">
                         <div class="form-group">
                             <div class='input-group date col-xs-12' id='datetimepicker1'>
-                                <input type='text' class="form-control" ng-model="timeDate"/>
+                                <input type='text' class="form-control" ng-model="timeDate" palceholder="Selecciona Fecha"/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                                 <span class="input-group-btn">
-                                    <button type="button"class="btn btn-primary" ng-click="tweeetear(textoTweet);">Programar</button>
+                                    <button type="button"class="btn btn-primary" ng-click="programar(textoTweet,timeDate);">Programar</button>
                                     <button type="button"class="btn btn-primary" ng-click="tweeetear(textoTweet);">Tweet</button>
                                 </span>
                             </div>

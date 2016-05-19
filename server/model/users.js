@@ -102,8 +102,8 @@ module.exports = {
             for(var i=0;i<(users.length);i++){
                 for (var j=0;j<(users[i].cuentas.length);j++){
                     for (var n=0; n<(users[i].cuentas[j].tweetP.length);n++){
-                        tweets.push(users[i].cuentas);
-                        
+                        console.log(users[i].cuentas[j].tweetP[n]);
+                        tweets.push(users[i].cuentas[j].tweetP[n]);
                     }
                 }
             }

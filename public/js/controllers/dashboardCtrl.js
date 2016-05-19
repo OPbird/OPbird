@@ -6,9 +6,6 @@ angular.module("FinalApp")
             $location.path("/home");
         }
 
-        console.log(Date.now());
-        console.log(new Date(Date.now()).getTime());
-
         $scope.usuario = {};
         $scope.mostarTimelines = false;
         $scope.dentro = false;
@@ -50,7 +47,6 @@ angular.module("FinalApp")
                 url: '/api/twitter/timelines/' + c.access_token + '/' + c.access_token_secret + '/' + c.id_twitter,
                 headers: { 'authorization': datos.token, user_id: datos.user}})
                 .success(function (data) {
-                    console.log(data.tweets);
                     $scope.tabs = [{
                         title: 'Home Timeline',
                         url: 'home'
@@ -102,6 +98,15 @@ angular.module("FinalApp")
                             });
                         }
                     }
+                    $scope.programar = function(texto,fecha){
+                        console.log(fecha);
+                        console.log(texto);
+                        console.log(new Date(fecha).getTime());
+                        if(texto.length> 0 && fecha != null){
+
+                        }
+                    }
+                    
                 })
                 .error(function (data) {
                     console.error("Cuidado con los autómatas")
