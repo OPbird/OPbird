@@ -23,6 +23,7 @@
     "method-override": "latest",
     "moment": "^2.13.0",
     "mongoose": "latest",
+    "node-cron": "^1.1.1",
     "oauth": "latest",
     "passport": "latest",
     "passwoid": "^4.0.3",

@@ -165,7 +165,22 @@ module.exports = {
             });
 
     },
-    getHashtag:function(req,res,next){
+    programmedTweet: function(req,res,next){
+        oauth.post(twitter.acciones.tweet,
+            req.access_token, req.access_token_secret, {status: req.text},
+            function (error, data, response2) {
+                if(error){
+                    console.log('Error: Something is wrong.\n'+JSON.stringify(error)+'\n');
+                    res.status(400).json({error: 1, message: "error al tweetear"})
+                }else{
+                    console.log('Twitter status updated.\n');
+                    console.log(response2+'\n');
+                    res.status(200).json({error: 0, tweet: data})
+                }
+            });
+    },
+
+    getHashtag: function(req,res,next){
         user.getHashtag(req.body.email, function (err, hashtag) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             // llamada api

@@ -10,8 +10,9 @@ var express = require('express'),
     usersController = require('./server/controllers/userController'),
     twitterController = require('./server/controllers/twitterController'),
     session = require('express-session'),
+    jobs = require("./server/utils/jobs"),
     util = require('./server/utils/utils'),
-    init = require('./server/utils/init');
+    init = require('./server/utils/init'),
     stats = require('./server/controllers/stats');
 
 var app = express();
@@ -40,6 +41,7 @@ app.use(function(err, req, res, next) {
 
 //si no existe el admin lo creamos
 init.createAdminIfNotExists();
+jobs.programmedTweets();
 
 //Configuramos express
 app.use(bodyParser.json());
@@ -89,14 +91,19 @@ app.get("/admin/stats/map");
 app.post("/api/short/",middleware.ensureAuthenticated,util.shortURL);
 
 
-
 //Zona privada
 //app.get("/api/private/getUsers", middleware.ensureAuthenticated, usersController.getUsers);
 //app.get("/api/private/getUsers", middleware.ensureAuthenticated, usersController.getUsers);
 
+/** NOT FOUND **/
 app.get('*', function(req, res){
   res.status(404).send('<h1>Tíííííííííííííííííííío no me toques la URL o te meto!!!!!!</h1>');
 });
+
+//** JOBS **//
+
+
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
