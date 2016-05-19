@@ -132,12 +132,18 @@ module.exports = {
             for(var i=0;i<(users.length);i++){
                 for (var j=0;j<(users[i].cuentas.length);j++){
                     for (var n=0; n<(users[i].cuentas[j].tweetP.length);n++){
-                        var tweet = {fecha: users[i].cuentas[j].tweetP[n].fecha,
-                            text: users[i].cuentas[j].tweetP[n].text,
-                            access_token: users[i].cuentas[j].access_token,
-                            access_token_secret: users[i].cuentas[j].access_token_secret
-                        };
-                        tweets.push(tweet);
+                        if(!users[i].cuentas[j].tweetP[n].enviado){
+                            var tweet = {fecha: users[i].cuentas[j].tweetP[n].fecha,
+                                text: users[i].cuentas[j].tweetP[n].text,
+                                access_token: users[i].cuentas[j].access_token,
+                                access_token_secret: users[i].cuentas[j].access_token_secret
+                            };
+                            users[i].cuentas[j].tweetP[n].enviado = true;
+                            users[i].save(function(err){
+                                callback(err);
+                            });
+                            tweets.push(tweet);
+                        }
                     }
                 }
             }
@@ -148,7 +154,7 @@ module.exports = {
         this.getUser(body.user,function(err,user) {
             for (var i = 0; i < (user.cuentas.length); i++) {                
                 if(user.cuentas[i].id_twitter== body.idtwitter){
-                    var tweet = {fecha: body.fecha,text: body.text};
+                    var tweet = {fecha: body.fecha,text: body.text,enviado:false};
                     user.cuentas[i].tweetP.push(tweet);
                     var newUser = new User(user)
                     newUser.save(user,function(err){

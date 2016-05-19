@@ -1,5 +1,6 @@
 var cron = require('node-cron');
 var twitter = require("../controllers/twitterController");
+var user = require("../model/users");
 
 
 module.exports = {
@@ -13,7 +14,6 @@ module.exports = {
                         if(new Date(tweets[i].fecha).getTime()<Date.now()){
                             twitter.programmedTweet(tweets[i],function(err){
                             });
-                            
                         }
                     }
                 }

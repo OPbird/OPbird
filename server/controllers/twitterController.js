@@ -168,7 +168,7 @@ module.exports = {
     programmedTweet: function(tweet,callback){
         console.log("req " + tweet);
         oauth.post(twitter.acciones.tweet,
-            tweet.access_token, tweet.access_token_secret, {status: tweet.text+"a"},
+            tweet.access_token, tweet.access_token_secret, {status: tweet.text},
             function (error, data, response2) {
                 if(error){
                     console.log('Error: Something is wrong.\n'+JSON.stringify(error)+'\n');
