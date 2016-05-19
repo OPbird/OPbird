@@ -23,6 +23,11 @@ module.exports = {
             callback(err, user);
         });
     },
+    getUpsUsers: function (callback) {
+        User.find({b_borrado: false}, function (err, user) {
+            callback(err, user);
+        });
+    },
     removeUser: function(_email, callback){
         this.getUser(_email,function(err,user){
             user.b_borrado = true;

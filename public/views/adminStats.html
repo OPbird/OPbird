@@ -1,16 +1,21 @@
 <div class="container-fluid">
     <div class="col-md-4  container-fluid">
+        <div></div>
         <h3>Altas y bajas</h3>
-        <canvas id="pie" class="chart chart-pie"
-                chart-data="pieData" chart-labels="pieLabels"
-                chart-legend="true">
+        <canvas class="chart chart-doughnut"
+                chart-data="abData" chart-labels="abLabels" chart-legend="true">
         </canvas>
     </div>
     <div class="col-md-4  container-fluid">
+        <h3>Afluencia de altas y bajas</h3>
+        <canvas class="chart-base" chart-type="type" chart-data="abaData" chart-labels="abaLabels"
+                chart-legend="true" chart-series="abaSeries">
+        </canvas>
+        <button ng-click="change()">Cambiar</button>
+    </div>
+    <div class="col-md-4  container-fluid">
         <h3>Últimos accesos</h3>
-        <canvas id="doughnut" class="chart chart-doughnut"
-                chart-data="doughnutData" chart-labels="doughnutLabels"
-                chart-legend="true">
+        <canvas class="chart chart-pie" chart-data="uaData" chart-labels="uaLabels" chart-legend="true">
         </canvas>
     </div>
 </div>

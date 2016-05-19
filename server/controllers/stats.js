@@ -1,20 +1,72 @@
-var user = require('../model/users');
+var User = require('../model/users');
 var moment = require('moment');
-
 
 module.exports = {
     accountsStatistics: function (req, res) {
-        user.getUsers(function (err, users) {
-            var total = users.length;
-            user.getDownsUsers(function (err, user) {
-                if (err) res.status(500).send({error: 3, mensaje: "Server Error"});
-                var ups = total - user.length;
-                res.status(200).send({error:0, ups: ups, downs: user.length});
+        User.getUpsUsers(function (err, users) {
+            var ups = users.length;
+            var today = moment(new Date()).format("YYYY-MM-DD");
+            var todayUps = 0;
+            var weekUps = 0;
+            var monthUps = 0;
+            var beyondUps = 0;
+            users.forEach(function (user) {
+                var userDate = moment(new Date(user.stats.alta.toDateString())).format("YYYY-MM-DD");
+                var remainingDate = moment(today).diff(userDate, 'days');
+                if (remainingDate == 0) {
+                    todayUps++;
+                } else if (remainingDate > 0 && remainingDate < 7) {
+                    weekUps++;
+                } else if (remainingDate > 7 && remainingDate < 30) {
+                    monthUps++;
+                } else {
+                    beyondUps++
+                }
             });
-        })
+            User.getDownsUsers(function (err, users) {
+                var downs = users.length;
+                var todayDowns = 0;
+                var weekDowns = 0;
+                var monthDowns = 0;
+                var beyondDowns = 0;
+                users.forEach(function (user) {
+                    var userDate = moment(new Date(user.stats.alta.toDateString())).format("YYYY-MM-DD");
+                    var remainingDate = moment(today).diff(userDate, 'days');
+                    if (remainingDate == 0) {
+                        todayDowns++;
+                    } else if (remainingDate > 0 && remainingDate < 7) {
+                        weekDowns++;
+                    } else if (remainingDate > 7 && remainingDate < 30) {
+                        monthDowns++;
+                    } else {
+                        beyondDowns++
+                    }
+                });
+                res.status(200).send(
+                    {
+                        error:0,
+                        totales: {
+                            altas: ups,
+                            bajas: downs
+                        },
+                        altas: {
+                            hoy: todayUps,
+                            semana: weekUps,
+                            mes: monthUps,
+                            masMes: beyondUps
+                        },
+                        bajas: {
+                            hoy: todayDowns,
+                            semana: weekDowns,
+                            mes: monthDowns,
+                            masMes: beyondDowns
+                        }
+                    });
+            });
+        });
     },
     lastAccessStatistics: function (req, res) {
-        user.getUsers(function (err, users) {
+        User.getUsers(function (err, users) {
             var today = moment(new Date()).format("YYYY-MM-DD");
             var todayAccess = 0;
             var threeDaysAccess = 0;
@@ -26,11 +78,11 @@ module.exports = {
                 var remainingDate = moment(today).diff(userDate, 'days');
                 if (remainingDate == 0) {
                     todayAccess++;
-                } else if (remainingDate < 3) {
+                } else if (remainingDate > 0 && remainingDate < 3) {
                     threeDaysAccess++;
-                } else if (remainingDate < 7) {
+                } else if (remainingDate > 3 && remainingDate < 7) {
                     weekAccess++;
-                } else if (monthAccess < 30) {
+                } else if (remainingDate > 7 && monthAccess < 30) {
                     monthAccess++;
                 } else {
                     beyondMonth++
