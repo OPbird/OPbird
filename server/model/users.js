@@ -121,9 +121,9 @@ module.exports = {
                 if(user.cuentas[i].id_twitter== body.idtwitter){
                     var tweet = {fecha: body.fecha,text: body.text};
                     user.cuentas[i].tweetP.push(tweet);
-                    this.add(user,function(err){
+                    user.save(function(err){
                         callback(err);
-                    })
+                    });
                 }
             }
             callback(true);
