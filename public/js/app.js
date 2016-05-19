@@ -25,6 +25,10 @@ angular.module("FinalApp",[ "ngRoute", "LocalStorageModule", "ngSanitize", "char
                 controller: "perfilCtlr",
                 templateUrl: "views/perfil.html"
             })
+            .when("/perfil/stats",{
+                controller: "perfilStatsCtrl",
+                templateUrl: "views/perfilStats.html"
+            })
             .when("/hashtags",{
                 controller: "hashtagsCtlr",
                 templateUrl: "views/hashtags.html"

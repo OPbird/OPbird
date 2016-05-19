@@ -1,8 +1,21 @@
 angular.module("FinalApp")
-    .controller('adminCtlr', function($scope, $http, $location, TokenService) {
+    .controller('adminCtlr', function($scope, $http, $location, TokenService, emailService) {
         if (!TokenService.isSession()) {
             $location.path("/home");
         }
+
+        $scope.edit = function(email) {
+            console.log(email);
+        };
+
+        $scope.info = function(email) {
+            emailService.setEmail(email);
+            $location.path("/perfil/stats");
+        };
+
+        $scope.delete = function(email) {
+            console.log(email);
+        };
 
         var datos = TokenService.getSession();
         $scope.user = datos.user;
