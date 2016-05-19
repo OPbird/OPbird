@@ -24,9 +24,9 @@ app.set('port', (process.env.PORT || config.port));
 
 app.use(compression());
 /*app.use(bodyParser({
-    uploadDir: __dirname + '/uploads',
-    keepExtensions: true
-}));*/
+ uploadDir: __dirname + '/uploads',
+ keepExtensions: true
+ }));*/
 
 app.use(methodOverride());
 
@@ -103,15 +103,11 @@ app.post("/api/short/",middleware.ensureAuthenticated,util.shortURL);
 
 /** NOT FOUND **/
 app.get('*', function(req, res){
-  res.status(404).send('<h1>Tíííííííííííííííííííío no me toques la URL o te meto!!!!!!</h1>');
+    res.status(404).send('<h1>Tíííííííííííííííííííío no me toques la URL o te meto!!!!!!</h1>');
 });
-
-//** JOBS **//
-
-
 
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+    console.log('Node app is running on port', app.get('port'));
 });
 

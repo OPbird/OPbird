@@ -11,17 +11,13 @@ module.exports = {
                 if(err) throw err;
                 else {
                     for(var i = 0;i<tweets.length;i++){
-                        if(new Date(tweets[i].fecha).getTime()<Date.now()){
-                            twitter.programmedTweet(tweets[i],function(err){
-                            });
-                        }
+                        twitter.programmedTweet(tweets[i],function(err){
+                        });
                     }
                 }
             });
         })
     }
-    
-    
 }
 
 
