@@ -39,6 +39,11 @@ module.exports = {
                 console.log(error);
                 res.send("Authentication Failed!");
             } else {
+                if (req.body.informacion == "" || req.body.informacion == null) {
+                    req.session.info = "Sin información"
+                } else {
+                    req.session.info = req.body.informacion;
+                }
                 req.session.user_id = req.body.user;
                 req.session.oauthRequestToken = oauth_token;
                 req.session.oauthRequestTokenSecret = oauth_token_secret;
@@ -64,7 +69,7 @@ module.exports = {
                     cuentaTwitter.cuenta = results.screen_name;
                     cuentaTwitter.access_token = oauth_access_token;
                     cuentaTwitter.access_token_secret = oauth_access_token_secret;
-                    cuentaTwitter.info = "Es muy chuchu chuli";
+                    cuentaTwitter.info = req.session.info;
 
                     user.addAccount(req.session.user_id, cuentaTwitter, function (err, user) {
                         console.log(user);
@@ -74,41 +79,7 @@ module.exports = {
                 }
             });
     },
-    getTimelines: function (req, res, next) {
-        console.log(req.params.access_token)
-        oauth.get( twitter.acciones.user_timeline
-            , req.params.accessToken
-            , req.params.accessTokenSecret
-            , function (e, data, result){
-                oauth.get( twitter.acciones.home_timeline
-                    , req.params.accessToken
-                    , req.params.accessTokenSecret
-                    , function (e2, data2, result2){
-                        oauth.get( twitter.acciones.mentions_timeline
-                            , req.params.accessToken
-                            , req.params.accessTokenSecret
-                            , function (e3, data3, result3){
-                                oauth.get( twitter.acciones.favorites_timeline
-                                    , req.params.accessToken
-                                    , req.params.accessTokenSecret
-                                    , function (e4, data4, result4){
-                                        oauth.get( twitter.acciones.retweets_timeline
-                                            , req.params.accessToken
-                                            , req.params.accessTokenSecret
-                                            , function (e5, data5, result5){
-                                                res.status(200).json({error:0,
-                                                    user_timeline: JSON.parse(data),
-                                                    home_timeline: JSON.parse(data2),
-                                                    mentions_timeline: JSON.parse(data3),
-                                                    favorites_timeline: JSON.parse(data4),
-                                                    retweets_timeline: JSON.parse(data5)});
-                                            });
-                                    });
-                            });
-                    });
-            });
-    },
-    getTimelines2: function(req,res,next){
+    getTimelines: function(req,res,next){
         var data,data2,data3,data4,data5;
         async.parallel({
             one: function (callback) {
@@ -137,7 +108,6 @@ module.exports = {
                 });
             }
         },function(err,results){
-            console.log(results.one);
             res.status(200).json({error:0,
                 user_timeline: JSON.parse(results.one),
                 home_timeline: JSON.parse(results.two),
