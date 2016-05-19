@@ -186,10 +186,10 @@ module.exports = {
         });
     },
     getHashtags: function(req,res,next){
-        user.getHashtags(req.body.email, function (err, hashtag) {
+        user.getHashtags(req.headers.user_id, function (err, hashtag) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             // llamada api
-            res.status(200).send({error: 0, hashtag: hashtag});
+            res.status(200).send({error: 0, hashtags: hashtag});
         });
     },
     getHashtag: function(req,res,next){

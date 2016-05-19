@@ -39,6 +39,19 @@ angular.module("FinalApp")
                 console.log("error usuario no existe");
         });
 
+
+        $http({
+            url: '/api/hashtag',
+            method: "GET",
+            headers: {'authorization': datos.token, user_id: datos.user}
+        })
+        .success(function (data) {
+
+        })
+        .error(function (data) {
+            console.log("error usuario no existe");
+        });
+
         $scope.modificarDatos = function (data) {
             $http({
                 url: '/api/user',
