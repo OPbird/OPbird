@@ -85,7 +85,7 @@ app.get("/api/stats/:user/:twitter");
 
 app.get("/admin/stats/accounts", stats.accountsStatistics);
 app.get("/admin/stats/access", stats.lastAccessStatistics);
-app.get("/admin/stats/resources");
+app.get("/admin/stats/resources", stats.resourcesStatistics);
 app.get("/admin/stats/map");
 
 /** UTILS **/

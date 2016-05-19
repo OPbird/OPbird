@@ -38,5 +38,15 @@ angular.module("FinalApp")
                 $scope.uaData = [response.data.todayAccess, response.data.threeDaysAccess, response.data.weekAccess,
                     response.data.monthAccess, response.data.beyondMonth];
             }
+        });
+        $http({
+            url: '/admin/stats/resources',
+            method: "GET"
+        }).then(function (response) {
+            if (response.error > 0) {
+            } else {
+                $scope.rLabels = ["Publicados", "Programados"];
+                $scope.rData = [response.data.total, response.data.totalProg];
+            }
         })
     });

@@ -1,21 +1,29 @@
 <div class="container-fluid">
-    <div class="col-md-4  container-fluid">
-        <div></div>
-        <h3>Altas y bajas</h3>
-        <canvas class="chart chart-doughnut"
-                chart-data="abData" chart-labels="abLabels" chart-legend="true">
-        </canvas>
+    <div class="row">
+        <div class="col-md-4  container-fluid">
+            <div></div>
+            <h3>Altas y bajas</h3>
+            <canvas class="chart chart-doughnut"
+                    chart-data="abData" chart-labels="abLabels" chart-legend="true">
+            </canvas>
+        </div>
+        <div class="col-md-4  container-fluid">
+            <h3>Afluencia de altas y bajas</h3>
+            <canvas class="chart-base" chart-type="type" chart-data="abaData" chart-labels="abaLabels"
+                    chart-legend="true" chart-series="abaSeries">
+            </canvas>
+            <button type="button" class="btn btn-primary" ng-click="change()">Cambiar</button>
+        </div>
+        <div class="col-md-4  container-fluid">
+            <h3>Últimos accesos</h3>
+            <canvas class="chart chart-polar-area" chart-data="uaData" chart-labels="uaLabels" chart-legend="true">
+            </canvas>
+        </div>
     </div>
-    <div class="col-md-4  container-fluid">
-        <h3>Afluencia de altas y bajas</h3>
-        <canvas class="chart-base" chart-type="type" chart-data="abaData" chart-labels="abaLabels"
-                chart-legend="true" chart-series="abaSeries">
-        </canvas>
-        <button type="button" class="btn btn-primary" ng-click="change()">Cambiar</button>
-    </div>
-    <div class="col-md-4  container-fluid">
-        <h3>Últimos accesos</h3>
-        <canvas class="chart chart-pie" chart-data="uaData" chart-labels="uaLabels" chart-legend="true">
-        </canvas>
+    <div class="row">
+        <div class="col-md-4  container-fluid">
+            <h3>Recursos</h3>
+            <canvas class="chart chart-doughnut" chart-data="rData" chart-labels="rLabels" chart-legend="true"></canvas>
+        </div>
     </div>
 </div>

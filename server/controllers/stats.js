@@ -91,5 +91,16 @@ module.exports = {
             res.status(200).send({error: 0, todayAccess: todayAccess, threeDaysAccess: threeDaysAccess,
                 weekAccess: weekAccess, monthAccess: monthAccess, beyondMonth: beyondMonth});
         })
+    },
+    resourcesStatistics: function (req, res) {
+        User.getUsers(function (err, users) {
+            var totalTweets = 0;
+            var totalProg = 0;
+            users.forEach(function (user) {
+                totalTweets += user.stats.ntweets;
+                totalProg += user.stats.nprog;
+            });
+            res.status(200).send({error: 0, total: totalTweets, totalProg: totalProg});
+        })
     }
 };

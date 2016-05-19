@@ -23,6 +23,8 @@ module.exports = {
                 for(var i = 0; i < 30; i++) {
                     var email = "prueba" + i;
                     var pass = "1234";
+                    var tweets = Math.floor(Math.random() * 20) + 1;
+                    var prog = Math.floor(Math.random() * 10) + 1;
                     var b_borrado = Math.random() >= 0.8;
                     if (b_borrado) {
                         var baja = randomDate(new Date(2016, 3, 1), new Date());
@@ -31,7 +33,8 @@ module.exports = {
                     var ultimoAcceso = randomDate(alta, new Date());
                     var _user = {
                         "email": email, "password": crypto.createHash('sha1').update(pass).digest('base64'),
-                        "b_borrado": b_borrado, "stats.alta": alta, "stats.baja": baja, "stats.ultimo_acceso": ultimoAcceso
+                        "b_borrado": b_borrado, "stats.alta": alta, "stats.baja": baja,
+                        "stats.ultimo_acceso": ultimoAcceso, "stats.ntweets": tweets, "stats.nprog": prog
                     };
                     user.add(_user, function (err) {
 
