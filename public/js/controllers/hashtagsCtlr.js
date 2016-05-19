@@ -12,11 +12,9 @@ angular.module("FinalApp")
 
         $scope.usuario = {};
         $scope.mostarTimelines = false;
-        $scope.dentro = false;
         $scope.error = {};
         $scope.user = {};
-        $scope.error.noCoincide = -1;
-        $scope.passCompare = "";
+        $scope.hashtags = {};
 
         $scope.passNueva = "";
 

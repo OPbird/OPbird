@@ -121,12 +121,12 @@ module.exports = {
                 if(user.cuentas[i].id_twitter== body.idtwitter){
                     var tweet = {fecha: body.fecha,text: body.text};
                     user.cuentas[i].tweetP.push(tweet);
-                    user.save(function(err){
+                    var newUser = new User(user)
+                    newUser.save(user,function(err){
                         callback(err);
                     });
                 }
             }
-            callback(true);
         });
     },
     
