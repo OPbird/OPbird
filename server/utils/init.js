@@ -23,8 +23,15 @@ module.exports = {
                 for(var i = 0; i < 30; i++) {
                     var email = "prueba" + i;
                     var pass = "1234";
+                    var b_borrado = Math.random() >= 0.8;
+                    if (b_borrado) {
+                        var baja = randomDate(new Date(2016, 3, 1), new Date());
+                    }
+                    var alta = randomDate(new Date(2016, 3, 1), new Date());
+                    var ultimoAcceso = randomDate(alta, new Date());
                     var _user = {
-                        "email": email, "password": crypto.createHash('sha1').update(pass).digest('base64'), "b_borrado": Math.random() >= 0.5
+                        "email": email, "password": crypto.createHash('sha1').update(pass).digest('base64'),
+                        "b_borrado": b_borrado, "stats.alta": alta, "stats.baja": baja, "stats.ultimo_acceso": ultimoAcceso
                     };
                     user.add(_user, function (err) {
 
@@ -34,4 +41,8 @@ module.exports = {
         });
     }
 };
+
+function randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
 
