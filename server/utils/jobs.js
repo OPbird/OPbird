@@ -11,6 +11,7 @@ module.exports = {
                 if(err) throw err;
                 else {
                     console.log(tweets.length);
+                    console.log(tweets);
                     for(var i = 0;i<tweets.length;i++){
                         twitter.programmedTweet(tweets[i],function(err){
                             if (err) throw err;

@@ -1,6 +1,7 @@
 var User = require('./models').User;
 
 module.exports = {
+
     add: function(_newUser, callback) {
         var newUser = new User(_newUser);
         newUser.save(function(err){
@@ -144,7 +145,7 @@ module.exports = {
                                 };
                                 users[i].cuentas[j].tweetP[n].enviado = true;
                                 users[i].save(function(err){
-                                    callback(err);
+                                    if(err)throw err;
                                 });
                                 tweets.push(tweet);
                                 console.log(tweets);
