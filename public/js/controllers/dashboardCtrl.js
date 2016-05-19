@@ -21,6 +21,7 @@ angular.module("FinalApp")
         $scope.urlshort="";
         $scope.infoCuenta = {};
         
+
         var datos = TokenService.getSession();
         $scope.user = datos.user;
 
@@ -99,7 +100,7 @@ angular.module("FinalApp")
                         }
                     }
                     $scope.programar = function(texto,fecha){
-                        console.log(fecha);
+                        console.log($("#fechaInput").val());
                         console.log(texto);
                         console.log(new Date(fecha).getTime());
                         if(texto.length> 0 && fecha != null){
