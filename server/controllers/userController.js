@@ -20,11 +20,14 @@ module.exports = {
             if (_user != null) {
                 if (_user.b_borrado) return res.status(400).send({error: 2, mensaje: "Cuenta Borrada"});
                 else {
-                    if (_user.password == pass) return res.status(200).send({
-                        error: 0,token: service.createToken(_user), user: req.body.email, admin: _user.admin
-                    });
-                    else {
+                    if (_user.password == pass) {
                         _user.stats.ultimo_acceso = Date.now();
+                        return res.status(200).send({
+                            error: 0,token: service.createToken(_user), user: req.body.email, admin: _user.admin
+                        });
+                    }
+                    else {
+
                         user.add(_user, function (err) {
                             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
                             return res.status(400).send({error: 1, mensaje: "Email o contrasena incorrecta"});

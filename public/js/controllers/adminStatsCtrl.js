@@ -10,10 +10,8 @@ angular.module("FinalApp")
         }).then(function (response) {
             if (response.error > 0) {
             } else {
-                $scope.labels = ["Altas", "Bajas"];
-                $scope.data = [
-                    response.data.ups, response.data.downs
-                ];
+                $scope.pieLabels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+                $scope.pieData = [300, 500, 100];
             }
         });
         //Metodo GET
@@ -23,11 +21,8 @@ angular.module("FinalApp")
         }).then(function (response) {
             if (response.error > 0) {
             } else {
-                console.log("TODAY: " + response.data.todayAccess);
-                console.log("THREE DAYS: "  + response.data.threeDaysAccess);
-                console.log("WEEK: "  + response.data.weekAccess);
-                console.log("MONTH: "  + response.data.monthAccess);
-                console.log("BEYOND MONTH: "  + response.data.beyondMonth);
+                //$scope.doughnutLabels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+                //$scope.doughnutData = [300, 500, 100];
             }
         })
     });
