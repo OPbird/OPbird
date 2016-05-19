@@ -175,7 +175,7 @@ module.exports = {
                 }else{
                     console.log('Twitter status updated.\n');
                     console.log(response2+'\n');
-                    res.status(200).json({error: 0, tweet: data})
+                    res.status(200).json({error: 0, tweet: data});
                 }
             });
     },
@@ -183,6 +183,12 @@ module.exports = {
         user.getProgrammed(function(err,tweets){
             console.log(tweets);
             callback(err,tweets);
+        });
+    },
+    addProgrammed : function(req,res,next) {
+        user.addProgrammed(req.body, function (err) {
+            if(err) return res.status(500).send({error: 3, mensaje: "Server Error"});
+            res.status(200).send({error: 0, mensaje:"ok"});
         });
     },
     getHashtags: function(req,res,next){

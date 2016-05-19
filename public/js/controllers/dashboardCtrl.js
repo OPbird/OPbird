@@ -105,7 +105,20 @@ angular.module("FinalApp")
                         console.log(texto);
                         console.log(new Date(fecha).getTime());
                         if(texto.length> 0 && fecha != null){
-                            
+                            $http({
+                                url: '/api/twitterAccount/tweet',
+                                method: "POST",
+                                data: {user: datos.user,
+                                        idtwitter: c.id_twitter,
+                                        text: texto,
+                                        fecha: new Date(fecha).getTime()},
+                                headers: {'authorization': datos.token, user_id: datos.user}
+                            }).success(function (response) {
+                                $scope.textoTweet = "";
+                                $scope.timeDate="";
+                            }).error(function (data) {
+                                console.error("Murio fue terrible")
+                            });
                         }
                     }
                     

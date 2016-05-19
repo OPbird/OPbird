@@ -67,6 +67,8 @@ app.delete("/api/twitterAccount/:id/:id_twitter",middleware.ensureAuthenticated,
 app.get("/api/twitterAccount/:user/:twitter",middleware.ensureAuthenticated, twitterController.getAccount);//devolver cosas de una cuenta
 //publica tweet, no se si usar el mismo para los programados tambien
 app.post("/api/twitterAccount/tweet",middleware.ensureAuthenticated, twitterController.tweet);
+app.post("/api/twitterAccount/prog",middleware.ensureAuthenticated,twitterController.addProgrammed);
+
 
 
 app.get("/api/hashtag",middleware.ensureAuthenticated, twitterController.getHashtags);

@@ -115,5 +115,19 @@ module.exports = {
             callback(err,tweets);
         });
     },
+    addProgrammed: function(body,callback){
+        this.getUser(body.user,function(err,user) {
+            for (var i = 0; i < (user.cuentas.length); i++) {                
+                if(user.cuentas[i].id_twitter== body.idtwitter){
+                    var tweet = {fecha: body.fecha,text: body.text};
+                    user.cuentas[i].tweetP.push(tweet);
+                    this.add(user,function(err){
+                        callback(err);
+                    })
+                }
+            }
+            callback(true);
+        });
+    },
     
 }
