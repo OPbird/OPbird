@@ -1,5 +1,5 @@
 angular.module("FinalApp")
-    .controller('perfilCtlr', function($scope, $http, $location, TokenService, $sce){
+    .controller('perfilCtlr', function($scope, $http, $location, TokenService){
         //TokenService.cerrarSesion();
         if (!TokenService.isSession()) {
             $location.path("/home");
@@ -12,11 +12,21 @@ angular.module("FinalApp")
         $scope.mostarTimelines = false;
         $scope.dentro = false;
         $scope.error = {};
-        $scope.cuentas={};
+        $scope.user = {};
 
         var datos = TokenService.getSession();
-        $scope.user = datos.user;
-
-
+        $scope.user_id = datos.user;
+        
+        $http({
+            url: '/api/user/' + datos.user,
+            method: "GET",
+            headers: {'authorization': datos.token, user_id: datos.user}
+        })
+        .success(function (data) {
+            $scope.user = data.user;
+        })
+        .error(function (data) {
+                console.log("error usuario no existe");
+        });
 
     })

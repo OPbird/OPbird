@@ -28,4 +28,7 @@ angular.module("FinalApp")
             }
             return $sce.trustAsHtml(texto);
         }
-    });
+    })
+    .run(function(editableOptions) {
+        editableOptions.theme = 'bs3';
+    });;
