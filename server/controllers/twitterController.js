@@ -181,7 +181,7 @@ module.exports = {
     },
     getProgrammed : function(callback){
         user.getProgrammed(function(err,tweets){
-            console.log(tweets);
+            //console.log(tweets);
             callback(err,tweets);
         });
     },
