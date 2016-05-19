@@ -4,8 +4,8 @@ var twitter = require("../controllers/twitterController");
 
 module.exports = {
     programmedTweets: function(){
-        cron.schedule('* */1 * * * *', function(){
-            console.log('Hola hola hola');
+        cron.schedule('* */1 * * *', function(){
+            
         })
     }
     

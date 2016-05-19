@@ -20,7 +20,8 @@ var userSchema = new Schema({
         alta:{type: Date, default: Date.now()},
         baja:{type: Date},
         ultimo_acceso:{type: Date, default: Date.now()},
-        ntweets:{type: Number, default: 0}
+        ntweets:{type: Number, default: 0},
+        nprog:{type:Number,default:0}
     },
     cuentas: [
         {
