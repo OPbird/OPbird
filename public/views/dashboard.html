@@ -29,7 +29,7 @@
                         <td ng-click="tweets(c)" style="cursor: pointer">{{c.cuenta}}</td>
                         <td ng-click="tweets(c)" style="cursor: pointer">{{c.info}}</td>
                         <td ng-click="borrarCuenta(c)" style="cursor: help"  ng-confirm-click="Está seguro de borrar la cuenta de twitter de {{c.cuenta}}?">
-                            <span class="glyphicon glyphicon-trash text-center"   aria-hidden="true"></span>
+                            <span class="btn btn-danger btn-xs glyphicon glyphicon-trash text-center"   aria-hidden="true"></span>
                         </td>
                     </tr>
                 </table>
@@ -76,7 +76,7 @@
                         <div class="row container-fluid">
                             <div class="form-group">
                                 <div class='input-group date' id='datetimepicker1'>
-                                    <input type='text' class="form-control" />
+                                    <input type='text' class="form-control" ng-model="timeDate"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -90,7 +90,10 @@
                         </div>
                     <!--</div>-->
                     <div class="row">
+                        <div class="form-group">
                         <button type="button"class="btn btn-primary col-md-offset-8" ng-click="tweeetear(textoTweet);">Tweet</button>
+                        <button type="button"class="btn btn-info col-md-offset-8" ng-click="programar(textoTweet,timeDate);">Programar</button>
+                        </div>
                     </div>
                 </div>
             </div>
