@@ -17,7 +17,10 @@ angular.module("FinalApp")
         $scope.tuitasFavorites = {};
         $scope.tuitasRetweets = {};
         $scope.textoTweet = "";
+        $scope.url="";
+        $scope.urlshort="";
         $scope.infoCuenta = {};
+        
         var datos = TokenService.getSession();
         $scope.user = datos.user;
 
@@ -99,6 +102,21 @@ angular.module("FinalApp")
                 .error(function (data) {
                     console.log(data);
                 });
+        }
+
+        $scope.short = function(data){
+            if(data.length>0){
+                console.log(data);
+                $http({
+                    url: '/api/short',
+                    method: "POST",
+                    data: {url: data},
+                    headers: {'authorization': datos.token, user_id: datos.user}
+                }).success(function (response) {
+                    $scope.shortUrl=response.url;
+                    $scope.url = "";
+                });
+            }
         }
 
         $scope.borrarCuenta = function (data) {
