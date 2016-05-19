@@ -1,76 +1,7 @@
 <div class="container-fluid">
     <div class="col-md-4  container-fluid">
         <h3>Altas y bajas</h3>
-        <canvas id="upsDowns"></canvas>
-        <script>
-            $(document).ready(function() {
-                var config = {
-                    type: 'pie',
-                    data: {
-                        datasets: [{
-                            data: [
-                                20,
-                                25
-                            ],
-                            backgroundColor: [
-                                "#69f0ae",
-                                "#ff5252"
-                            ]
-                        }],
-                        labels: [
-                            "Altas",
-                            "Bajas"
-                        ]
-                    },
-                    options: {
-                        responsive: true
-                    }
-                };
-                var ctx = document.getElementById("upsDowns").getContext("2d");
-                new Chart(ctx, config);
-            });
-        </script>
-    </div>
-    <div class="col-md-4  container-fluid">
-        <h3>Últimos accesos</h3>
-        <canvas id="lastAccess"></canvas>
-        <script>
-            $(document).ready(function() {
-                var config = {
-                    type: 'doughnut',
-                    data: {
-                        datasets: [{
-                            data: [
-                                127,
-                                254,
-                                288,
-                                455,
-                                200
-                            ],
-                            backgroundColor: [
-                                "#FF6384",
-                                "#4BC0C0",
-                                "#FFCE56",
-                                "#E7E9ED",
-                                "#36A2EB"
-                            ],
-                            label: 'My dataset' // for legend
-                        }],
-                        labels: [
-                            "Hoy",
-                            "Últimos 3 días",
-                            "Última semana",
-                            "Último mes",
-                            "Más de un mes"
-                        ]
-                    },
-                    options: {
-                        responsive: true
-                    }
-                };
-                var ctx = document.getElementById("lastAccess").getContext("2d");
-                new Chart(ctx, config);
-            });
-        </script>
+        <canvas id="line" class="chart chart-pie" chart-data="data" chart-labels="labels"
+                 chart-legend="true" ></canvas>
     </div>
 </div>
