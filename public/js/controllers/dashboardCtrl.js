@@ -4,7 +4,10 @@ angular.module("FinalApp")
         //TokenService.cerrarSesion();
         if (!TokenService.isSession()) {
             $location.path("/home");
-        }        
+        }
+
+        console.log(Date.now());
+        console.log(new Date(Date.now()).getTime());
 
         $scope.usuario = {};
         $scope.mostarTimelines = false;

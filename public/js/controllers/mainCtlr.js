@@ -3,7 +3,7 @@ var addr = "http://localhost:8080";
 angular.module("FinalApp")
     .controller('mainCtlr', function($scope, $http, $location, TokenService){
         $scope.error = {};
-
+        
         if (TokenService.isSession) {
             var datos = TokenService.getSession();
             $scope.user = datos.user;
