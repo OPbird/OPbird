@@ -49,7 +49,6 @@ module.exports = {
                 req.session.user_id = req.body.user;
                 req.session.oauthRequestToken = oauth_token;
                 req.session.oauthRequestTokenSecret = oauth_token_secret;
-                console.log(req.session.oauthRequestToken + "  - ---  - " + req.session.oauthRequestTokenSecret)
                 res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' + oauth_token)
             }
         });
@@ -61,11 +60,8 @@ module.exports = {
                     console.log(error);
                     res.send("Authentication Failure!");
                 } else {
-                    console.log("Email user " + req.session.user_id)
-                    console.log("Access Token: " + oauth_access_token + " Access Token Secret: " + oauth_access_token_secret)
                     req.session.access_token = oauth_access_token;
                     req.session.access_token_secret = oauth_access_token_secret;
-                    console.log(results, req.session.oauth);
                     var cuentaTwitter = {}
                     cuentaTwitter.id_twitter = results.user_id;
                     cuentaTwitter.cuenta = results.screen_name;
@@ -82,7 +78,6 @@ module.exports = {
             });
     },
     getTimelinesHashtag: function(req,res,next){
-        //console.log(req.params);
         async.parallel({
             one: function (callback) {
                 oauth.get(twitter.acciones.hashtags + "?q=%23" + req.params.hashtag, req.params.accessToken, req.params.accessTokenSecret, function (e, res, result) {
@@ -150,7 +145,6 @@ module.exports = {
         });
     },
     getAccounts:function(req,res,next){
-        console.log(req.params);
         user.getUser(req.params.user, function (err,data) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (data != null) return res.status(200).send({error:0, cuentas: data.cuentas});
@@ -165,7 +159,6 @@ module.exports = {
 
     },
     tweet:function(req,res,next){
-        console.log(req.body.text);
         oauth.post(twitter.acciones.tweet,
             req.body.access_token, req.body.access_token_secret, {status: req.body.text},
             function (error, data, response2) {
@@ -197,7 +190,6 @@ module.exports = {
     },
     getProgrammed : function(callback){
         user.getProgrammed(function(err,tweets){
-            //console.log(tweets);
             callback(err,tweets);
         });
     },
