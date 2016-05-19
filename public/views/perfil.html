@@ -26,14 +26,19 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>
-                        Información cuenta seleccionada
+                        Información perfil
                     </h4>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
-                            <h2>{{infoCuenta.screen_name}}</h2>
-                            <p><strong>Descripción: </strong> {{infoCuenta.description}}</p>
+                            <h3>
+                                <div>
+                                    <a href="#" editable-text="user.nombre">{{user.nombre}}</a>
+                                    <a href="#" editable-text="user.apellidos">{{user.apellidos}}</a>
+                                </div>
+                            </h3>
+                            <p><strong>Email: </strong> {{user.email}}</p>
                         </div><!--/col-->
                         <div class="col-xs-12 col-sm-6">
                             <div class="row">

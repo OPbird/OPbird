@@ -11,7 +11,8 @@
     "angular-sanitize": "^1.5.5",
     "eonasdan-bootstrap-datetimepicker": "^4.17.37",
     "jQuery-Collapse": "^1.1.2",
-    "angular-chart.js": "^0.10.2"
+    "angular-chart.js": "^0.10.2",
+    "angular-xeditable": "^0.1.12"
   },
   "resolutions": {
     "jquery": "~2.2.3"

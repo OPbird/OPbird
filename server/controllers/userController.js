@@ -60,7 +60,7 @@ module.exports = {
     },
 
     getUser: function(req,res,next){
-        user.getUser(req.body.email,function (err,data) {
+        user.getUser(req.params.id,function (err,data) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (data != null){
                 data.password = null;
