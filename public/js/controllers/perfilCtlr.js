@@ -61,7 +61,25 @@ angular.module("FinalApp")
                 console.log(data);
             });
 
-        }
+        };
+
+        $scope.delete = function () {
+            $http({
+                url: '/api/user/',
+                method: "DELETE",
+                headers: {
+                    'authorization': datos.token, user_id: datos.user,
+                    "Content-Type": "application/json;charset=utf-8"
+                },
+                data: {email: datos.user}
+            }).then(function (response) {
+                if (response.error > 0) {
+                } else {
+                    TokenService.cerrarSesion();
+                    $location.path("/");
+                }
+            });
+        };
 
         $scope.chagePass = function (data) {
             if ($scope.error.noCoincide == -1 || $scope.error.noCoincide == 1) {
