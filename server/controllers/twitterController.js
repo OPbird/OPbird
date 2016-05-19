@@ -81,6 +81,19 @@ module.exports = {
                 }
             });
     },
+    getTimelinesHashtag: function(req,res,next){
+        //console.log(req.params);
+        async.parallel({
+            one: function (callback) {
+                oauth.get(twitter.acciones.hashtags + "?q=%23" + req.params.hashtag, req.params.accessToken, req.params.accessTokenSecret, function (e, res, result) {
+                    callback(null,res);
+                });
+            }
+        },function(err,results){
+            res.status(200).json({error:0,
+                hashahaha: JSON.parse(results.one)});
+        });
+    },
     getTimelines: function(req,res,next){
         var data,data2,data3,data4,data5;
         async.parallel({

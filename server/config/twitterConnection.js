@@ -22,6 +22,7 @@ module.exports = {
         home_timeline: "https://api.twitter.com/1.1/statuses/home_timeline.json",
         favorites_timeline: "https://api.twitter.com/1.1/favorites/list.json",
         retweets_timeline: "https://api.twitter.com/1.1/statuses/retweets_of_me.json",
-        tweet: "https://api.twitter.com/1.1/statuses/update.json"
+        tweet: "https://api.twitter.com/1.1/statuses/update.json",
+        hashtags: "https://api.twitter.com/1.1/search/tweets.json"
     }
 }
