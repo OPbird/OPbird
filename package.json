@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Aplicación de twitter",
   "main": "main.js",
+  "start": "main.js",
   "scripts": {
     "start": "node main.js",
     "test": "node_modules/.bin/mocha",
