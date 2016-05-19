@@ -99,12 +99,13 @@ angular.module("FinalApp")
                             });
                         }
                     }
-                    $scope.programar = function(texto,fecha){
-                        console.log($("#fechaInput").val());
+                    $scope.programar = function(texto){
+                        var fecha = $("#fechaInput").val();
+                        console.log(fecha);
                         console.log(texto);
                         console.log(new Date(fecha).getTime());
                         if(texto.length> 0 && fecha != null){
-
+                            
                         }
                     }
                     
