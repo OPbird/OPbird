@@ -9,7 +9,16 @@ module.exports = {
             twitter.getProgrammed(function (err,tweets) {
                 if(err) throw err;
                 else {
-                    //console.log(tweets);
+                    for(var i = 0;i<tweets.length;i++){
+                        console.log(tweets[i]);
+                        if(new Date(tweets[i].fecha).getTime()<Date.now()){
+                            twitter.programmedTweet(tweets[i],function(err){
+                                
+                            });
+                            //borrar tweet
+                        }
+                    }
+                    console.log(tweets.length);
                 }
             });
         })

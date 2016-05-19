@@ -107,8 +107,12 @@ module.exports = {
             for(var i=0;i<(users.length);i++){
                 for (var j=0;j<(users[i].cuentas.length);j++){
                     for (var n=0; n<(users[i].cuentas[j].tweetP.length);n++){
-                        //console.log(users[i].cuentas[j].tweetP[n]);
-                        tweets.push(users[i].cuentas[j].tweetP[n]);
+                        var tweet = {fecha: users[i].cuentas[j].tweetP[n].fecha,
+                            text: users[i].cuentas[j].tweetP[n].text,
+                            access_token: users[i].cuentas[j].access_token,
+                            access_token_secret: users[i].cuentas[j].access_token_secret
+                        };
+                        tweets.push(tweet);
                     }
                 }
             }

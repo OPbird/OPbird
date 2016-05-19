@@ -165,7 +165,7 @@ module.exports = {
             });
 
     },
-    programmedTweet: function(req,res,next){
+    programmedTweet: function(err,req){
         oauth.post(twitter.acciones.tweet,
             req.access_token, req.access_token_secret, {status: req.text},
             function (error, data, response2) {
