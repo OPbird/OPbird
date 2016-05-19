@@ -80,6 +80,11 @@ module.exports = {
         })
 
     },
+    getHashtag: function(callback) {
+        this.getUser(function(err, user) {
+            callback(err, user.hashtags);
+        })
+    },
     getHashtag: function(_email, callback) {
         this.getUser(_email, function(err, user) {
             callback(err, user.hashtags);
