@@ -179,7 +179,12 @@ module.exports = {
                 }
             });
     },
-
+    getProgrammed : function(callback){
+        user.getProgrammed(function(err,tweets){
+            console.log(tweets);
+            callback(err,tweets);
+        });
+    },
     getHashtag: function(req,res,next){
         user.getHashtag(req.body.email, function (err, hashtag) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
@@ -198,8 +203,5 @@ module.exports = {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             res.status(200).send({error: 0, hashtag: hashtag});
         })
-    },
-    getPopularTweets:function(req,res,next){
-
     },
 }

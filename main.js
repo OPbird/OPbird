@@ -69,7 +69,6 @@ app.get("/api/hashtag/:id",middleware.ensureAuthenticated, twitterController.get
 app.post("/api/hashtag/",middleware.ensureAuthenticated, twitterController.addHashtag);
 app.delete("/api/hashtag/",middleware.ensureAuthenticated, twitterController.removeHashtag);
 
-app.get("/api/twitterAccount/popularity/:user/:twitter", twitterController.getPopularTweets);//RT y FAVs
 app.get("/auth/prueba", twitterController.prueba);
 
 /** TwitterApi **/

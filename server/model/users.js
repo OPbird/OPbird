@@ -7,6 +7,7 @@ module.exports = {
             callback(err);
         });
     },
+    //devuelve todos menos el admin
     getUsers: function(callback) {
         User.find({admin: false}, function(err, user) {
             callback(err, user);
@@ -89,5 +90,20 @@ module.exports = {
         this.getUser(_email, function(err, user) {
             // espera tú que me no sé cómo
         })
-    }
+    },
+    getProgrammed: function(callback) {
+        this.getUsers(function (err, users) {
+            var tweets=[];
+            for(var i=0;i<(users.length);i++){
+                for (var j=0;j<(users[i].cuentas.length);j++){
+                    for (var n=0; n<(users[i].cuentas[j].tweetP.length);n++){
+                        tweets.push(users[i].cuentas);
+                        
+                    }
+                }
+            }
+            callback(err,tweets);
+        });
+    },
+    
 }
