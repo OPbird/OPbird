@@ -134,6 +134,10 @@ module.exports = {
         });
     },
     removeAccount:function(req,res,next){
+        user.removeAccount(req.params.id, req.params.id_twitter, function (err, data) {
+            if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
+            else return res.status(200).send({error:0, cuentas: "Oka"});
+        })
 
     },
     tweet:function(req,res,next){

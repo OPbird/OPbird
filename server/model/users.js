@@ -58,6 +58,22 @@ module.exports = {
             callback(err, user);
         });
     },
+    removeAccount: function (_email, _account, callback) {
+        var position = -1;
+        this.getUser(_email, function (err, user) {
+            for (var i = 0; i < user.cuentas.length; i++) {
+                if (user.cuentas[i].id_twitter == _account) {
+                    position = i;
+                }
+            }
+            if (position >= 0) {
+                user.cuentas.splice(position, 1);
+                user.save();
+            }
+            callback(err, user);
+        })
+
+    },
     getHashtag: function(_email, callback) {
         this.getUser(_email, function(err, user) {
             callback(err, user.hashtags);

@@ -22,8 +22,7 @@ angular.module("FinalApp")
             var texto = "";
             for (var i = 0; i < res.length; i++) {
                 if(res[i].match(urlPattern)) {
-                    res[i] = "<a target='_blank' href='" + res[i] + "'>" + res[i] + "</a>"
-                    console.log(res[i]);
+                    res[i] = "<a target='_blank' href='" + res[i] + "'>" + res[i] + "</a>";
                 }
                 texto += res[i] + " ";
             }
