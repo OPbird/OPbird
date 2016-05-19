@@ -97,12 +97,14 @@ angular.module("FinalApp")
                                 headers: {'authorization': datos.token, user_id: datos.user}
                             }).success(function (response) {
                                $scope.textoTweet = "";
+                            }).error(function (data) {
+                                console.error("Cuidado con los autómatas")
                             });
                         }
                     }
                 })
                 .error(function (data) {
-                    console.log(data);
+                    console.error("Cuidado con los autómatas")
                 });
         }
 

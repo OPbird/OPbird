@@ -39,6 +39,11 @@ module.exports = {
                 console.log(error);
                 res.send("Authentication Failed!");
             } else {
+                if (req.body.informacion == "" || req.body.informacion == null) {
+                    req.session.info = "Sin información"
+                } else {
+                    req.session.info = req.body.informacion;
+                }
                 req.session.user_id = req.body.user;
                 req.session.oauthRequestToken = oauth_token;
                 req.session.oauthRequestTokenSecret = oauth_token_secret;
@@ -64,7 +69,7 @@ module.exports = {
                     cuentaTwitter.cuenta = results.screen_name;
                     cuentaTwitter.access_token = oauth_access_token;
                     cuentaTwitter.access_token_secret = oauth_access_token_secret;
-                    cuentaTwitter.info = "Es muy chuchu chuli";
+                    cuentaTwitter.info = req.session.info;
 
                     user.addAccount(req.session.user_id, cuentaTwitter, function (err, user) {
                         console.log(user);
@@ -145,6 +150,7 @@ module.exports = {
 
     },
     tweet:function(req,res,next){
+        console.log(req.body.text);
         oauth.post(twitter.acciones.tweet,
             req.body.access_token, req.body.access_token_secret, {status: req.body.text},
             function (error, data, response2) {
