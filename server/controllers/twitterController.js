@@ -7,7 +7,8 @@
  */
 var crypto = require('crypto'),
     oauth = require('oauth'),
-    twitter = require('../config/twitterConnection');
+    async = require('async'),
+    twitter = require('../config/twitterConnection'),
     user = require('../model/users');
 
 var OAuth = require('oauth').OAuth,
@@ -48,30 +49,30 @@ module.exports = {
     },
     callbackOauth:function(req, res, next) {
         oauth.getOAuthAccessToken(req.session.oauthRequestToken, req.session.oauthRequestTokenSecret, req.query.oauth_verifier,
-        function(error, oauth_access_token, oauth_access_token_secret, results) {
-            if (error) {
-                console.log(error);
-                res.send("Authentication Failure!");
-            } else {
-                console.log("Email user " + req.session.user_id)
-                console.log("Access Token: " + oauth_access_token + " Access Token Secret: " + oauth_access_token_secret)
-                req.session.access_token = oauth_access_token;
-                req.session.access_token_secret = oauth_access_token_secret;
-                console.log(results, req.session.oauth);
-                var cuentaTwitter = {}
-                cuentaTwitter.id_twitter = results.user_id;
-                cuentaTwitter.cuenta = results.screen_name;
-                cuentaTwitter.access_token = oauth_access_token;
-                cuentaTwitter.access_token_secret = oauth_access_token_secret;
-                cuentaTwitter.info = "Es muy chuchu chuli";
+            function(error, oauth_access_token, oauth_access_token_secret, results) {
+                if (error) {
+                    console.log(error);
+                    res.send("Authentication Failure!");
+                } else {
+                    console.log("Email user " + req.session.user_id)
+                    console.log("Access Token: " + oauth_access_token + " Access Token Secret: " + oauth_access_token_secret)
+                    req.session.access_token = oauth_access_token;
+                    req.session.access_token_secret = oauth_access_token_secret;
+                    console.log(results, req.session.oauth);
+                    var cuentaTwitter = {}
+                    cuentaTwitter.id_twitter = results.user_id;
+                    cuentaTwitter.cuenta = results.screen_name;
+                    cuentaTwitter.access_token = oauth_access_token;
+                    cuentaTwitter.access_token_secret = oauth_access_token_secret;
+                    cuentaTwitter.info = "Es muy chuchu chuli";
 
-                user.addAccount(req.session.user_id, cuentaTwitter, function (err, user) {
-                    console.log(user);
-                })
+                    user.addAccount(req.session.user_id, cuentaTwitter, function (err, user) {
+                        console.log(user);
+                    })
 
-                res.redirect('/'); // You might actually want to redirect!
-            }
-        });
+                    res.redirect('/'); // You might actually want to redirect!
+                }
+            });
     },
     getTimelines: function (req, res, next) {
         console.log(req.params.access_token)
@@ -106,6 +107,44 @@ module.exports = {
                             });
                     });
             });
+    },
+    getTimelines2: function(req,res,next){
+        var data,data2,data3,data4,data5;
+        async.parallel({
+            one: function (callback) {
+                oauth.get(twitter.acciones.user_timeline, req.params.accessToken, req.params.accessTokenSecret, function (e, res, result) {
+                    callback(null,res);
+                });
+            },
+            two: function (callback) {
+                oauth.get(twitter.acciones.home_timeline, req.params.accessToken, req.params.accessTokenSecret, function (e, res, result) {
+                    callback(null,res);
+                });
+            },
+            three: function (callback) {
+                oauth.get(twitter.acciones.mentions_timeline, req.params.accessToken, req.params.accessTokenSecret, function (e, res, result) {
+                    callback(null,res);
+                });
+            },
+            four: function (callback) {
+                oauth.get(twitter.acciones.favorites_timeline, req.params.accessToken, req.params.accessTokenSecret, function (e, res, result) {
+                    callback(null,res);
+                });
+            },
+            five: function (callback) {
+                oauth.get(twitter.acciones.retweets_timeline, req.params.accessToken, req.params.accessTokenSecret, function (e, res, result) {
+                    callback(null,res);
+                });
+            }
+        },function(err,results){
+            console.log(results.one);
+            res.status(200).json({error:0,
+                user_timeline: JSON.parse(results.one),
+                home_timeline: JSON.parse(results.two),
+                mentions_timeline: JSON.parse(results.three),
+                favorites_timeline: JSON.parse(results.four),
+                retweets_timeline: JSON.parse(results.five)});
+        });
     },
     addAccount:function(req,res,next){
 

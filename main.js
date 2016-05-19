@@ -73,7 +73,7 @@ app.get("/auth/prueba", twitterController.prueba);
 /** TwitterApi **/
 app.post("/auth/twitter", twitterController.getOauth);
 app.get("/auth/twitter/callback", twitterController.callbackOauth);
-app.get("/api/twitter/timelines/:accessToken/:accessTokenSecret/:twitter", middleware.ensureAuthenticated, twitterController.getTimelines);
+app.get("/api/twitter/timelines/:accessToken/:accessTokenSecret/:twitter", middleware.ensureAuthenticated, twitterController.getTimelines2);
 
 /** Stats **/
 app.get("/api/stats/:user");
