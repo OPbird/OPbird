@@ -74,7 +74,7 @@ app.post("/api/twitterAccount/prog",middleware.ensureAuthenticated,twitterContro
 app.get("/api/hashtag",middleware.ensureAuthenticated, twitterController.getHashtags);
 app.get("/api/hashtag/:id",middleware.ensureAuthenticated, twitterController.getHashtag);
 app.post("/api/hashtag/",middleware.ensureAuthenticated, twitterController.addHashtag);
-app.delete("/api/hashtag/",middleware.ensureAuthenticated, twitterController.removeHashtag);
+app.delete("/api/hashtag/:id/:hashtag",middleware.ensureAuthenticated, twitterController.removeHashtag);
 
 app.get("/auth/prueba", twitterController.prueba);
 

@@ -91,14 +91,39 @@ module.exports = {
         })
     },
     addHashtag: function(_email, hashtag, callback) {
+        var intro = true;
         this.getUser(_email, function(err, user) {
-            user.hashtags.push(hashtag);
-            callback(err);
+            for (var i = 0; i < user.hashtags.length; i++) {
+                //console.log(user.hashtags[i] + " " + hashtag);
+                if (user.hashtags[i] == hashtag) {
+                    intro = false;
+                }
+            }
+            if (intro) {
+                user.hashtags.push(hashtag);
+                var newUser = new User(user);
+                newUser.save(user,function(err){
+                    callback(err, user.hashtags);
+                });
+            } else {
+                callback(true, user.hashtags);
+            }
+
         })
     },
     removeHashtag: function(_email, hashtag, callback) {
-        this.getUser(_email, function(err, user) {
-            // espera tú que me no sé cómo
+        var position = -1;
+        this.getUser(_email, function (err, user) {
+            for (var i = 0; i < user.hashtags.length; i++) {
+                if (user.hashtags[i] == hashtag) {
+                    position = i;
+                }
+            }
+            if (position >= 0) {
+                user.hashtags.splice(position, 1);
+                user.save();
+            }
+            callback(err, user.hashtags);
         })
     },
     getProgrammed: function(callback) {

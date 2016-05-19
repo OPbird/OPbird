@@ -44,7 +44,7 @@ angular.module("FinalApp")
             headers: {'authorization': datos.token, user_id: datos.user}
         })
         .success(function (data) {
-
+            $scope.hashtags = data.hashtags;
         })
         .error(function (data) {
             console.log("error usuario no existe");
@@ -101,14 +101,20 @@ angular.module("FinalApp")
             }
         }
 
-        $scope.comparePasswords = function (data) {
+    $scope.addHashTag = function (hashtag) {
+        console.log(hashtag.indexOf("#"))
+        if (hashtag.length > 0) {
+            if(hashtag.indexOf("#") == 0) {
+                hashtag = hashtag.substr(1,hashtag.length - 1);
+            }
             $http({
-                url: '/api/user/comparePasswords',
+                url: '/api/hashtag',
                 method: "post",
-                data: {pass: data},
+                data: {hashtag: hashtag},
                 headers: {'authorization': datos.token, user_id: datos.user}
             })
                 .success(function (data) {
+                    $scope.hashtags = data.hashtags;
                     console.log("las contrasenias coinciden");
                     $scope.error.noCoincide = 0;
                 })
@@ -117,6 +123,35 @@ angular.module("FinalApp")
                     console.log("las contrasenias no coinciden");
 
                 });
+        }
+        /*$http({
+            url: '/api/hashtag',
+            method: "post",
+            data: {hashtag: hashtag},
+            headers: {'authorization': datos.token, user_id: datos.user}
+        })
+            .success(function (data) {
+                $scope.hashtags = data.hashtags;
+                console.log("las contrasenias coinciden");
+                $scope.error.noCoincide = 0;
+            })
+            .error(function (data) {
+                $scope.error.noCoincide = 1;
+                console.log("las contrasenias no coinciden");
 
+            });*/
+
+        }
+
+        $scope.borrarHashtag = function (hash) {
+            $http({
+                url: '/api/hashtag/' + datos.user + '/' + hash,
+                method: "delete",
+                headers: {'authorization': datos.token, user_id: datos.user}
+            }).success(function (data) {
+                $scope.hashtags = data.hashtag;
+            }).error(function (data) {
+
+            })
         }
     })
