@@ -165,18 +165,18 @@ module.exports = {
             });
 
     },
-    programmedTweet: function(tweet,req){
+    programmedTweet: function(tweet,callback){
         console.log("req " + tweet);
         oauth.post(twitter.acciones.tweet,
-            tweet.access_token, tweet.access_token_secret, {status: tweet.text},
+            tweet.access_token, tweet.access_token_secret, {status: tweet.text+"a"},
             function (error, data, response2) {
                 if(error){
                     console.log('Error: Something is wrong.\n'+JSON.stringify(error)+'\n');
-                    //res.status(400).json({error: 1, message: "error al tweetear"})
+                    callback(error);
                 }else{
                     console.log('Twitter status updated.\n');
                     console.log(response2+'\n');
-                    //res.status(200).json({error: 0, tweet: data});
+                    callback(error);
                 }
             });
     },
