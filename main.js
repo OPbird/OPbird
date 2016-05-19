@@ -1,3 +1,12 @@
+/**
+ * Autores: Rubén Gabás Celimendiz, Alejandro Solanas Bonilla, Daniel Uroz Hinarejos
+ * NIAs: 590738, 647647, 545338
+ * Proyecto: OPbird
+ * Fichero: main.js
+ * Fecha: 19/5/2016
+ * Funcion: Modulo main del sistema, API REST con express
+ */
+
 //Modulos a cargar en el servidor
 var express = require('express'),
     bodyParser = require('body-parser'),
@@ -23,10 +32,6 @@ app.use(session({ secret: "very secret" }));
 app.set('port', (process.env.PORT || config.port));
 
 app.use(compression());
-/*app.use(bodyParser({
- uploadDir: __dirname + '/uploads',
- keepExtensions: true
- }));*/
 
 app.use(methodOverride());
 

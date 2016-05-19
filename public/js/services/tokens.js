@@ -1,3 +1,12 @@
+/**
+ * Autores: Rubén Gabás Celimendiz, Alejandro Solanas Bonilla, Daniel Uroz Hinarejos
+ * NIAs: 590738, 647647, 545338
+ * Proyecto: OPbird
+ * Fichero:
+ * Fecha: 19/5/2016
+ * Funcion:
+ */
+
 angular.module("FinalApp")
     .factory('TokenService', function(localStorageService){
         var toDoService = {};
@@ -33,7 +42,5 @@ angular.module("FinalApp")
             toDoService.updaLocalStorage();
             localStorageService.remove(toDoService.key);
         }
-
-
         return toDoService;
     })

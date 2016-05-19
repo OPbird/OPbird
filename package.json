@@ -1,6 +1,6 @@
 {
   "name": "OPbird",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Aplicación de twitter",
   "main": "main.js",
   "scripts": {

@@ -1,11 +1,12 @@
 /**
- * models.js
- *
- * Aqui se declararan todos los modelos de
- * nuestra app
- *
- * @type {*|exports|module.exports}
+ * Autores: Rubén Gabás Celimendiz, Alejandro Solanas Bonilla, Daniel Uroz Hinarejos
+ * NIAs: 590738, 647647, 545338
+ * Proyecto: OPbird
+ * Fichero:
+ * Fecha: 19/5/2016
+ * Funcion:
  */
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 // define the userSchema

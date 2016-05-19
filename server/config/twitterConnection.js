@@ -1,3 +1,13 @@
+/**
+ * Autores: Rubén Gabás Celimendiz, Alejandro Solanas Bonilla, Daniel Uroz Hinarejos
+ * NIAs: 590738, 647647, 545338
+ * Proyecto: OPbird
+ * Fichero:
+ * Fecha: 19/5/2016
+ * Funcion:
+ */
+
+
 module.exports = {
     uri_request_token: "https://api.twitter.com/oauth/request_token",
     uri_access_token: "https://api.twitter.com/oauth/access_token",
