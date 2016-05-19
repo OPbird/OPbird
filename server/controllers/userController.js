@@ -12,9 +12,20 @@ var service     = require('./service');
 var user        = require('../model/users');
 
 module.exports = {
+    comparePassword: function (req, res, next) {
+        var pass = crypto.createHash('sha1').update(req.body.pass).digest('base64');
+        user.getUser(req.headers.user_id, function (err, _user) {
+            if (_user.password == pass) {
+                res.status(200).json({error: 0, message: "Las contraseñas coinciden"})
+            } else {
+                res.status(400).send({error: 1, mensaje: "Email o contrasena incorrecta"});
+            }
+        })
 
+    },
     login: function (req, res, next) {
         var pass = crypto.createHash('sha1').update(req.body.password).digest('base64');
+        //var pass = req.body.password;
         user.getUser(req.body.email, function (err, _user) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (_user != null) {
@@ -63,7 +74,7 @@ module.exports = {
         user.getUser(req.params.id,function (err,data) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (data != null){
-                //data.password = null;
+                data.password = null;
                 return res.status(200).send({error: 0, user: data});
             }else return res.status(400).send({error: 1, mensaje: "Usuario no existente"});
         });
@@ -80,7 +91,8 @@ module.exports = {
     },
 
     updateUser: function(req,res,next){
-        user.getUser(req.body.email,function (err,data) {
+        console.log(req.headers.user_id);
+        user.getUser(req.headers.user_id,function (err,data) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (data != null){
                 if(req.body.newEmail != null){
@@ -90,13 +102,17 @@ module.exports = {
                         else return res.status(400).send({error: 1, mensaje: "Nuevo Email ya existente"});
                     });
                 }
-                if(req.body.password != null) data.password = req.body.password;
+                if(req.body.passNueva != null){
+                    data.password = crypto.createHash('sha1').update(req.body.passNueva).digest('base64');
+                }
                 if(req.body.nombre != null) data.nombre = req.body.nombre;
                 if(req.body.apellidos != null) data.apellidos = req.body.apellidos;
                 user.add(data,function(err){
                     if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
+                    data.password = null;
                     return res.status(200).send({error: 0, user: data});
                 });
+                console.log(data);
             }else return res.status(400).send({error: 1, mensaje: "Usuario no existente"});
         });
     },

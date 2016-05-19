@@ -39,23 +39,35 @@
                                 </div>
                             </h3>
                             <p><strong>Email: </strong> {{user.email}}</p>
+                            <div class="form-group">
+                                <button type="button" ng-click="modificarDatos(user)" class="btn btn-primary">Guardar cambios</button>
+                            </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <div class="form-group">
+
+                            <div ng-class="{'has-error has-feedback': error.noCoincide == 1, 'has-success has-feedback' : error.noCoincide == 0}"
+                                    class="form-group">
                                 <label for="oldPass">Contraseña actual:</label>
-                                <input type="password" class="form-control" id="oldPass">
+                                <input
+                                       ng-blur="comparePasswords(passCompare)" name="oldPass" type="password" class="form-control" ng-model="passCompare" id="oldPass">
+                                <span ng-show="error.noCoincide == 1" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                <span ng-show="error.noCoincide == 0" class="glyphicon glyphicon-ok form-control-feedback"></span>
                             </div>
                             <div class="form-group">
                                 <label for="newPass">Nueva contraseña:</label>
-                                <input type="password" class="form-control" id="newPass">
+                                <input type="password" ng-model="passNueva" class="form-control" id="newPass">
+                            </div>
+                            <div class="form-group">
+                                <div class="alert alert-danger " ng-show="error.pass" role="alert">{{error.texto}}</div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" ng-click="chagePass(passNueva)" class="btn btn-primary">Cambiar contraseñas</button>
                             </div>
                         </div>
 
 
                     </div><!--/row-->
-                    <div class="row">
-                        <button type="button" class="btn btn-primary col-sm-2 col-sm-offset-5">Modificar</button>
-                    </div>
+
                 </div><!--/panel-body-->
             </div><!--/panel-->
         </div>
