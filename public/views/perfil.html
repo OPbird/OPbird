@@ -39,29 +39,23 @@
                                 </div>
                             </h3>
                             <p><strong>Email: </strong> {{user.email}}</p>
-                        </div><!--/col-->
+                        </div>
                         <div class="col-xs-12 col-sm-6">
-                            <div class="row">
-                                <div class="col-xs-24 col-sm-12 text-center">
-                                    <img ng-src="{{infoCuenta.profile_image_url}}"  alt="" class="center-block img-circle img-responsive">
-                                </div><!--/col-->
+                            <div class="form-group">
+                                <label for="oldPass">Contraseña actual:</label>
+                                <input type="password" class="form-control" id="oldPass">
                             </div>
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-4">
-                                    <h2><strong> {{infoCuenta.followers_count}}</strong></h2>
-                                    <p><small>Followers</small></p>
-                                </div><!--/col-->
-                                <div class="col-xs-12 col-sm-4">
-                                    <h2><strong>{{infoCuenta.friends_count}}</strong></h2>
-                                    <p><small>Following</small></p>
-                                </div><!--/col-->
-                                <div class="col-xs-12 col-sm-4">
-                                    <h2><strong>{{infoCuenta.statuses_count}}</strong></h2>
-                                    <p><small>Tweets</small></p>
-                                </div><!--/col-->
+                            <div class="form-group">
+                                <label for="newPass">Nueva contraseña:</label>
+                                <input type="password" class="form-control" id="newPass">
                             </div>
                         </div>
+
+
                     </div><!--/row-->
+                    <div class="row">
+                        <button type="button" class="btn btn-primary col-sm-2 col-sm-offset-5">Modificar</button>
+                    </div>
                 </div><!--/panel-body-->
             </div><!--/panel-->
         </div>

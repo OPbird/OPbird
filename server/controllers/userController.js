@@ -63,7 +63,7 @@ module.exports = {
         user.getUser(req.params.id,function (err,data) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (data != null){
-                data.password = null;
+                //data.password = null;
                 return res.status(200).send({error: 0, user: data});
             }else return res.status(400).send({error: 1, mensaje: "Usuario no existente"});
         });

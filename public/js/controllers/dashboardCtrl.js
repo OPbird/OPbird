@@ -1,5 +1,5 @@
 angular.module("FinalApp")
-    .controller('dashboardCtlr', function($scope, $http, $location, TokenService, $sce){
+    .controller('dashboardCtlr', function($scope, $http, $location, TokenService){
                
         //TokenService.cerrarSesion();
         if (!TokenService.isSession()) {

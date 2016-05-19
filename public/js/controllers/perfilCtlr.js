@@ -1,5 +1,5 @@
 angular.module("FinalApp")
-    .controller('perfilCtlr', function($scope, $http, $location, TokenService, $sce){
+    .controller('perfilCtlr', function($scope, $http, $location, TokenService){
         //TokenService.cerrarSesion();
         if (!TokenService.isSession()) {
             $location.path("/home");
