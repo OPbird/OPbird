@@ -102,5 +102,10 @@ module.exports = {
             });
             res.status(200).send({error: 0, total: totalTweets, totalProg: totalProg});
         })
+    },
+    userStatics: function (req, res) {
+        User.getUser(req.params.user, function (err, user) {
+            res.status(200).send({error: 0, total: user.stats.ntweets, totalProg: user.stats.nprog});
+        });
     }
 };
