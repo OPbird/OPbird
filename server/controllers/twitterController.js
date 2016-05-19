@@ -166,7 +166,7 @@ module.exports = {
 
     },
     programmedTweet: function(tweet,callback){
-        console.log("req " + tweet);
+        console.log(tweet);
         oauth.post(twitter.acciones.tweet,
             tweet.access_token, tweet.access_token_secret, {status: tweet.text},
             function (error, data, response2) {

@@ -10,8 +10,11 @@ module.exports = {
             twitter.getProgrammed(function (err,tweets) {
                 if(err) throw err;
                 else {
+                    console.log(tweets.length);
                     for(var i = 0;i<tweets.length;i++){
                         twitter.programmedTweet(tweets[i],function(err){
+                            if (err) throw err;
+                            console.log("tweet enviado");
                         });
                     }
                 }
