@@ -4,10 +4,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>Cuentas</h4>
-                    <a ng-href="#/hashtags">Hashtags</a>
+
                 </div>
                 <div class="panel-body">
-                    <p>Información cuenta:</p>
+                    <p>Información cuenta: <a ng-href="#/hashtags" ng-if="cuentas.length > 0" class="pull-right">Hashtags</a></p>
                     <form method="post"action="/auth/twitter">
                         <textarea id="informacion" name="informacion" maxlength="140"></textarea>
                         <input type="hidden" name="user"  value="{{user}}">
