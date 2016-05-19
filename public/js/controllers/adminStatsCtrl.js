@@ -13,6 +13,7 @@ angular.module("FinalApp")
             }
         };
 
+
         //Metodo GET
         $http({
             url: '/admin/stats/accounts',
@@ -54,5 +55,12 @@ angular.module("FinalApp")
                 $scope.rLabels = ["Publicados", "Programados"];
                 $scope.rData = [response.data.total, response.data.totalProg];
             }
-        })
+        });
+
+        $scope.hayRecursos = function() {
+            if ($scope.rLabels != null){
+                return false;
+            }else return true;
+        };
+
     });
