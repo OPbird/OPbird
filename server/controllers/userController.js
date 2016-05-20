@@ -27,7 +27,6 @@ module.exports = {
     },
     login: function (req, res, next) {
         var pass = crypto.createHash('sha1').update(req.body.password).digest('base64');
-        //var pass = req.body.password;
         user.getUser(req.body.email, function (err, _user) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (_user != null) {
@@ -53,8 +52,7 @@ module.exports = {
 
     //TODO: hay que genrar el pass automaticamente, no se coge del form
     register: function (req, res, next) {
-        //var pass = passwoid(8);
-        var pass = "1234";
+        var pass = passwoid(8);
         var _user = {
             "email": req.body.email, "password": crypto.createHash('sha1').update(pass).digest('base64'),
             "nombre": req.body.nombre, "apellidos": req.body.apellidos
