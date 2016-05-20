@@ -91,7 +91,13 @@ module.exports = {
 
     updateUser: function(req,res,next){
         console.log(req.headers.user_id);
-        user.getUser(req.headers.user_id,function (err,data) {
+        var id = "";
+        if (req.headers.user_id == "admin") {
+            id = req.body.user.email;
+        } else {
+            id = req.headers.user_id;
+        }
+        user.getUser(id,function (err,data) {
             if (err) return res.status(500).send({error: 3, mensaje: "Server Error"});
             if (data != null){
                 if(req.body.newEmail != null){

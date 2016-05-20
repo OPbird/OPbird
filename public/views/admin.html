@@ -13,10 +13,16 @@
                     </div>
                     <div class="col-md-2">
                         <p>Nombre: {{u.nombre}}</p>
+                        <p><input ng-show="isReplyFormOpen" type="text" ng-model="u.nombre"/></p>
                         <p>Apellidos: {{u.apellidos}}</p>
+                        <p><input ng-show="isReplyFormOpen" type="text" ng-model="u.apellidos "/></p>
+                        <button ng-show="isReplyFormOpen" ng-click="edit(u)" class="btn btn-primary">Save</button>
                     </div>
+                    <!--<a ng-click="isReplyFormOpen = !isReplyFormOpen">Reply</a>-->
+                    <!--<div ng-show="isReplyFormOpen" id="replyForm">aa-->
+                    <!--</div>-->
                     <div class="col-md-2">
-                        <span class="btn btn-warning btn-xs glyphicon glyphicon-edit text-center" aria-hidden="true" ng-click="edit(u.email)"></span>
+                        <span class="btn btn-warning btn-xs glyphicon glyphicon-edit text-center" aria-hidden="true" ng-click="isReplyFormOpen = !isReplyFormOpen"></span>
                         <span class="btn btn-info btn-xs glyphicon glyphicon-stats text-center" aria-hidden="true" ng-click="info(u.email)"></span>
                         <span class="btn btn-danger btn-xs glyphicon glyphicon-trash text-center" aria-hidden="true" ng-click="delete($index,u)"></span>
                     </div>

@@ -14,14 +14,37 @@ angular.module("FinalApp")
             $location.path("/home");
         }
 
-        $scope.edit = function(email) {
-            console.log(email);
+
+        $scope.edit = function(usuario) {
+            $http({
+                url: '/api/user',
+                method: "put",
+                data: {user: usuario, nombre: usuario.nombre, apellidos: usuario.apellidos},
+                headers: {'authorization': datos.token, user_id: datos.user}
+            })
+            .success(function (data) {
+                $scope.user = data.user;
+                $http({
+                    url: '/api/user/',
+                    method: "GET",
+                    headers: { 'authorization': datos.token, user_id: datos.user}
+                }).then(function (response) {
+                    if (response.error > 0) {
+                    } else {
+                        $scope.users = response.data.users;
+                    }
+                });
+            })
+            .error(function (data) {
+                console.log(data);
+            });
         };
 
         $scope.info = function(email) {
             emailService.setEmail(email);
             $location.path("/perfil/stats");
         };
+
 
         $scope.delete = function(i, u) {
             $http({
