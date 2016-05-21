@@ -20,7 +20,7 @@ var OAuth = require('oauth').OAuth,
         ("EObdyi9bcvtMFcYD4a6chuxiB" || twitter.consumer_key),
         ("GZDQNcMFJAci1y4xHWGxJDAFoq8262jQNsFwjwj3uheOAqCcf4" || twitter.consumer_secret_key),
         twitter.oauth_v,
-        ("http://opbir.herokuapp.com/auth/twitter/callback" || twitter.uri_callback),
+        ("http://opbird.herokuapp.com/auth/twitter/callback" || twitter.uri_callback),
         twitter.signature
     );
 
