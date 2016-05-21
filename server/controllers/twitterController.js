@@ -17,10 +17,10 @@ var OAuth = require('oauth').OAuth,
     oauth = new OAuth(
         twitter.uri_request_token,
         twitter.uri_access_token,
-        ("EObdyi9bcvtMFcYD4a6chuxiB" || twitter.consumer_key),
-        ("GZDQNcMFJAci1y4xHWGxJDAFoq8262jQNsFwjwj3uheOAqCcf4" || twitter.consumer_secret_key),
+        (process.env.TCK || twitter.consumer_key),
+        (process.env.TCS || twitter.consumer_secret_key),
         twitter.oauth_v,
-        ("http://opbird.herokuapp.com/auth/twitter/callback" || twitter.uri_callback),
+        (process.env.TCALLBACK || twitter.uri_callback),
         twitter.signature
     );
 
@@ -39,7 +39,7 @@ module.exports = {
         oauth.getOAuthRequestToken(function (error, oauth_token, oauth_token_secret, results) {
             if (error) {
                 console.log(error);
-                res.send("Authentication Failed!");
+                res.send("Authentication Failed!" + process.env.TCK + " " + process.env.TCS + " " + process.env.TCALLBACK);
             } else {
                 if (req.body.informacion == "" || req.body.informacion == null) {
                     req.session.info = "Sin información"
