@@ -17,10 +17,10 @@ var OAuth = require('oauth').OAuth,
     oauth = new OAuth(
         twitter.uri_request_token,
         twitter.uri_access_token,
-        (process.env.TCK || twitter.consumer_key),
-        (process.env.TCS || twitter.consumer_secret_key),
+        process.env.TCK || twitter.consumer_key,
+        process.env.TCS || twitter.consumer_secret_key,
         twitter.oauth_v,
-        (process.env.TCALLBACK || twitter.uri_callback),
+        process.env.TCALLBACK || twitter.uri_callback,
         twitter.signature
     );
 
